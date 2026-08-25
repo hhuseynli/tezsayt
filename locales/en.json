@@ -1,0 +1,394 @@
+{
+  "nav": {
+    "work": "Work",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Get free draft"
+  },
+  "footer": {
+    "tagline": "Websites for Azerbaijani businesses. Built fast, owned by you.",
+    "rights": "© 2026 Tezsayt. All rights reserved."
+  },
+  "common": {
+    "instagram": "Message on Instagram",
+    "whatsapp": "Message on WhatsApp",
+    "telegram": "Telegram",
+    "email": "Email",
+    "viewSite": "Visit site",
+    "learnMore": "Learn more",
+    "seeAll": "See all projects",
+    "from": "From",
+    "readyIn": "Ready in",
+    "goodFor": "Good for",
+    "mostPopular": "Most popular"
+  },
+  "floating": {
+    "label": "Free draft"
+  },
+  "whatsapp": {
+    "prefill": "Hi, I'd like to ask about the free homepage draft."
+  },
+  "home": {
+    "meta": {
+      "title": "Tezsayt — Websites for Azerbaijani businesses",
+      "desc": "We build your homepage first, free. If you like it, the full site is ready in seven days. From 300 AZN."
+    },
+    "hero": {
+      "pill": "Free homepage draft",
+      "h1": "When someone asks about you, what do they find?",
+      "credibility": "Built for 6 businesses. Systems shipped at hackathons run by Baku Metro, Pasha, and AZCON.",
+      "sub": "If nothing — we build your homepage first, free. Like it, full site in 7 days. Don't, you pay nothing.",
+      "eyebrow": "Modern website development"
+    },
+    "proof": {
+      "label": "Work we've shipped",
+      "moreFromClients": "More from clients",
+      "logosCaption": "Competed and delivered results at hackathons by these organizations."
+    },
+    "how": {
+      "heading": "No risk. Here's how it works.",
+      "step1": {
+        "title": "Tell us about your business",
+        "body": "A ten-minute conversation. What you do, who your customers are, what the site should achieve."
+      },
+      "step2": {
+        "title": "We build your homepage. Free.",
+        "body": "Within three days you get a real, working page. Not a mockup. Your actual business on a real site you can open on your phone."
+      },
+      "step3": {
+        "title": "You decide",
+        "body": "Like it? We build the rest in seven days and you pay then. Don't like it? Walk away. No invoice, no obligation."
+      },
+      "fineprint": "The free draft covers your homepage with one round of revisions."
+    },
+    "why": {
+      "heading": "You already get customers through recommendations. Here's what a website adds.",
+      "intro": "Nobody in Baku finds their dentist through Google. But something happens between the recommendation and the phone call — and that's where a website earns its cost.",
+      "p1": {
+        "title": "The recommendation gets you halfway, your site closes it",
+        "body": "Someone tells a friend about you, that friend searches before calling. What they find in 30 seconds decides whether you get the call. A professional site turns those 30 seconds in your favor."
+      },
+      "p2": {
+        "title": "Your Instagram isn't actually yours",
+        "body": "Accounts get hacked, restricted, lost. When Meta changes an algorithm, your reach changes too. A website is the only thing you truly own online, and nobody can take it from you."
+      },
+      "p3": {
+        "title": "Stop answering the same question 50 times a month",
+        "body": "When services, prices, and hours are on your site, customers arrive already informed. Conversations get shorter, closer to closing, and you spend time on actual work."
+      },
+      "p4": {
+        "title": "You look like a company, not a phone number",
+        "body": "For corporate clients, suppliers, partners, and tenders, a website is the minimum requirement. A business without a site isn't taken seriously, that's just the reality."
+      }
+    },
+    "pricing": {
+      "heading": "What it costs",
+      "sub": "Published prices. No \"contact us for a quote.\"",
+      "included": {
+        "label": "Included in every project",
+        "1": "Mobile-optimized",
+        "2": "Under one second load time",
+        "3": "Domain and hosting setup",
+        "4": "Thirty days free support",
+        "5": "You own everything"
+      },
+      "estimatorToggle": "Estimate your project"
+    },
+    "team": {
+      "heading": "Who's behind it",
+      "body1": "We started building websites for hackathons and for friends, and kept going because we saw the same gap everywhere: businesses either overpaid an agency for a slow template, or hired a freelancer who disappeared halfway through.",
+      "body2": "We use AI to handle the repetitive parts of writing code. That's why we deliver in a week instead of two months, and why we can afford to build your homepage before you've paid anything. The design decisions and the thinking about what your customers actually need — that's us.",
+      "hackLabel": "What we've built under pressure",
+      "aboutLink": "More about us"
+    },
+    "contact": {
+      "heading": "Let's start with the free draft",
+      "body": "Send a message and tell us what your business does. We reply within a few hours."
+    }
+  },
+  "estimator": {
+    "type": {
+      "label": "What do you need?",
+      "landing": "Landing page",
+      "business": "Business site",
+      "store": "Online store",
+      "custom": "Custom tool"
+    },
+    "pages": {
+      "label": "How many pages?"
+    },
+    "languages": {
+      "label": "How many languages?"
+    },
+    "addons": {
+      "label": "Anything extra?"
+    },
+    "addon": {
+      "booking": "Booking system",
+      "payments": "Online payments",
+      "blog": "Blog or news",
+      "admin": "Admin panel"
+    },
+    "result": {
+      "label": "Estimated",
+      "timeline": "Delivered in",
+      "days": "days"
+    },
+    "disclaimer": "This is an estimate, not a quote. Your free draft comes first — you'll have an exact number before any money changes hands.",
+    "cta": "Start with a free draft"
+  },
+  "work": {
+    "meta": {
+      "title": "Work — Tezsayt",
+      "desc": "Websites and systems we've built for businesses in Azerbaijan."
+    },
+    "heading": "Work we've shipped",
+    "sub": "Real businesses, real sites, live right now.",
+    "filter": {
+      "all": "All",
+      "clients": "Client work",
+      "hackathons": "Hackathon projects"
+    },
+    "hackathons": {
+      "intro": "Beyond client work, we've shipped working systems in competitive hackathons across Azerbaijan. This is what we build when the clock is running."
+    },
+    "testimonials": {
+      "heading": "What clients say"
+    },
+    "cta": {
+      "heading": "Seen enough?",
+      "body": "Tell us about your business and we'll build your homepage — free."
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Services and pricing — Tezsayt",
+      "desc": "Websites from 300 AZN, delivered in seven days. Free homepage draft before you pay anything."
+    },
+    "heading": "What we build",
+    "sub": "Four kinds of project. Published prices. A free homepage draft before you commit to any of them.",
+    "includes": {
+      "label": "Always included"
+    },
+    "bestFor": {
+      "label": "Best for"
+    },
+    "timeline": {
+      "label": "Timeline"
+    },
+    "always": {
+      "heading": "In every project",
+      "1": "Mobile-optimized — works properly on every phone",
+      "2": "Fast loading — under one second",
+      "3": "Domain and hosting setup — we handle the technical side",
+      "4": "Google Analytics — see who visits and where they come from",
+      "5": "Thirty days of free support after launch",
+      "6": "Full ownership — your code, your domain, your data"
+    },
+    "process": {
+      "heading": "How a project runs",
+      "1": {
+        "title": "Discovery",
+        "when": "Day 1",
+        "body": "We learn about your business, your customers, and your goals. We look at what your competitors are doing."
+      },
+      "2": {
+        "title": "Free homepage draft",
+        "when": "Days 1–3",
+        "body": "We build your homepage and send it to you as a live link with a short walkthrough. No payment, no obligation."
+      },
+      "3": {
+        "title": "Proposal",
+        "when": "Same day",
+        "body": "If you like the direction, you get a fixed scope, a fixed price, and a delivery date. No scope creep."
+      },
+      "4": {
+        "title": "Build",
+        "when": "Days 4–10",
+        "body": "We build the rest. You see progress and can give feedback at any point."
+      },
+      "5": {
+        "title": "Launch and handover",
+        "when": "Final day",
+        "body": "We deploy, set up analytics, register the domain in your name, and walk you through everything."
+      }
+    },
+    "maintenance": {
+      "heading": "Keep your site secure, updated, and fast after launch",
+      "body": "When the 30-day free support ends, you can continue with the Basic plan.",
+      "basic": {
+        "name": "Basic",
+        "price": "100",
+        "features": [
+          "Hosting & domain management",
+          "Security patches",
+          "Monthly backup"
+        ],
+        "desc": "Your site works, stays secure, and you don't have to think about it."
+      },
+      "standard": {
+        "name": "Standard",
+        "price": "200",
+        "features": [
+          "Everything in Basic",
+          "Content updates (2 hrs/mo)",
+          "Monthly analytics report"
+        ],
+        "desc": "We update your content, you focus on your business."
+      },
+      "growth": {
+        "name": "Growth",
+        "price": "350",
+        "features": [
+          "Everything in Standard",
+          "Small feature additions",
+          "Priority support"
+        ],
+        "desc": "Your site grows with your business, new features added."
+      },
+      "perMonth": "AZN/mo",
+      "supportLine": "With monthly support"
+    },
+    "faq": {
+      "heading": "Questions"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About — Tezsayt",
+      "desc": "Two computer science students building websites for businesses in Azerbaijan."
+    },
+    "heading": "Two people. No account managers.",
+    "intro": "We're building websites for Azerbaijani businesses because we kept seeing the same problem and thought it could be solved better.",
+    "story": {
+      "heading": "How this started",
+      "body1": "We met building things for hackathons. Logistics systems, crowd detection, RFID tracking — real problems, forty-eight hour deadlines. Then friends started asking us to build websites for their businesses, and we noticed something.",
+      "body2": "Every business owner we spoke to had the same two options. Pay an agency two thousand manat and wait two months for a template. Or hire a freelancer for four hundred and hope they finish. Neither is good, and both ask you to pay before you've seen anything.",
+      "body3": "So we changed the order. We build your homepage first, you look at it, and then you decide. It only works because we're fast enough to afford it."
+    },
+    "why": {
+      "heading": "Why AI-assisted",
+      "body": "Not because it's fashionable. Because it means a high-quality site takes days instead of weeks, and we can pass that saving on. AI handles the repetitive code. We handle the design thinking, the structure, the business logic, and the decisions about what your customers actually need. You get both speed and quality — that's the entire point."
+    },
+    "hack": {
+      "heading": "What we've built under pressure",
+      "intro": "Hackathon work is where we learned to ship fast without breaking things. It's also proof we can handle projects more complex than a brochure site."
+    },
+    "values": {
+      "heading": "How we work",
+      "1": {
+        "title": "Transparent pricing",
+        "body": "You know the exact number before work begins. No hidden costs, surprise invoices, or add-on fees after the project starts. The agreed price is the final price."
+      },
+      "2": {
+        "title": "Fast delivery",
+        "body": "You won't wait 6 weeks for a 5-page site. We automate repetitive tasks with AI, cutting timelines without cutting quality."
+      },
+      "3": {
+        "title": "Full ownership",
+        "body": "Code, domain, and all data are registered in your name from day one. You can work with another team anytime — nothing is locked to us."
+      },
+      "4": {
+        "title": "Local understanding",
+        "body": "We know how business works in Azerbaijan, what your customers expect, and the specifics of the local market. Your site is built for the people here."
+      }
+    },
+    "comparison": {
+      "traditional": "Traditional agency",
+      "tezsayt": "With Tezsayt",
+      "tradTimeline": "6–8 weeks",
+      "ourTimeline": "1 week",
+      "tradCost": "2000+ AZN",
+      "ourCost": "from 300 AZN",
+      "tradPreview": "After payment",
+      "ourPreview": "Before payment",
+      "timeline": "Timeline",
+      "cost": "Price",
+      "preview": "Preview"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact — Tezsayt",
+      "desc": "Start with a free homepage draft. We reply within a few hours."
+    },
+    "heading": "Let's start with the free draft",
+    "body": "Tell us what your business does. We'll reply within a few hours, usually sooner.",
+    "channels": {
+      "label": "Or reach us directly"
+    },
+    "response": "We reply within a few hours",
+    "form": {
+      "heading": "Send a message",
+      "name": "Your name",
+      "business": "Business name",
+      "need": "What do you need?",
+      "reach": "How should we reach you?",
+      "reachHint": "Phone, Instagram, or email",
+      "submit": "Send message",
+      "error": {
+        "name": "Please enter your name",
+        "need": "Please tell us what you need",
+        "reach": "Please tell us how to reach you",
+        "send": "Something went wrong. Message us on WhatsApp instead."
+      }
+    }
+  },
+  "thanks": {
+    "heading": "Message received",
+    "body": "We'll get back to you within a few hours. If it's urgent, message us on WhatsApp — that's usually faster.",
+    "back": "Back to homepage"
+  },
+  "og": {
+    "title": "Tezsayt — Free homepage draft, pay only if you like it",
+    "desc": "Websites for Azerbaijani businesses. Ready in seven days. From 300 AZN."
+  },
+  "guides": {
+    "meta": {
+      "title": "Guides — Tezsayt",
+      "desc": "Guides and articles about building websites for businesses in Azerbaijan."
+    },
+    "heading": "Guides",
+    "empty": "No articles yet. Check back soon."
+  },
+  "notFound": {
+    "heading": "Page not found",
+    "body": "The page you're looking for doesn't exist.",
+    "back": "Back to homepage"
+  },
+  "faq": {
+    "catch": {
+      "q": "What's the catch with the free draft?",
+      "a": "There isn't one. We build your homepage because it's the fastest way to show you what we can do — faster than a portfolio, faster than a sales call. Most people who see their own business on a real page want the rest built. Some don't, and that's fine. We'd rather spend three days proving it than three days arguing about it."
+    },
+    "fast": {
+      "q": "How can you be this fast?",
+      "a": "AI handles the repetitive parts of writing code — the work that used to take days of typing. That leaves us to focus on design, structure, and making it work for your specific business. The quality doesn't drop. The timeline does."
+    },
+    "own": {
+      "q": "Do I actually own everything afterwards?",
+      "a": "Yes. Your domain is registered in your name from day one, the code is handed over to you, and the hosting account is yours. If you decide to work with someone else next year, you take everything with you. Nothing is locked to us."
+    },
+    "changes": {
+      "q": "What if I need changes after launch?",
+      "a": "You get thirty days of free support after launch — real changes, not just bug fixes. After that, either an optional monthly maintenance plan or pay per change. Your choice. No subscription required."
+    },
+    "prepare": {
+      "q": "What do I need to prepare?",
+      "a": "Your logo if you have one, a description of your business, and any photos you want to use. If you don't have text written, we'll help. If you don't have a logo, we can make a simple one."
+    },
+    "payment": {
+      "q": "How does payment work?",
+      "a": "Nothing until you've approved the free draft. After that, half to begin the full build and half at launch."
+    },
+    "outside": {
+      "q": "Do you work outside Baku?",
+      "a": "Yes — anywhere in Azerbaijan and internationally. Everything is done remotely."
+    },
+    "languages": {
+      "q": "Can the site be in more than one language?",
+      "a": "Yes. Azerbaijani, Russian, and English are all standard for us. Additional languages add a small amount to the price and a couple of days to the timeline."
+    }
+  }
+}
