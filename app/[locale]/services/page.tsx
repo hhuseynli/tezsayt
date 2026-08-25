@@ -61,8 +61,8 @@ export default async function ServicesPage({ params }: Props) {
                     <p className="text-[14px] text-text-muted mt-[6px]">{tl(s.description, loc)}</p>
                     <div className="mt-auto pt-[20px] space-y-[8px]">
                       <div className="flex items-baseline justify-between">
-                        <span className="text-[13px] text-text-muted">{dict["common.from"]}</span>
-                        <span className="font-serif text-[22px]">{s.priceFrom} AZN</span>
+                        <span className="text-[13px] text-text-muted">{s.priceLabel ? "" : dict["common.from"]}</span>
+                        <span className="font-serif text-[22px]">{s.priceLabel ? tl(s.priceLabel, loc) : `${s.priceFrom} AZN`}</span>
                       </div>
                       <div className="flex items-baseline justify-between">
                         <span className="text-[13px] text-text-muted">{dict["services.timeline.label"]}</span>

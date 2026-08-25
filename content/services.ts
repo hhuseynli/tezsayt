@@ -8,6 +8,7 @@ export type Service = {
   includes: Localized[];
   timeline: Localized;
   priceFrom: number;
+  priceLabel?: Localized;
 };
 
 export const services: Service[] = [
@@ -30,7 +31,7 @@ export const services: Service[] = [
       { az: "SEO quraşdırılması", ru: "Настройка SEO", en: "SEO setup" },
     ],
     timeline: { az: "3–5 gün", ru: "3–5 дней", en: "3–5 days" },
-    priceFrom: 300,
+    priceFrom: 500,
   },
   {
     slug: "business",
@@ -52,7 +53,7 @@ export const services: Service[] = [
       { az: "Google Analytics", ru: "Google Analytics", en: "Google Analytics" },
     ],
     timeline: { az: "7–10 gün", ru: "7–10 дней", en: "7–10 days" },
-    priceFrom: 600,
+    priceFrom: 800,
   },
   {
     slug: "store",
@@ -74,7 +75,7 @@ export const services: Service[] = [
       { az: "Sifariş idarəetməsi", ru: "Управление заказами", en: "Order management" },
     ],
     timeline: { az: "10–14 gün", ru: "10–14 дней", en: "10–14 days" },
-    priceFrom: 1000,
+    priceFrom: 2000,
   },
   {
     slug: "custom",
@@ -96,6 +97,7 @@ export const services: Service[] = [
       { az: "API inteqrasiyası", ru: "Интеграция API", en: "API integration" },
     ],
     timeline: { az: "2–4 həftə", ru: "2–4 недели", en: "2–4 weeks" },
-    priceFrom: 1500,
+    priceFrom: 0,
+    priceLabel: { az: "Razılaşma yolu ilə", ru: "По договорённости", en: "By agreement" },
   },
 ];

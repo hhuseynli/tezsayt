@@ -32,7 +32,7 @@
   "home": {
     "meta": {
       "title": "Tezsayt — Websites for Azerbaijani businesses",
-      "desc": "We build your homepage first, free. If you like it, the full site is ready in seven days. From 300 AZN."
+      "desc": "We build your homepage first, free. If you like it, the full site is ready in seven days. From 500 AZN."
     },
     "hero": {
       "pill": "Free homepage draft",
@@ -108,35 +108,46 @@
     }
   },
   "estimator": {
-    "type": {
-      "label": "What do you need?",
-      "landing": "Landing page",
-      "business": "Business site",
-      "store": "Online store",
-      "custom": "Custom tool"
-    },
-    "pages": {
-      "label": "How many pages?"
-    },
-    "languages": {
-      "label": "How many languages?"
-    },
-    "addons": {
-      "label": "Anything extra?"
+    "oneTimeAddons": {
+      "label": "One-time add-ons"
     },
     "addon": {
       "booking": "Booking system",
       "payments": "Online payments",
       "blog": "Blog or news",
-      "admin": "Admin panel"
+      "admin": "Admin panel",
+      "translation": "Translation (extra language)",
+      "copywriting": "Copywriting",
+      "whatsappBot": "WhatsApp bot",
+      "adsSetup": "Ad campaign setup"
+    },
+    "onRequest": {
+      "label": "Custom-priced services",
+      "photography": "Photography",
+      "branding": "Logo / Branding",
+      "whatsappAdvanced": "WhatsApp bot (advanced)",
+      "tag": "On request"
+    },
+    "monthlyServices": {
+      "label": "Monthly services (optional)",
+      "carePlan": "Care Plan — Basic",
+      "gbpSeo": "Google Business + Local SEO",
+      "analyticsReport": "Monthly analytics report",
+      "smmContent": "SMM (content only, no photos)",
+      "whatsappUpkeep": "WhatsApp bot support",
+      "total": "Monthly total",
+      "none": "None selected"
     },
     "result": {
-      "label": "Estimated",
-      "timeline": "Delivered in",
-      "days": "days"
+      "label": "Estimated cost",
+      "oneTime": "One-time setup",
+      "monthly": "Monthly services",
+      "timeline": "Delivery",
+      "days": "days",
+      "customPrice": "Custom quote"
     },
-    "disclaimer": "This is an estimate, not a quote. Your free draft comes first — you'll have an exact number before any money changes hands.",
-    "cta": "Start with a free draft"
+    "disclaimer": "One-time price covers site setup. Monthly services are optional and can be cancelled anytime.",
+    "cta": "Start with a free sample"
   },
   "work": {
     "meta": {
@@ -164,7 +175,7 @@
   "services": {
     "meta": {
       "title": "Services and pricing — Tezsayt",
-      "desc": "Websites from 300 AZN, delivered in seven days. Free homepage draft before you pay anything."
+      "desc": "Websites from 500 AZN, delivered in seven days. Free homepage draft before you pay anything."
     },
     "heading": "What we build",
     "sub": "Four kinds of project. Published prices. A free homepage draft before you commit to any of them.",
@@ -300,7 +311,7 @@
       "tradTimeline": "6–8 weeks",
       "ourTimeline": "1 week",
       "tradCost": "2000+ AZN",
-      "ourCost": "from 300 AZN",
+      "ourCost": "from 500 AZN",
       "tradPreview": "After payment",
       "ourPreview": "Before payment",
       "timeline": "Timeline",
@@ -342,7 +353,7 @@
   },
   "og": {
     "title": "Tezsayt — Free homepage draft, pay only if you like it",
-    "desc": "Websites for Azerbaijani businesses. Ready in seven days. From 300 AZN."
+    "desc": "Websites for Azerbaijani businesses. Ready in seven days. From 500 AZN."
   },
   "guides": {
     "meta": {
