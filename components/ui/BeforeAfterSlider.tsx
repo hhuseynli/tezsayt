@@ -27,7 +27,7 @@ export function BeforeAfterSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt, be
 
   function handlePointerDown(e: React.PointerEvent) {
     isDragging.current = true;
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
     updatePosition(e.clientX);
   }
 
@@ -47,29 +47,33 @@ export function BeforeAfterSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt, be
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
+      onPointerLeave={handlePointerUp}
       style={{ touchAction: "none" }}
     >
-      {/* After image (full, behind) */}
-      <Image src={afterSrc} alt={afterAlt} width={800} height={700} className="w-full h-auto block" draggable={false} priority />
+      {/* After image — full, sits behind */}
+      <Image src={afterSrc} alt={afterAlt} width={800} height={600} className="w-full h-auto block" draggable={false} priority />
 
-      {/* Before image (clipped) */}
-      <div className="absolute inset-0 overflow-hidden" style={{ width: `${position}%` }}>
-        <Image src={beforeSrc} alt={beforeAlt} width={800} height={700} className="w-full h-auto block" style={{ width: containerRef.current?.offsetWidth || "100%" }} draggable={false} priority />
+      {/* Before image — same size, clipped by position */}
+      <div
+        className="absolute inset-0 overflow-hidden"
+        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+      >
+        <Image src={beforeSrc} alt={beforeAlt} width={800} height={600} className="w-full h-auto block" draggable={false} priority />
       </div>
 
-      {/* Slider line */}
-      <div className="absolute top-0 bottom-0" style={{ left: `${position}%` }}>
-        <div className="absolute top-0 bottom-0 w-[2px] bg-accent -translate-x-1/2" />
-        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-[36px] h-[36px] rounded-full bg-accent text-white flex items-center justify-center shadow-[var(--shadow-lift)] text-[14px]">
-          ⟨⟩
+      {/* Slider handle */}
+      <div className="absolute top-0 bottom-0 pointer-events-none" style={{ left: `${position}%` }}>
+        <div className="absolute top-0 bottom-0 w-[2px] bg-white -translate-x-1/2 shadow-[0_0_4px_rgba(0,0,0,0.3)]" />
+        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-[32px] h-[32px] rounded-full bg-white flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.2)]">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 3L2 8L5 13" stroke="#666" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M11 3L14 8L11 13" stroke="#666" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </div>
       </div>
 
       {/* Labels */}
-      <div className="absolute top-[12px] left-[12px] bg-ink/70 text-white text-[11px] font-medium px-[8px] py-[3px] rounded-[4px] pointer-events-none">
+      <div className="absolute top-[10px] left-[10px] bg-black/60 text-white text-[11px] font-medium px-[8px] py-[3px] rounded-[4px] pointer-events-none backdrop-blur-sm">
         {beforeLabel}
       </div>
-      <div className="absolute top-[12px] right-[12px] bg-accent/90 text-white text-[11px] font-medium px-[8px] py-[3px] rounded-[4px] pointer-events-none">
+      <div className="absolute top-[10px] right-[10px] bg-accent/85 text-white text-[11px] font-medium px-[8px] py-[3px] rounded-[4px] pointer-events-none backdrop-blur-sm">
         {afterLabel}
       </div>
     </div>
