@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button";
-import { BrowserMockup } from "@/components/ui/BrowserMockup";
+import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 import { Instagram } from "@/components/ui/icons/Instagram";
 import { WhatsApp } from "@/components/ui/icons/WhatsApp";
 import { waLink, igLink } from "@/lib/utils";
@@ -31,9 +31,16 @@ export function Hero({ locale, dict }: HeroProps) {
             </div>
           </div>
 
-          {/* Right: Google search screenshot */}
+          {/* Right: Before/After slider */}
           <div className="mt-[48px] lg:mt-0">
-            <BrowserMockup src={`/images/hero-search-${locale}.png`} alt="Google search showing no results for a business" priority />
+            <BeforeAfterSlider
+              beforeSrc={`/images/hero-search-${locale}.png`}
+              afterSrc={`/images/hero-after-${locale}.png`}
+              beforeAlt="Google search with no results"
+              afterAlt="Google search with rich results after website"
+              beforeLabel={dict["home.hero.before"]}
+              afterLabel={dict["home.hero.after"]}
+            />
           </div>
         </div>
       </div>
