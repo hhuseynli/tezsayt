@@ -4,6 +4,7 @@ import { getDictionary } from "@/lib/i18n";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingContact } from "@/components/layout/FloatingContact";
+import { LocalBusinessJsonLd } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -26,6 +27,7 @@ export default async function LocaleLayout({
 
   return (
     <>
+      <LocalBusinessJsonLd locale={locale as Locale} />
       <Header locale={locale as Locale} dict={dict} />
       <main className="flex-1">{children}</main>
       <Footer locale={locale as Locale} dict={dict} />

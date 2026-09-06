@@ -1,33 +1,55 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  useInView,
+  type MotionValue,
+} from "framer-motion";
 import Image from "next/image";
-import { Search, Check, X, ArrowRight } from "lucide-react";
+import { Search, Check, X, MessageCircle } from "lucide-react";
 import { waLink } from "@/lib/utils";
 import type { Locale } from "@/lib/constants";
 
 type HeroProps = { locale: Locale; dict: Record<string, string> };
 
-type Phase =
+/* The three stages shown in tabs */
+type Stage = 0 | 1 | 2;
+
+/* Sub-phases within stage 0 (the search animation) */
+type SearchPhase =
   | "idle"
   | "typing"
   | "submitted"
   | "results"
   | "highlight"
   | "verdict"
-  | "weCanFix"
-  | "building"
-  | "built"
-  | "offer";
+  | "weCanFix";
+
+/* Sub-phases within stage 1 (the build animation) */
+type BuildPhase = "idle" | "building" | "built";
 
 export function Hero({ locale, dict }: HeroProps) {
   const prefersReduced = useReducedMotion();
-  const [phase, setPhase] = useState<Phase>("idle");
-  const [typedChars, setTypedChars] = useState(0);
-  const [buildProgress, setBuildProgress] = useState(0);
-  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
+  /* ── Tab state ── */
+  const [activeStage, setActiveStage] = useState<Stage>(0);
+  const [animDone, setAnimDone] = useState(false);
+
+  /* ── Stage 0: search animation ── */
+  const [searchPhase, setSearchPhase] = useState<SearchPhase>("idle");
+  const [typedChars, setTypedChars] = useState(0);
+
+  /* ── Stage 1: build animation ── */
+  const [buildPhase, setBuildPhase] = useState<BuildPhase>("idle");
+  const [buildProgress, setBuildProgress] = useState(0);
+
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const hasStarted = useRef(false);
   const query = dict["home.hero.searchQuery"] || "Saleh Tech School Baku";
 
   const after = useCallback((fn: () => void, ms: number) => {
@@ -35,342 +57,496 @@ export function Hero({ locale, dict }: HeroProps) {
     timers.current.push(id);
   }, []);
 
+  const clearTimers = useCallback(() => {
+    timers.current.forEach(clearTimeout);
+    timers.current = [];
+  }, []);
+
+  /* ── Tab labels ── */
+  const tabs = [
+    dict["home.how.step1.title"] || "Tell us about your business",
+    dict["home.how.step2.title"] || "We build your homepage. Free.",
+    dict["home.how.step3.title"] || "You decide",
+  ];
+
+  const handleTabClick = (stage: Stage) => {
+    if (!animDone || stage === activeStage) return;
+    setActiveStage(stage);
+
+    // Show final state for each stage when clicking
+    if (stage === 0) {
+      setSearchPhase("weCanFix");
+      setTypedChars(query.length);
+    } else if (stage === 1) {
+      setBuildPhase("built");
+      setBuildProgress(100);
+    }
+  };
+
+  /* ── Hero text fade-out on scroll ── */
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroSectionRef,
+    offset: ["start start", "end start"],
+  });
+  const heroTextOpacity = useTransform(heroScroll, [0, 0.4], [1, 0]);
+  const heroTextY = useTransform(heroScroll, [0, 0.4], [0, -60]);
+  const floatingOpacity = useTransform(heroScroll, [0, 0.35], [0.85, 0]);
+
+  /* ── Scroll-driven card reveal ── */
+  const peekRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: peekRef,
+    offset: ["start end", "start 0.25"],
+  });
+  const cardY = useTransform(scrollYProgress, [0, 1], [80, 0]);
+  const cardOpacity = useTransform(scrollYProgress, [0, 0.6], [0.35, 1]);
+  const cardScale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
+  const maskOpacity = useTransform(scrollYProgress, [0.3, 0.8], [1, 0]);
+  const cardShadow = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0 4px 24px rgba(0,0,0,0.04)", "0 20px 60px rgba(0,0,0,0.10), 0 8px 24px rgba(0,0,0,0.06)"]
+  );
+
+  /* ── Trigger animation when card is fully in view ── */
+  const animTriggerRef = useRef<HTMLDivElement>(null);
+  const isCardRevealed = useInView(animTriggerRef, { amount: 0.4, once: true });
+
+  // Reduced motion: skip to end
   useEffect(() => {
     if (prefersReduced) {
-      setPhase("offer");
+      setActiveStage(2);
+      setAnimDone(true);
+      setSearchPhase("verdict");
       setTypedChars(query.length);
+      setBuildPhase("built");
       setBuildProgress(100);
-      return;
     }
+  }, [prefersReduced, query]);
 
-    // ── Slower timeline ──
-    let t = 800;
+  // Full auto-play animation — runs linearly, tabs appear after
+  useEffect(() => {
+    if (!isCardRevealed || hasStarted.current || prefersReduced) return;
+    hasStarted.current = true;
 
-    // Typing — 80ms per char
-    after(() => setPhase("typing"), t);
+    let t = 300;
+
+    // ── Stage 0: Search ──
+    after(() => setSearchPhase("typing"), t);
     for (let i = 1; i <= query.length; i++) {
-      after(() => setTypedChars(i), t + i * 80);
+      after(() => setTypedChars(i), t + i * 70);
     }
-    t += query.length * 80;
+    t += query.length * 70;
+    after(() => setSearchPhase("submitted"), t + 350);
+    after(() => setSearchPhase("results"), t + 900);
+    after(() => setSearchPhase("highlight"), t + 3000);
+    after(() => setSearchPhase("verdict"), t + 4800);
+    after(() => setSearchPhase("weCanFix"), t + 6500);
 
-    // Submit
-    after(() => setPhase("submitted"), t + 400);
-
-    // Results appear — linger for ~2.5s
-    after(() => setPhase("results"), t + 1000);
-
-    // Highlight "no website" — linger for ~2s
-    after(() => setPhase("highlight"), t + 3500);
-
-    // Verdict message
-    after(() => setPhase("verdict"), t + 5500);
-
-    // "We can fix that"
-    after(() => setPhase("weCanFix"), t + 7500);
-
-    // Building — 4 seconds of progress
+    // ── Stage 1: Build ──
+    const stage1Start = t + 8000;
     after(() => {
-      setPhase("building");
+      setActiveStage(1);
+      setBuildPhase("building");
       setBuildProgress(0);
-    }, t + 9000);
+    }, stage1Start);
 
-    const buildStart = t + 9000;
-    const buildEnd = t + 13000;
-    const buildDur = buildEnd - buildStart;
+    const buildDur = 4000;
     const ticks = 30;
     for (let i = 1; i <= ticks; i++) {
       after(
         () => setBuildProgress(Math.min(100, Math.round((i / ticks) * 100))),
-        buildStart + (buildDur / ticks) * i
+        stage1Start + (buildDur / ticks) * i
       );
     }
+    after(() => setBuildPhase("built"), stage1Start + buildDur);
 
-    // Built — show screenshot for 1.5s
-    after(() => setPhase("built"), buildEnd);
+    // ── Stage 2: You decide + reveal tabs ──
+    const stage2Start = stage1Start + buildDur + 2000;
+    after(() => {
+      setActiveStage(2);
+      setAnimDone(true);
+    }, stage2Start);
 
-    // Final offer screen
-    after(() => setPhase("offer"), buildEnd + 1500);
+    return clearTimers;
+  }, [isCardRevealed, prefersReduced, query, after, clearTimers]);
 
-    return () => {
-      timers.current.forEach(clearTimeout);
-      timers.current = [];
-      setPhase("idle");
-      setTypedChars(0);
-      setBuildProgress(0);
-    };
-  }, [prefersReduced, query, after]);
-
-  const phases: Phase[] = [
-    "idle", "typing", "submitted", "results", "highlight",
-    "verdict", "weCanFix", "building", "built", "offer",
-  ];
-  const pi = phases.indexOf(phase);
+  /* ── Determine search sub-phase index for rendering ── */
+  const searchPhases: SearchPhase[] = ["idle", "typing", "submitted", "results", "highlight", "verdict", "weCanFix"];
+  const spi = searchPhases.indexOf(searchPhase);
 
   return (
-    <section className="bg-bg overflow-hidden">
-      <div className="max-w-[1120px] mx-auto px-[20px] md:px-[24px] pt-[32px] pb-[48px] md:pt-[64px] md:pb-[96px]">
-        {/* Headline */}
-        <motion.h1
-          className="font-serif text-[28px] md:text-[40px] lg:text-[48px] font-normal leading-[1.1] tracking-[-0.02em] text-center mb-[32px] md:mb-[48px]"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {dict["home.hero.h1"]}
-        </motion.h1>
-
-        {/* Full-width animation card */}
+    <>
+      {/* ── Part 1: Hero text — fills the viewport, fades on scroll ── */}
+      <section ref={heroSectionRef} className="bg-bg relative min-h-[100svh] flex flex-col items-center px-[20px] md:px-[24px] overflow-hidden pt-[20vh] md:pt-[18vh]">
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center max-w-[720px] relative z-[1]"
+          style={{ opacity: heroTextOpacity, y: heroTextY }}
         >
-          <div className="bg-surface rounded-[12px] border border-border shadow-[var(--shadow-card)] overflow-hidden">
+          <motion.h1
+            className="font-serif text-[32px] md:text-[44px] lg:text-[52px] font-normal leading-[1.1] tracking-[-0.02em] text-text"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            {dict["home.hero.h1"]}
+          </motion.h1>
+          <motion.p
+            className="mt-[16px] md:mt-[24px] text-[16px] md:text-[18px] leading-[1.6] text-text-muted max-w-[540px] mx-auto"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            {dict["home.hero.sub"]}
+          </motion.p>
+          <motion.div
+            className="mt-[32px] flex flex-col sm:flex-row items-center justify-center gap-[12px]"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <a
+              href={waLink(locale)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-accent text-white text-[15px] font-medium transition-all hover:bg-accent-hover hover:shadow-[0_4px_16px_rgba(37,99,235,0.3)] w-full sm:w-auto"
+            >
+              {dict["home.hero.cta"]}
+            </a>
+          </motion.div>
+        </motion.div>
 
-            {/* Search chrome — hidden during offer phase */}
-            {pi <= 8 && (
-              <>
-                <SearchBar
-                  query={query}
-                  typedChars={typedChars}
-                  phase={phase}
-                  pi={pi}
-                  placeholder={dict["home.hero.searchPlaceholder"]}
-                />
+        <FloatingUIComponents scrollOpacity={floatingOpacity} />
+      </section>
 
-                {pi >= 2 && (
-                  <div className="px-[20px] md:px-[32px] border-b border-border flex gap-[24px]">
-                    {["All", "Images", "Maps"].map((tab, i) => (
-                      <span
-                        key={tab}
-                        className={`text-[13px] py-[9px] border-b-[2px] ${
-                          i === 0
-                            ? "text-accent border-accent font-medium"
-                            : "text-text-faint border-transparent"
-                        }`}
+      {/* ── Part 2: Card + Tabs ── */}
+      <section ref={peekRef} className="bg-bg relative pb-[48px] md:pb-[96px]">
+        <div className="max-w-[1120px] mx-auto px-[20px] md:px-[24px] -mt-[64px] md:-mt-[96px]">
+          <motion.div
+            ref={animTriggerRef}
+            style={{ y: cardY, opacity: cardOpacity, scale: cardScale }}
+          >
+            <div className="relative">
+              <motion.div
+                className="absolute inset-0 z-10 pointer-events-none rounded-[12px]"
+                style={{
+                  opacity: maskOpacity,
+                  background: "linear-gradient(to bottom, var(--bg) 0%, transparent 100%)",
+                }}
+              />
+
+              {/* ── Animation card ── */}
+              <motion.div
+                className="bg-surface rounded-[12px] border border-border overflow-hidden"
+                style={{ boxShadow: cardShadow }}
+              >
+                <div className="min-h-[400px] md:min-h-[480px] relative">
+                  <AnimatePresence mode="wait">
+
+                    {/* ── Stage 0: Search / Discovery ── */}
+                    {activeStage === 0 && (
+                      <motion.div
+                        key="stage-0"
+                        className="absolute inset-0"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
                       >
-                        {tab}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </>
-            )}
-
-            {/* Content area */}
-            <div className={`px-[20px] md:px-[32px] py-[20px] md:py-[32px] relative ${
-              pi <= 8 ? "min-h-[360px] md:min-h-[440px]" : ""
-            }`}>
-              <AnimatePresence mode="wait">
-
-                {/* Search results */}
-                {(pi >= 3 && pi <= 4) && (
-                  <motion.div
-                    key="results"
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <p className="text-[12px] text-text-faint mb-[20px]">
-                      {dict["home.hero.resultCount"]} (0.34 s)
-                    </p>
-                    <GoogleResults highlighted={pi >= 4} />
-                  </motion.div>
-                )}
-
-                {/* Verdict */}
-                {(pi === 5 || pi === 6) && (
-                  <motion.div
-                    key="verdict"
-                    className="absolute inset-0 flex flex-col items-center justify-center px-[32px]"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <p className="text-[22px] md:text-[30px] font-serif text-text text-center leading-[1.3]">
-                      {dict["home.hero.nothingToFind"]}
-                    </p>
-                    {pi >= 6 && (
-                      <motion.p
-                        className="text-[17px] md:text-[20px] text-accent font-medium mt-[16px]"
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.35 }}
-                      >
-                        {dict["home.hero.weCanFix"]}
-                      </motion.p>
+                        <SearchBar
+                          query={query}
+                          typedChars={typedChars}
+                          phase={searchPhase}
+                          spi={spi}
+                          placeholder={dict["home.hero.searchPlaceholder"]}
+                        />
+                        {spi >= 2 && (
+                          <div className="px-[20px] md:px-[32px] border-b border-border flex gap-[24px]">
+                            {["All", "Images", "Maps"].map((tab, i) => (
+                              <span
+                                key={tab}
+                                className={`text-[13px] py-[9px] border-b-[2px] ${
+                                  i === 0
+                                    ? "text-accent border-accent font-medium"
+                                    : "text-text-faint border-transparent"
+                                }`}
+                              >
+                                {tab}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <div className="px-[20px] md:px-[32px] py-[20px] md:py-[32px]">
+                          <AnimatePresence mode="wait">
+                            {(spi >= 3 && spi <= 4) && (
+                              <motion.div key="s0-results" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}>
+                                <p className="text-[12px] text-text-faint mb-[20px]">{dict["home.hero.resultCount"]} (0.34 s)</p>
+                                <GoogleResults highlighted={spi >= 4} />
+                              </motion.div>
+                            )}
+                            {(spi >= 5) && (
+                              <motion.div
+                                key="s0-verdict"
+                                className="flex flex-col items-center justify-center min-h-[260px] md:min-h-[320px]"
+                                initial={{ opacity: 0, scale: 0.97 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.4 }}
+                              >
+                                <p className="text-[22px] md:text-[30px] font-serif text-text text-center leading-[1.3]">
+                                  {dict["home.hero.nothingToFind"]}
+                                </p>
+                                {spi >= 6 && (
+                                  <motion.p
+                                    className="text-[17px] md:text-[20px] text-accent font-medium mt-[16px]"
+                                    initial={{ opacity: 0, y: 8 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.35 }}
+                                  >
+                                    {dict["home.hero.weCanFix"]}
+                                  </motion.p>
+                                )}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      </motion.div>
                     )}
-                  </motion.div>
-                )}
 
-                {/* Building */}
-                {pi === 7 && (
-                  <motion.div
-                    key="building"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <SalehBuilder progress={buildProgress} statusText={dict["home.hero.building"]} />
-                  </motion.div>
-                )}
+                    {/* ── Stage 1: Build ── */}
+                    {activeStage === 1 && (
+                      <motion.div
+                        key="stage-1"
+                        className="absolute inset-0 px-[20px] md:px-[32px] py-[20px] md:py-[32px]"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <AnimatePresence mode="wait">
+                          {buildPhase !== "built" ? (
+                            <motion.div key="s1-building" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+                              <SalehBuilder progress={buildProgress} statusText={dict["home.hero.building"]} />
+                            </motion.div>
+                          ) : (
+                            <motion.div key="s1-built" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+                              <SalehFinished />
+                              <div className="mt-[16px] flex items-center gap-[8px]">
+                                <span className="w-[8px] h-[8px] rounded-full bg-success" />
+                                <span className="text-[14px] font-medium text-success">{dict["home.hero.ready"]}</span>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    )}
 
-                {/* Built — screenshot with status */}
-                {pi === 8 && (
+                    {/* ── Stage 2: You decide ── */}
+                    {activeStage === 2 && (
+                      <motion.div
+                        key="stage-2"
+                        className="px-[20px] md:px-[32px] py-[20px] md:py-[32px]"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <OfferScreen locale={locale} dict={dict} />
+                      </motion.div>
+                    )}
+
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+
+              {/* ── Tab bar — appears after animation completes ── */}
+              <AnimatePresence>
+                {animDone && (
                   <motion.div
-                    key="built"
-                    initial={{ opacity: 0, y: 8 }}
+                    className="mt-[24px] md:mt-[32px]"
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <SalehFinished />
-                    <div className="mt-[16px] flex items-center gap-[8px]">
-                      <span className="w-[8px] h-[8px] rounded-full bg-success" />
-                      <span className="text-[14px] font-medium text-success">
-                        {dict["home.hero.ready"]}
-                      </span>
+                    <div className="flex items-center justify-center">
+                      <div className="inline-flex rounded-[999px] border border-border bg-surface p-[4px] shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                        {tabs.map((label, i) => (
+                          <button
+                            key={i}
+                            onClick={() => handleTabClick(i as Stage)}
+                            className={`relative px-[16px] md:px-[24px] py-[10px] rounded-[999px] text-[13px] md:text-[14px] font-medium transition-all ${
+                              activeStage === i
+                                ? "text-text"
+                                : "text-text-faint hover:text-text-muted"
+                            }`}
+                          >
+                            {activeStage === i && (
+                              <motion.div
+                                layoutId="activeTab"
+                                className="absolute inset-0 rounded-[999px] bg-surface-alt border border-border shadow-[0_1px_3px_rgba(0,0,0,0.06)]"
+                                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                              />
+                            )}
+                            <span className="relative z-[1]">{label}</span>
+                          </button>
+                        ))}
+                      </div>
                     </div>
+
+                    {/* Tab description */}
+                    <AnimatePresence mode="wait">
+                      <motion.p
+                        key={activeStage}
+                        className="text-[13px] md:text-[14px] text-text-faint text-center mt-[12px] max-w-[480px] mx-auto"
+                        initial={{ opacity: 0, y: 4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -4 }}
+                        transition={{ duration: 0.25 }}
+                      >
+                        {dict[`home.how.step${activeStage + 1}.body`]}
+                      </motion.p>
+                    </AnimatePresence>
                   </motion.div>
                 )}
-
-                {/* Offer screen — the process explained */}
-                {pi >= 9 && (
-                  <motion.div
-                    key="offer"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <OfferScreen locale={locale} dict={dict} />
-                  </motion.div>
-                )}
-
               </AnimatePresence>
             </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+          </motion.div>
+        </div>
+
+        <LogoMarquee />
+      </section>
+    </>
   );
 }
 
-/* ── Offer screen — explains the full process ── */
+/* ── Offer screen ── */
+type OfferView = "offer" | "feedback" | "thanks";
+
 function OfferScreen({ locale, dict }: { locale: Locale; dict: Record<string, string> }) {
+  const [view, setView] = useState<OfferView>("offer");
+  const [selectedReason, setSelectedReason] = useState<string | null>(null);
+
+  const reasons = [
+    { key: "noNeed", label: dict["home.hero.fb.noNeed"] || "I don't need a website right now" },
+    { key: "hasWebsite", label: dict["home.hero.fb.hasWebsite"] || "I already have a website" },
+    { key: "tooExpensive", label: dict["home.hero.fb.tooExpensive"] || "It seems too expensive" },
+    { key: "notConvinced", label: dict["home.hero.fb.notConvinced"] || "I'm not convinced yet" },
+    { key: "other", label: dict["home.hero.fb.other"] || "Something else" },
+  ];
+
   return (
     <div className="py-[8px] md:py-[16px]">
-      {/* Screenshot at top, smaller */}
-      <div className="max-w-[480px] mx-auto mb-[32px] md:mb-[40px]">
-        <SalehFinished />
-      </div>
+      <AnimatePresence mode="wait">
 
-      {/* Offer title */}
-      <motion.h2
-        className="font-serif text-[24px] md:text-[32px] font-normal leading-[1.2] tracking-[-0.02em] text-center text-text"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15, duration: 0.4 }}
-      >
-        {dict["home.hero.offerTitle"]}
-      </motion.h2>
-
-      {/* Steps */}
-      <div className="max-w-[520px] mx-auto mt-[24px] md:mt-[32px] space-y-[16px]">
-        {[
-          { key: "offerStep1", icon: "1", delay: 0.25 },
-          { key: "offerStep2", icon: "2", delay: 0.35 },
-          { key: "offerStep3", icon: "3", delay: 0.45 },
-        ].map((step) => (
-          <motion.div
-            key={step.key}
-            className="flex items-start gap-[12px]"
-            initial={{ opacity: 0, x: -8 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: step.delay, duration: 0.35 }}
-          >
-            <span className="w-[28px] h-[28px] rounded-full bg-surface-alt border border-border flex items-center justify-center text-[13px] font-medium text-text-muted flex-shrink-0">
-              {step.icon}
-            </span>
-            <p className="text-[15px] md:text-[16px] leading-[1.5] text-text-muted pt-[3px]">
-              {dict[`home.hero.${step.key}`]}
-            </p>
+        {view === "offer" && (
+          <motion.div key="offer-main" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.35 }}>
+            <div className="max-w-[480px] mx-auto mb-[24px] md:mb-[32px]">
+              <SalehFinished />
+            </div>
+            <h2 className="font-serif text-[22px] md:text-[28px] font-normal leading-[1.2] tracking-[-0.02em] text-center text-text">
+              {dict["home.hero.offerTitle"]}
+            </h2>
+            <div className="max-w-[520px] mx-auto mt-[20px] md:mt-[24px] space-y-[12px]">
+              {["offerStep1", "offerStep2", "offerStep3"].map((key, i) => (
+                <div key={key} className="flex items-start gap-[12px]">
+                  <span className="w-[24px] h-[24px] rounded-full bg-surface-alt border border-border flex items-center justify-center text-[12px] font-medium text-text-muted flex-shrink-0 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+                    {i + 1}
+                  </span>
+                  <p className="text-[14px] md:text-[15px] leading-[1.5] text-text-muted pt-[2px]">{dict[`home.hero.${key}`]}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-[24px] md:mt-[32px] flex flex-col sm:flex-row items-center justify-center gap-[12px]">
+              <a href={waLink(locale)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-accent text-white text-[15px] font-medium transition-all hover:bg-accent-hover hover:shadow-[0_4px_16px_rgba(37,99,235,0.3)] w-full sm:w-auto">
+                <Check size={18} strokeWidth={2} />
+                {dict["home.hero.continueLabel"]}
+              </a>
+              <button onClick={() => setView("feedback")} className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-surface border border-border text-[15px] text-text-muted font-medium w-full sm:w-auto transition-all hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                <X size={18} strokeWidth={2} />
+                {dict["home.hero.dontLabel"]}
+              </button>
+            </div>
           </motion.div>
-        ))}
-      </div>
+        )}
 
-      {/* Two option buttons */}
-      <motion.div
-        className="mt-[32px] md:mt-[40px] flex flex-col sm:flex-row items-center justify-center gap-[12px]"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.4 }}
-      >
-        <a
-          href={waLink(locale)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-accent text-white text-[15px] font-medium transition-colors hover:bg-accent-hover w-full sm:w-auto"
-        >
-          <Check size={18} strokeWidth={2} />
-          {dict["home.hero.continueLabel"]}
-        </a>
-        <span className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-surface border border-border text-[15px] text-text-muted font-medium w-full sm:w-auto">
-          <X size={18} strokeWidth={2} />
-          {dict["home.hero.dontLabel"]}
-        </span>
-      </motion.div>
+        {view === "feedback" && (
+          <motion.div key="offer-feedback" className="max-w-[480px] mx-auto" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.35 }}>
+            <div className="rounded-[12px] border border-border bg-surface-alt p-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+              <div className="flex items-center gap-[8px] mb-[16px]">
+                <MessageCircle size={18} strokeWidth={1.75} className="text-text-muted" />
+                <p className="text-[15px] font-medium text-text">{dict["home.hero.fb.heading"] || "No problem. Mind telling us why?"}</p>
+              </div>
+              <p className="text-[13px] text-text-faint mb-[16px]">{dict["home.hero.fb.sub"] || "This helps us improve. One tap, no sign-up."}</p>
+              <div className="space-y-[8px]">
+                {reasons.map((r) => (
+                  <button key={r.key} onClick={() => setSelectedReason(r.key)} className={`w-full text-left px-[16px] py-[12px] rounded-[8px] border text-[14px] transition-all ${selectedReason === r.key ? "border-accent bg-accent/5 text-text shadow-[0_0_0_1px_var(--accent)]" : "border-border bg-surface text-text-muted hover:border-text/20 hover:shadow-[0_1px_4px_rgba(0,0,0,0.04)]"}`}>
+                    {r.label}
+                  </button>
+                ))}
+              </div>
+              <div className="flex gap-[8px] mt-[16px]">
+                <button onClick={() => setView("offer")} className="flex-1 py-[12px] rounded-[8px] text-[14px] font-medium border border-border bg-surface text-text-muted transition-all hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                  {dict["home.hero.fb.back"] || "Back"}
+                </button>
+                <button onClick={() => { if (selectedReason) setView("thanks"); }} disabled={!selectedReason} className={`flex-[2] py-[12px] rounded-[8px] text-[14px] font-medium transition-all ${selectedReason ? "bg-text text-surface hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)]" : "bg-surface text-text-faint border border-border cursor-not-allowed"}`}>
+                  {dict["home.hero.fb.send"] || "Send feedback"}
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {view === "thanks" && (
+          <motion.div key="offer-thanks" className="max-w-[480px] mx-auto" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }}>
+            <div className="rounded-[12px] border border-border bg-surface-alt p-[32px] shadow-[0_4px_20px_rgba(0,0,0,0.06)] text-center">
+              <div className="w-[48px] h-[48px] rounded-full bg-success/10 flex items-center justify-center mx-auto mb-[16px]">
+                <Check size={24} strokeWidth={2} className="text-success" />
+              </div>
+              <p className="text-[16px] font-medium text-text">{dict["home.hero.fb.thanks"] || "Thanks for letting us know."}</p>
+              <p className="text-[14px] text-text-faint mt-[8px]">{dict["home.hero.fb.thanksBody"] || "If you change your mind, we're here."}</p>
+              <a href={waLink(locale)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-[8px] mt-[24px] px-[24px] py-[12px] rounded-[8px] bg-surface border border-border text-[14px] text-text-muted font-medium transition-all hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                {dict["home.hero.fb.changeMind"] || "Actually, let's talk"}
+              </a>
+            </div>
+          </motion.div>
+        )}
+
+      </AnimatePresence>
     </div>
   );
 }
 
 /* ── Search bar ── */
 function SearchBar({
-  query,
-  typedChars,
-  phase,
-  pi,
-  placeholder,
+  query, typedChars, phase, spi, placeholder,
 }: {
-  query: string;
-  typedChars: number;
-  phase: Phase;
-  pi: number;
-  placeholder: string;
+  query: string; typedChars: number; phase: SearchPhase; spi: number; placeholder: string;
 }) {
   return (
     <div className="px-[20px] md:px-[32px] pt-[20px] md:pt-[24px] pb-[14px] md:pb-[16px]">
       <div className="flex items-center gap-[6px] mb-[14px]">
         <div className="flex gap-[2px]">
           {"Search".split("").map((ch, i) => (
-            <span
-              key={i}
-              className="text-[22px] md:text-[26px] font-semibold"
-              style={{ color: ["#4285f4", "#ea4335", "#fbbc05", "#4285f4", "#34a853", "#ea4335"][i] }}
-            >
+            <span key={i} className="text-[22px] md:text-[26px] font-semibold" style={{ color: ["#4285f4", "#ea4335", "#fbbc05", "#4285f4", "#34a853", "#ea4335"][i] }}>
               {ch}
             </span>
           ))}
         </div>
       </div>
-
-      <div className="flex items-center gap-[10px] rounded-[999px] border border-border px-[18px] py-[12px] shadow-[0_1px_4px_rgba(0,0,0,0.06)] bg-surface">
+      <div className="flex items-center gap-[10px] rounded-[999px] border border-border px-[18px] py-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-surface">
         <Search size={18} strokeWidth={1.75} className="text-text-faint flex-shrink-0" />
         <span className="text-[16px] md:text-[17px] text-text flex-1 min-w-0 truncate">
           {phase === "idle" ? (
             <span className="text-text-faint">{placeholder}…</span>
           ) : (
             <>
-              {pi >= 2 ? query : query.slice(0, typedChars)}
-              {phase === "typing" && (
-                <span className="inline-block w-[2px] h-[17px] bg-text align-text-bottom ml-[1px] animate-pulse" />
-              )}
+              {spi >= 2 ? query : query.slice(0, typedChars)}
+              {phase === "typing" && <span className="inline-block w-[2px] h-[17px] bg-text align-text-bottom ml-[1px] animate-pulse" />}
             </>
           )}
         </span>
-        {pi >= 2 && <span className="text-[14px] text-text-faint">✕</span>}
+        {spi >= 2 && <span className="text-[14px] text-text-faint">✕</span>}
       </div>
     </div>
   );
@@ -382,39 +558,23 @@ function GoogleResults({ highlighted }: { highlighted: boolean }) {
     <div className="space-y-[24px]">
       <div>
         <div className="flex items-center gap-[6px] mb-[3px]">
-          <div className="w-[22px] h-[22px] rounded-full bg-surface-alt border border-border flex items-center justify-center">
-            <span className="text-[9px]">ig</span>
-          </div>
+          <div className="w-[22px] h-[22px] rounded-full bg-surface-alt border border-border flex items-center justify-center"><span className="text-[9px]">ig</span></div>
           <span className="text-[12px] text-text-faint">instagram.com › salehtechschool</span>
         </div>
-        <p className="text-[17px] md:text-[18px] text-[#1a0dab] leading-[1.3]">
-          Saleh Tech School (@salehtechschool)
-        </p>
-        <p className="text-[14px] text-text-muted leading-[1.5] mt-[3px]">
-          500+ tələbə · Proqramlaşdırma, robototexnika, AI · 6-18 yaş · Bakı
-        </p>
+        <p className="text-[17px] md:text-[18px] text-[#1a0dab] leading-[1.3]">Saleh Tech School (@salehtechschool)</p>
+        <p className="text-[14px] text-text-muted leading-[1.5] mt-[3px]">500+ tələbə · Proqramlaşdırma, robototexnika, AI · 6-18 yaş · Bakı</p>
       </div>
-
       <div>
         <div className="flex items-center gap-[6px] mb-[3px]">
-          <div className="w-[22px] h-[22px] rounded-full bg-surface-alt border border-border flex items-center justify-center">
-            <span className="text-[9px]">fb</span>
-          </div>
+          <div className="w-[22px] h-[22px] rounded-full bg-surface-alt border border-border flex items-center justify-center"><span className="text-[9px]">fb</span></div>
           <span className="text-[12px] text-text-faint">facebook.com › SalehTechSchool</span>
         </div>
-        <p className="text-[17px] md:text-[18px] text-[#1a0dab] leading-[1.3]">
-          Saleh Tech School - Bakı
-        </p>
-        <p className="text-[14px] text-text-muted leading-[1.5] mt-[3px]">
-          Uşaqlar üçün texnologiya kursları. Əlaqə: +994 XX XXX XX XX
-        </p>
+        <p className="text-[17px] md:text-[18px] text-[#1a0dab] leading-[1.3]">Saleh Tech School - Bakı</p>
+        <p className="text-[14px] text-text-muted leading-[1.5] mt-[3px]">Uşaqlar üçün texnologiya kursları. Əlaqə: +994 XX XXX XX XX</p>
       </div>
-
       <div className={`rounded-[8px] px-[14px] py-[12px] -mx-[14px] transition-all duration-700 ${highlighted ? "bg-danger/6" : ""}`}>
         <div className="flex items-center gap-[6px] mb-[3px]">
-          <div className="w-[22px] h-[22px] rounded-full bg-surface-alt border border-border flex items-center justify-center">
-            <span className="text-[9px]">m</span>
-          </div>
+          <div className="w-[22px] h-[22px] rounded-full bg-surface-alt border border-border flex items-center justify-center"><span className="text-[9px]">m</span></div>
           <span className="text-[12px] text-text-faint">maps › Saleh Tech School</span>
         </div>
         <p className="text-[17px] md:text-[18px] text-[#1a0dab] leading-[1.3]">Saleh Tech School</p>
@@ -426,14 +586,8 @@ function GoogleResults({ highlighted }: { highlighted: boolean }) {
           </span>
         </div>
       </div>
-
       {highlighted && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="border-t border-border pt-[16px]"
-        >
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="border-t border-border pt-[16px]">
           <p className="text-[13px] text-text-faint italic">No official website found for this business.</p>
         </motion.div>
       )}
@@ -453,8 +607,7 @@ function SalehBuilder({ progress, statusText }: { progress: number; statusText: 
       <div className="h-[3px] bg-surface-alt rounded-full overflow-hidden mb-[24px]">
         <motion.div className="h-full bg-accent rounded-full" animate={{ width: `${p}%` }} transition={{ duration: 0.1, ease: "linear" }} />
       </div>
-
-      <div className="rounded-[8px] border border-border bg-surface overflow-hidden relative">
+      <div className="rounded-[8px] border border-border bg-surface overflow-hidden relative shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
         <div className="px-[12px] py-[7px] border-b border-border bg-surface-alt flex items-center gap-[6px] relative z-10">
           <div className="flex gap-[5px]">
             <span className="w-[8px] h-[8px] rounded-full bg-[#ff5f57]" />
@@ -462,12 +615,9 @@ function SalehBuilder({ progress, statusText }: { progress: number; statusText: 
             <span className="w-[8px] h-[8px] rounded-full bg-[#28c840]" />
           </div>
           <div className="flex-1 mx-[10px] bg-surface rounded-[4px] border border-border px-[10px] py-[3px]">
-            <motion.span className="text-[11px] text-text-faint" animate={{ opacity: p > 10 ? 1 : 0 }}>
-              saleh-tech-school.com
-            </motion.span>
+            <motion.span className="text-[11px] text-text-faint" animate={{ opacity: p > 10 ? 1 : 0 }}>saleh-tech-school.com</motion.span>
           </div>
         </div>
-
         <div className="p-[16px] space-y-[10px]">
           <div className="flex items-center justify-between mb-[8px]">
             <motion.div className="h-[8px] rounded bg-[#FF6B35]/20" animate={{ width: p > 8 ? 70 : 0 }} />
@@ -490,7 +640,6 @@ function SalehBuilder({ progress, statusText }: { progress: number; statusText: 
             {p > 65 && <span className="text-[24px]">🦊</span>}
           </motion.div>
         </div>
-
         <motion.div className="absolute inset-0 top-[31px]" animate={{ opacity: p > 85 ? 1 : 0 }} transition={{ duration: 0.8 }}>
           <Image src="/images/projects/saleh.png" alt="Saleh Tech School homepage" width={1280} height={800} className="w-full h-full object-cover object-top" priority />
         </motion.div>
@@ -499,10 +648,127 @@ function SalehBuilder({ progress, statusText }: { progress: number; statusText: 
   );
 }
 
+/* ── Floating UI components ── */
+const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: number; delay: number; float: [number, number] }[] = [
+  {
+    x: "8%", y: "58%", w: "160px", rotate: -6, delay: 0.4, float: [-6, 6],
+    el: (
+      <div className="rounded-[8px] border border-border bg-surface shadow-[0_4px_20px_rgba(0,0,0,0.08)] px-[10px] py-[8px] flex items-center justify-between">
+        <div className="h-[6px] w-[28px] rounded bg-text/15" />
+        <div className="flex gap-[6px]"><div className="h-[5px] w-[18px] rounded bg-text/10" /><div className="h-[5px] w-[18px] rounded bg-text/10" /><div className="h-[5px] w-[18px] rounded bg-text/10" /></div>
+      </div>
+    ),
+  },
+  {
+    x: "72%", y: "55%", w: "120px", rotate: 5, delay: 0.6, float: [-8, 4],
+    el: (
+      <div className="rounded-[8px] bg-accent/15 border border-accent/25 px-[14px] py-[9px] flex items-center justify-center gap-[6px] shadow-[0_4px_16px_rgba(37,99,235,0.12)]">
+        <div className="h-[6px] w-[48px] rounded bg-accent/40" />
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 1.5L7 5L3 8.5" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </div>
+    ),
+  },
+  {
+    x: "18%", y: "74%", w: "130px", rotate: 4, delay: 0.8, float: [-5, 7],
+    el: (
+      <div className="rounded-[8px] border border-border bg-surface shadow-[0_6px_24px_rgba(0,0,0,0.08)] overflow-hidden">
+        <div className="h-[48px] bg-surface-alt flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-text-faint"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" /><circle cx="8.5" cy="8.5" r="2" stroke="currentColor" strokeWidth="1.5" /><path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </div>
+        <div className="px-[8px] py-[6px] space-y-[3px]"><div className="h-[5px] w-[70%] rounded bg-text/10" /><div className="h-[4px] w-[50%] rounded bg-text/6" /></div>
+      </div>
+    ),
+  },
+  {
+    x: "62%", y: "76%", w: "150px", rotate: -4, delay: 1.0, float: [-7, 5],
+    el: (
+      <div className="space-y-[6px] rounded-[8px] border border-border bg-surface shadow-[0_6px_24px_rgba(0,0,0,0.08)] p-[10px]">
+        <div className="h-[4px] w-[40px] rounded bg-text/12" />
+        <div className="rounded-[6px] border border-border bg-surface-alt px-[10px] py-[8px] flex items-center gap-[6px]"><div className="h-[5px] w-[60px] rounded bg-text/8" /></div>
+        <div className="rounded-[6px] bg-accent/15 border border-accent/25 px-[10px] py-[7px] flex items-center justify-center"><div className="h-[5px] w-[36px] rounded bg-accent/40" /></div>
+      </div>
+    ),
+  },
+  {
+    x: "2%", y: "70%", w: "90px", rotate: 8, delay: 1.2, float: [-4, 8],
+    el: (
+      <div className="rounded-[8px] border border-border bg-surface shadow-[0_4px_16px_rgba(0,0,0,0.08)] px-[10px] py-[8px] flex items-center gap-[3px]">
+        {[...Array(5)].map((_, i) => (
+          <svg key={i} width="10" height="10" viewBox="0 0 12 12" fill={i < 4 ? "var(--accent)" : "none"} stroke={i < 4 ? "none" : "var(--border)"} strokeWidth="1"><path d="M6 1l1.5 3.1L11 4.5 8.5 7l.6 3.5L6 8.8 2.9 10.5l.6-3.5L1 4.5l3.5-.4L6 1z" /></svg>
+        ))}
+      </div>
+    ),
+  },
+  {
+    x: "82%", y: "68%", w: "80px", rotate: -8, delay: 0.9, float: [-6, 6],
+    el: (
+      <div className="rounded-[999px] border border-border bg-surface shadow-[0_4px_16px_rgba(0,0,0,0.08)] px-[10px] py-[6px] flex items-center gap-[6px]">
+        <div className="w-[20px] h-[11px] rounded-full bg-accent/20 relative"><div className="absolute right-[1px] top-[1px] w-[9px] h-[9px] rounded-full bg-accent" /></div>
+        <div className="h-[4px] w-[24px] rounded bg-text/10" />
+      </div>
+    ),
+  },
+];
+
+function FloatingUIComponents({ scrollOpacity }: { scrollOpacity: MotionValue<number> }) {
+  return (
+    <motion.div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block" style={{ opacity: scrollOpacity }} aria-hidden>
+      {uiPieces.map((piece, i) => (
+        <motion.div
+          key={i}
+          className="absolute"
+          style={{ left: piece.x, top: piece.y, width: piece.w }}
+          initial={{ opacity: 0, y: 30, rotate: 0, scale: 0.8 }}
+          animate={{ opacity: [0, 1, 1], y: [30, 0, 0], rotate: piece.rotate, scale: 1 }}
+          transition={{ duration: 1, delay: piece.delay, ease: "easeOut" }}
+        >
+          <motion.div animate={{ y: piece.float }} transition={{ duration: 3 + i * 0.4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}>
+            {piece.el}
+          </motion.div>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+
+/* ── Logo marquee ── */
+const logos = [
+  { src: "/images/logos/azcon.png", alt: "AZCON", h: 28 },
+  { src: "/images/logos/metro.png", alt: "Baku Metro", h: 32 },
+  { src: "/images/logos/pasha.png", alt: "Pasha Holding", h: 28 },
+  { src: "/images/logos/gdg.png", alt: "GDG", h: 20 },
+  { src: "/images/logos/idda.png", alt: "IDDA", h: 40 },
+  { src: "/images/logos/holberton.png", alt: "Holberton", h: 36 },
+];
+
+function LogoMarquee() {
+  return (
+    <div className="mt-[48px] md:mt-[64px] overflow-hidden">
+      <div className="flex animate-[marquee_30s_linear_infinite] w-max">
+        {[...Array(3)].map((_, rep) => (
+          <div key={rep} className="flex items-center gap-[48px] md:gap-[64px] px-[24px] md:px-[32px]">
+            {logos.map((logo) => (
+              <Image
+                key={`${rep}-${logo.alt}`}
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.h * 3}
+                height={logo.h}
+                className="opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
+                style={{ height: logo.h, width: "auto" }}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ── Finished screenshot ── */
 function SalehFinished() {
   return (
-    <div className="rounded-[8px] border border-border bg-surface overflow-hidden shadow-[var(--shadow-card)]">
+    <div className="rounded-[8px] border border-border bg-surface overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
       <div className="px-[12px] py-[7px] border-b border-border bg-surface-alt flex items-center gap-[6px]">
         <div className="flex gap-[5px]">
           <span className="w-[8px] h-[8px] rounded-full bg-[#ff5f57]" />

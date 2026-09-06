@@ -75,6 +75,10 @@ All content in `content/*.ts` as typed arrays. Translatable text fields use `{ a
 - Breakpoints: only `md` (768px) and `lg` (1024px), mobile-first.
 - **Forbidden:** gradients, glassmorphism, blur backdrops (except header), stock photos, emoji in UI, auto-play carousels, modal popups on load, more than two font weights per component.
 
+## UI transition rule
+
+When a new element or view appears in response to user interaction (e.g. clicking a button, selecting an option), it must **replace** the current content — never append below it. Use `AnimatePresence mode="wait"` with state-driven views so the old content exits before the new content enters. The screen should never feel crowded with stacked content.
+
 ## Key behaviour constraints
 
 - Hero (items 1–5: pill through button row) must fit in one 390×844 viewport without scrolling.

@@ -51,7 +51,21 @@
       "offerTitle": "Bu ana səhifə sizindir. Pulsuzdur.",
       "offerStep1": "İndicə hazırladıq — ödəniş yoxdur, öhdəlik yoxdur.",
       "offerStep2": "Bəyəndiniz? Tam saytı 7 günə hazırlayırıq.",
-      "offerStep3": "Bəyənmədiniz? Heç nə ödəmirsiniz. Sadəcə gedin."
+      "offerStep3": "Bəyənmədiniz? Heç nə ödəmirsiniz. Sadəcə gedin.",
+      "fb": {
+        "heading": "Problem yoxdur. Səbəbini deyə bilərsiniz?",
+        "sub": "Bu bizə yaxşılaşmağa kömək edir. Bir toxunuş, qeydiyyat yoxdur.",
+        "noNeed": "Hazırda veb-sayta ehtiyacım yoxdur",
+        "hasWebsite": "Artıq veb-saytım var",
+        "tooExpensive": "Çox bahadır deyə düşünürəm",
+        "notConvinced": "Hələ əmin deyiləm",
+        "other": "Başqa səbəb",
+        "send": "Rəy göndər",
+        "back": "Geri",
+        "thanks": "Bildirdiyiniz üçün təşəkkür edirik.",
+        "thanksBody": "Fikrinizi dəyişsəniz, buradayıq.",
+        "changeMind": "Əslində, danışaq"
+      }
     },
     "proof": {
       "label": "Hazırladığımız işlər",

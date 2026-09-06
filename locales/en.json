@@ -51,7 +51,21 @@
       "offerTitle": "This homepage is yours. Free.",
       "offerStep1": "We just built it — no payment, no obligation.",
       "offerStep2": "Like it? We'll build the full site in 7 days.",
-      "offerStep3": "Don't? You pay nothing. Walk away."
+      "offerStep3": "Don't? You pay nothing. Walk away.",
+      "fb": {
+        "heading": "No problem. Mind telling us why?",
+        "sub": "This helps us improve. One tap, no sign-up.",
+        "noNeed": "I don't need a website right now",
+        "hasWebsite": "I already have a website",
+        "tooExpensive": "It seems too expensive",
+        "notConvinced": "I'm not convinced yet",
+        "other": "Something else",
+        "send": "Send feedback",
+        "back": "Back",
+        "thanks": "Thanks for letting us know.",
+        "thanksBody": "If you change your mind, we're here.",
+        "changeMind": "Actually, let's talk"
+      }
     },
     "proof": {
       "label": "Work we've shipped",
