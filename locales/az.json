@@ -35,13 +35,23 @@
       "desc": "Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam sayt 7 günə hazır olur. 500 AZN-dən başlayır."
     },
     "hero": {
-      "pill": "Pulsuz ana səhifə",
       "h1": "Kimsə sizi internetdə axtaranda nə tapır?",
-      "credibility": "6 biznes üçün sayt hazırlamışıq. Bakı Metropoliteni, Pasha və AZCON-un təşkil etdiyi hakatonlarda sistemlər qurmuşuq.",
-      "sub": "Cavab heç nədirsə, əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam sayt 7 günə hazır olur. Bəyənməsəniz, heç nə ödəmirsiniz.",
-      "eyebrow": "Modern vebsaytların hazırlanması",
-      "before": "Sayt olmadan",
-      "after": "Tezsayt ilə"
+      "sub": "Heç nə? Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam sayt 7 günə hazır olur. Bəyənməsəniz, heç nə ödəmirsiniz.",
+      "cta": "Pulsuz ana səhifə alın",
+      "searchQuery": "Saleh Tech School Bakı",
+      "searchPlaceholder": "Axtar",
+      "resultCount": "Təxminən 3 nəticə",
+      "nothingToFind": "Əsl sayt yoxdur. Yalnız qırıntılar.",
+      "weCanFix": "Biz bunu düzəldə bilərik.",
+      "building": "Ana səhifə hazırlanır…",
+      "ready": "Ana səhifə hazırdır.",
+      "likeIt": "Bəyəndiniz?",
+      "continueLabel": "Tam saytı hazırla — 7 gün",
+      "dontLabel": "Mənə uyğun deyil — heç nə ödəmirəm",
+      "offerTitle": "Bu ana səhifə sizindir. Pulsuzdur.",
+      "offerStep1": "İndicə hazırladıq — ödəniş yoxdur, öhdəlik yoxdur.",
+      "offerStep2": "Bəyəndiniz? Tam saytı 7 günə hazırlayırıq.",
+      "offerStep3": "Bəyənmədiniz? Heç nə ödəmirsiniz. Sadəcə gedin."
     },
     "proof": {
       "label": "Hazırladığımız işlər",
@@ -149,7 +159,23 @@
       "customPrice": "Fərdi təklif"
     },
     "disclaimer": "Bir dəfəlik qiymət quraşdırma üçündür. Aylıq xidmətlər ixtiyaridir və istənilən vaxt ləğv edilə bilər.",
-    "cta": "Pulsuz nümunədən başlayın"
+    "cta": "Pulsuz nümunədən başlayın",
+    "type": {
+      "label": "Layihə növü",
+      "landing": "Vizitkart (tək səhifəlik)",
+      "business": "Biznes saytı",
+      "store": "Onlayn mağaza",
+      "custom": "Xüsusi alət"
+    },
+    "pages": {
+      "label": "Neçə səhifə?"
+    },
+    "languages": {
+      "label": "Neçə dil?"
+    },
+    "addons": {
+      "label": "Funksiyalar"
+    }
   },
   "work": {
     "meta": {

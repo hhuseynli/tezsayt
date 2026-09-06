@@ -14,7 +14,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "landing",
-    name: { az: "Açılış səhifəsi", ru: "Лендинг", en: "Landing page" },
+    name: { az: "Vizitkart (tək səhifəlik)", ru: "Лендинг", en: "Landing page" },
     description: {
       az: "Bir hərəkətə yönəlmiş tək səhifə. Tez hazırlanır, tez başlayır.",
       ru: "Одна страница, сфокусированная на одном действии. Быстро создать, быстро запустить.",

@@ -13,18 +13,18 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "mindmorph",
-    client: "MindMorph",
-    industry: { az: "Texnologiya", ru: "Технологии", en: "Technology" },
+    slug: "saleh",
+    client: "Saleh Tech School",
+    industry: { az: "Təhsil", ru: "Образование", en: "Education" },
     description: {
-      az: "Koqnitiv məşq və zehni sağlamlıq platforması.",
-      ru: "Платформа для когнитивных тренировок.",
-      en: "Cognitive training and mental wellness platform.",
+      az: "6-18 yaş uşaqlar üçün texnologiya kursları təklif edən məktəb.",
+      ru: "Школа технологий с курсами для детей от 6 до 18 лет.",
+      en: "Technology school offering courses for kids aged 6–18.",
     },
-    image: "/images/projects/mindmorph.png",
-    url: "https://mindmorph.co.uk",
+    image: "/images/projects/saleh.png",
+    url: "https://saleh-tech-school.onrender.com",
     featured: true,
-    tags: [{ az: "Səhiyyə", ru: "Здравоохранение", en: "Healthcare" }],
+    tags: [{ az: "Təhsil", ru: "Образование", en: "Education" }],
   },
   {
     slug: "kraamzorg",
@@ -41,6 +41,37 @@ export const projects: Project[] = [
     tags: [{ az: "Səhiyyə", ru: "Здравоохранение", en: "Healthcare" }],
   },
   {
+    slug: "mindmorph",
+    client: "MindMorph",
+    industry: { az: "Texnologiya", ru: "Технологии", en: "Technology" },
+    description: {
+      az: "Koqnitiv məşq və zehni sağlamlıq platforması.",
+      ru: "Платформа для когнитивных тренировок.",
+      en: "Cognitive training and mental wellness platform.",
+    },
+    image: "/images/projects/mindmorph.png",
+    url: "https://mindmorph.co.uk",
+    featured: true,
+    tags: [{ az: "Səhiyyə", ru: "Здравоохранение", en: "Healthcare" }],
+  },
+  {
+    slug: "ztopup",
+    client: "Zelix Topup",
+    industry: { az: "E-ticarət", ru: "Электронная коммерция", en: "E-commerce" },
+    description: {
+      az: "Oyun top-up və pin kod satış platforması.",
+      ru: "Платформа для покупки игровых валют и пин-кодов.",
+      en: "Game top-up and PIN code marketplace.",
+    },
+    image: "/images/projects/ztopup.png",
+    url: "https://ztopup-game-sales-srp7.onrender.com",
+    featured: false,
+    tags: [
+      { az: "E-ticarət", ru: "Электронная коммерция", en: "E-commerce" },
+      { az: "Oyun", ru: "Игры", en: "Gaming" },
+    ],
+  },
+  {
     slug: "byin",
     client: "Infinity Investment",
     industry: { az: "Maliyyə xidmətləri", ru: "Финансовые услуги", en: "Financial services" },
@@ -51,7 +82,7 @@ export const projects: Project[] = [
     },
     image: "/images/projects/byin.png",
     url: "https://byininvest.com",
-    featured: true,
+    featured: false,
     tags: [{ az: "Maliyyə", ru: "Финансы", en: "Finance" }],
   },
   {
@@ -67,33 +98,5 @@ export const projects: Project[] = [
     url: "https://meridiana.dev",
     featured: false,
     tags: [{ az: "Texnologiya", ru: "Технологии", en: "Technology" }],
-  },
-  {
-    slug: "saleh",
-    client: "Saleh Tech School",
-    industry: { az: "Təhsil", ru: "Образование", en: "Education" },
-    description: {
-      az: "Proqramlaşdırma kursları təklif edən texnologiya məktəbi.",
-      ru: "Школа технологий с курсами программирования.",
-      en: "Technology school offering programming courses.",
-    },
-    image: "/images/projects/saleh.png",
-    url: null,
-    featured: false,
-    tags: [{ az: "Təhsil", ru: "Образование", en: "Education" }],
-  },
-  {
-    slug: "gaming",
-    client: "GameHub",
-    industry: { az: "Oyun", ru: "Игры", en: "Gaming" },
-    description: {
-      az: "Turnir və komanda profilləri olan oyun icması.",
-      ru: "Игровое сообщество с турнирами и профилями команд.",
-      en: "Gaming community with tournaments and team profiles.",
-    },
-    image: "/images/projects/gaming.png",
-    url: null,
-    featured: false,
-    tags: [{ az: "Əyləncə", ru: "Развлечения", en: "Entertainment" }],
   },
 ];

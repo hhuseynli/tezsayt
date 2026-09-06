@@ -17,6 +17,14 @@ const baseDays: Record<SiteType, number> = { landing: 4, business: 9, store: 12,
 
 const featureAddons: Record<string, number> = { booking: 200, payments: 300, blog: 150, admin: 400 };
 
+// Which features are relevant per project type
+const featuresPerType: Record<SiteType, string[]> = {
+  landing: ["booking"],
+  business: ["booking", "blog"],
+  store: ["payments", "blog", "admin"],
+  custom: ["booking", "payments", "blog", "admin"],
+};
+
 const oneTimeAddons: Record<string, { perPage?: number; flat?: number }> = {
   translation: { perPage: 12 },
   copywriting: { perPage: 35 },
@@ -42,6 +50,13 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
   const [oneTimeSelected, setOneTimeSelected] = useState<Set<string>>(new Set());
   const [onRequestSelected, setOnRequestSelected] = useState<Set<string>>(new Set());
   const [monthlySelected, setMonthlySelected] = useState<Set<string>>(new Set());
+
+  function handleTypeChange(newType: SiteType) {
+    setType(newType);
+    // Clear features not relevant to the new type
+    const allowed = new Set(featuresPerType[newType]);
+    setFeatures(prev => new Set([...prev].filter(f => allowed.has(f))));
+  }
 
   const toggle = (set: Set<string>, key: string, setter: (s: Set<string>) => void) => {
     const n = new Set(set);
@@ -111,12 +126,13 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
     { key: "custom", label: dict["estimator.type.custom"] },
   ];
 
-  const featureList = [
+  const allFeatures = [
     { key: "booking", label: dict["estimator.addon.booking"] },
     { key: "payments", label: dict["estimator.addon.payments"] },
     { key: "blog", label: dict["estimator.addon.blog"] },
     { key: "admin", label: dict["estimator.addon.admin"] },
   ];
+  const featureList = allFeatures.filter(f => featuresPerType[type].includes(f.key));
 
   const oneTimeAddonList = [
     { key: "translation", label: dict["estimator.addon.translation"] },
@@ -143,7 +159,7 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
         <p className="text-[14px] font-medium mb-[8px]">{dict["estimator.type.label"]}</p>
         <div className="grid grid-cols-2 md:flex">
           {types.map((t, i) => (
-            <button key={t.key} onClick={() => setType(t.key)} className={cn(
+            <button key={t.key} onClick={() => handleTypeChange(t.key)} className={cn(
               "px-[16px] py-[10px] text-[14px] font-medium transition-colors border md:flex-1",
               type === t.key ? "bg-accent text-white border-accent" : "bg-surface text-text border-border",
               i === 0 && "rounded-tl-[8px] md:rounded-l-[8px] md:rounded-tr-none",

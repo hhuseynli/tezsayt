@@ -35,13 +35,23 @@
       "desc": "We build your homepage first, free. If you like it, the full site is ready in seven days. From 500 AZN."
     },
     "hero": {
-      "pill": "Free homepage draft",
       "h1": "When someone asks about you, what do they find?",
-      "credibility": "Built for 6 businesses. Systems shipped at hackathons run by Baku Metro, Pasha, and AZCON.",
-      "sub": "If nothing — we build your homepage first, free. Like it, full site in 7 days. Don't, you pay nothing.",
-      "eyebrow": "Modern website development",
-      "before": "Without a site",
-      "after": "With Tezsayt"
+      "sub": "Nothing? We'll build your homepage first — free. Like it, we'll build the full site in 7 days. Don't, you pay nothing.",
+      "cta": "Get your free homepage",
+      "searchQuery": "Saleh Tech School Baku",
+      "searchPlaceholder": "Search",
+      "resultCount": "About 3 results",
+      "nothingToFind": "No real website. Just fragments.",
+      "weCanFix": "We can fix that.",
+      "building": "Building homepage…",
+      "ready": "Homepage ready.",
+      "likeIt": "Like it?",
+      "continueLabel": "Build the full site — 7 days",
+      "dontLabel": "Not for me — I pay nothing",
+      "offerTitle": "This homepage is yours. Free.",
+      "offerStep1": "We just built it — no payment, no obligation.",
+      "offerStep2": "Like it? We'll build the full site in 7 days.",
+      "offerStep3": "Don't? You pay nothing. Walk away."
     },
     "proof": {
       "label": "Work we've shipped",
@@ -149,7 +159,23 @@
       "customPrice": "Custom quote"
     },
     "disclaimer": "One-time price covers site setup. Monthly services are optional and can be cancelled anytime.",
-    "cta": "Start with a free sample"
+    "cta": "Start with a free sample",
+    "type": {
+      "label": "Project type",
+      "landing": "Business card (single page)",
+      "business": "Business site",
+      "store": "Online store",
+      "custom": "Custom tool"
+    },
+    "pages": {
+      "label": "How many pages?"
+    },
+    "languages": {
+      "label": "How many languages?"
+    },
+    "addons": {
+      "label": "Features"
+    }
   },
   "work": {
     "meta": {
