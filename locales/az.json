@@ -85,6 +85,12 @@
         "title": "Qərar sizindir",
         "body": "Bəyənsəniz, qalanını 7 günə hazırlayırıq və o zaman ödəyirsiniz. Bəyənməsəniz, heç nə ödəmirsiniz və heç bir öhdəlik qalmır."
       },
+      "tab1": "Söhbət",
+      "tab2": "Pulsuz nümunə",
+      "tab3": "Qərar",
+      "time1": "~10 dəq",
+      "time2": "3 gün",
+      "time3": "Eyni gün",
       "fineprint": "Pulsuz nümunə ana səhifəni və bir düzəliş dövrünü əhatə edir."
     },
     "why": {

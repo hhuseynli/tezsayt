@@ -360,56 +360,6 @@ export function Hero({ locale, dict }: HeroProps) {
                 </div>
               </motion.div>
 
-              {/* ── Tab bar — appears after animation completes ── */}
-              <AnimatePresence>
-                {animDone && (
-                  <motion.div
-                    className="mt-[24px] md:mt-[32px]"
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    <div className="flex items-center justify-center">
-                      <div className="inline-flex rounded-[999px] border border-border bg-surface p-[4px] shadow-[0_2px_8px_rgba(26,22,18,0.05)]">
-                        {tabs.map((label, i) => (
-                          <button
-                            key={i}
-                            onClick={() => handleTabClick(i as Stage)}
-                            className={`relative px-[16px] md:px-[24px] py-[10px] rounded-[999px] text-[13px] md:text-[14px] font-medium transition-all ${
-                              activeStage === i
-                                ? "text-text"
-                                : "text-text-faint hover:text-text-muted"
-                            }`}
-                          >
-                            {activeStage === i && (
-                              <motion.div
-                                layoutId="activeTab"
-                                className="absolute inset-0 rounded-[999px] bg-surface-alt border border-border shadow-[0_1px_3px_rgba(26,22,18,0.05)]"
-                                transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                              />
-                            )}
-                            <span className="relative z-[1]">{label}</span>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Tab description */}
-                    <AnimatePresence mode="wait">
-                      <motion.p
-                        key={activeStage}
-                        className="text-[13px] md:text-[14px] text-text-faint text-center mt-[12px] max-w-[480px] mx-auto"
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -4 }}
-                        transition={{ duration: 0.25 }}
-                      >
-                        {dict[`home.how.step${activeStage + 1}.body`]}
-                      </motion.p>
-                    </AnimatePresence>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
           </motion.div>
         </div>
@@ -650,8 +600,9 @@ function SalehBuilder({ progress, statusText }: { progress: number; statusText: 
 
 /* ── Floating UI components ── */
 const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: number; delay: number; float: [number, number] }[] = [
+  // Top-left: nav bar
   {
-    x: "8%", y: "58%", w: "160px", rotate: -6, delay: 0.4, float: [-6, 6],
+    x: "6%", y: "52%", w: "160px", rotate: -6, delay: 0.4, float: [-6, 6],
     el: (
       <div className="rounded-[8px] border border-border bg-surface shadow-[0_4px_20px_rgba(26,22,18,0.06)] px-[10px] py-[8px] flex items-center justify-between">
         <div className="h-[6px] w-[28px] rounded bg-text/15" />
@@ -659,17 +610,19 @@ const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: 
       </div>
     ),
   },
+  // Top-right: CTA button
   {
-    x: "72%", y: "55%", w: "120px", rotate: 5, delay: 0.6, float: [-8, 4],
+    x: "74%", y: "50%", w: "120px", rotate: 5, delay: 0.6, float: [-8, 4],
     el: (
-      <div className="rounded-[8px] bg-accent/15 border border-accent/25 px-[14px] py-[9px] flex items-center justify-center gap-[6px] shadow-[0_4px_16px_rgba(37,99,235,0.12)]">
+      <div className="rounded-[8px] bg-accent/15 border border-accent/25 px-[14px] py-[9px] flex items-center justify-center gap-[6px] shadow-[0_4px_16px_rgba(168,71,31,0.10)]">
         <div className="h-[6px] w-[48px] rounded bg-accent/40" />
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 1.5L7 5L3 8.5" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </div>
     ),
   },
+  // Center-left: image card
   {
-    x: "18%", y: "74%", w: "130px", rotate: 4, delay: 0.8, float: [-5, 7],
+    x: "14%", y: "68%", w: "130px", rotate: 4, delay: 0.8, float: [-5, 7],
     el: (
       <div className="rounded-[8px] border border-border bg-surface shadow-[0_6px_24px_rgba(26,22,18,0.06)] overflow-hidden">
         <div className="h-[48px] bg-surface-alt flex items-center justify-center">
@@ -679,8 +632,26 @@ const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: 
       </div>
     ),
   },
+  // Bottom-center: browser mockup
   {
-    x: "62%", y: "76%", w: "150px", rotate: -4, delay: 1.0, float: [-7, 5],
+    x: "38%", y: "78%", w: "160px", rotate: -2, delay: 0.7, float: [-4, 6],
+    el: (
+      <div className="rounded-[8px] border border-border bg-surface shadow-[0_6px_24px_rgba(26,22,18,0.06)] overflow-hidden">
+        <div className="px-[8px] py-[5px] border-b border-border bg-surface-alt flex items-center gap-[4px]">
+          <div className="flex gap-[3px]"><span className="w-[5px] h-[5px] rounded-full bg-text/15" /><span className="w-[5px] h-[5px] rounded-full bg-text/15" /><span className="w-[5px] h-[5px] rounded-full bg-text/15" /></div>
+          <div className="flex-1 mx-[6px] h-[4px] rounded bg-text/8" />
+        </div>
+        <div className="p-[8px] space-y-[5px]">
+          <div className="h-[6px] w-[60%] rounded bg-text/10" />
+          <div className="h-[5px] w-[80%] rounded bg-text/6" />
+          <div className="h-[14px] w-[50px] rounded-[999px] bg-accent/15 mt-[2px]" />
+        </div>
+      </div>
+    ),
+  },
+  // Center-right: form
+  {
+    x: "64%", y: "70%", w: "140px", rotate: -3, delay: 1.0, float: [-7, 5],
     el: (
       <div className="space-y-[6px] rounded-[8px] border border-border bg-surface shadow-[0_6px_24px_rgba(26,22,18,0.06)] p-[10px]">
         <div className="h-[4px] w-[40px] rounded bg-text/12" />
@@ -689,8 +660,9 @@ const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: 
       </div>
     ),
   },
+  // Far-left: star rating
   {
-    x: "2%", y: "70%", w: "90px", rotate: 8, delay: 1.2, float: [-4, 8],
+    x: "3%", y: "62%", w: "90px", rotate: 8, delay: 1.2, float: [-4, 8],
     el: (
       <div className="rounded-[8px] border border-border bg-surface shadow-[0_4px_16px_rgba(26,22,18,0.06)] px-[10px] py-[8px] flex items-center gap-[3px]">
         {[...Array(5)].map((_, i) => (
@@ -699,8 +671,9 @@ const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: 
       </div>
     ),
   },
+  // Far-right: toggle
   {
-    x: "82%", y: "68%", w: "80px", rotate: -8, delay: 0.9, float: [-6, 6],
+    x: "84%", y: "62%", w: "80px", rotate: -8, delay: 0.9, float: [-6, 6],
     el: (
       <div className="rounded-[999px] border border-border bg-surface shadow-[0_4px_16px_rgba(26,22,18,0.06)] px-[10px] py-[6px] flex items-center gap-[6px]">
         <div className="w-[20px] h-[11px] rounded-full bg-accent/20 relative"><div className="absolute right-[1px] top-[1px] w-[9px] h-[9px] rounded-full bg-accent" /></div>
