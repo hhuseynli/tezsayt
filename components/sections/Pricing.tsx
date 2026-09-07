@@ -28,7 +28,7 @@ export function Pricing({ locale, dict }: PricingProps) {
           <RevealItem>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-[20px] mt-[48px] pt-[14px] items-stretch">
               {pricingServices.map((s) => (
-                <PricingCard key={s.slug} name={tl(s.name, locale)} priceFrom={s.priceFrom} timeline={tl(s.timeline, locale)} bestFor={tl(s.bestFor, locale)} isPopular={s.slug === "business"} popularLabel={dict["common.mostPopular"]} fromLabel={dict["common.from"]} readyInLabel={dict["common.readyIn"]} goodForLabel={dict["common.goodFor"]} />
+                <PricingCard key={s.slug} slug={s.slug} name={tl(s.name, locale)} priceFrom={s.priceFrom} priceLabel={s.priceLabel ? tl(s.priceLabel, locale) : undefined} timeline={tl(s.timeline, locale)} bestFor={tl(s.bestFor, locale)} includes={s.includes.map((inc) => tl(inc, locale))} isPopular={s.slug === "business"} popularLabel={dict["common.mostPopular"]} fromLabel={dict["common.from"]} readyInLabel={dict["common.readyIn"]} goodForLabel={dict["common.goodFor"]} includesLabel={dict["services.includes.label"]} />
               ))}
             </div>
           </RevealItem>

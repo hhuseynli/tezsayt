@@ -1,16 +1,16 @@
-import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { Lora, DM_Sans } from "next/font/google";
 
-export const playfair = Playfair_Display({
-  variable: "--font-playfair",
+export const lora = Lora({
+  variable: "--font-serif",
   subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
 
-export const sourceSans = Source_Sans_3({
-  variable: "--font-source",
-  subsets: ["latin", "latin-ext", "cyrillic"],
+export const dmSans = DM_Sans({
+  variable: "--font-sans",
+  subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });

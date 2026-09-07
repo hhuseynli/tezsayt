@@ -106,7 +106,7 @@ export function Hero({ locale, dict }: HeroProps) {
   const cardShadow = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0 4px 24px rgba(0,0,0,0.04)", "0 20px 60px rgba(0,0,0,0.10), 0 8px 24px rgba(0,0,0,0.06)"]
+    ["0 4px 24px rgba(26,22,18,0.03)", "0 20px 60px rgba(26,22,18,0.08), 0 8px 24px rgba(26,22,18,0.05)"]
   );
 
   /* ── Trigger animation when card is fully in view ── */
@@ -185,7 +185,7 @@ export function Hero({ locale, dict }: HeroProps) {
           style={{ opacity: heroTextOpacity, y: heroTextY }}
         >
           <motion.h1
-            className="font-serif text-[32px] md:text-[44px] lg:text-[52px] font-normal leading-[1.1] tracking-[-0.02em] text-text"
+            className="font-serif text-[36px] md:text-[52px] lg:text-[60px] font-normal leading-[1.08] tracking-[-0.025em] text-text"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -210,7 +210,7 @@ export function Hero({ locale, dict }: HeroProps) {
               href={waLink(locale)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-accent text-white text-[15px] font-medium transition-all hover:bg-accent-hover hover:shadow-[0_4px_16px_rgba(37,99,235,0.3)] w-full sm:w-auto"
+              className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-accent text-white text-[15px] font-medium transition-all hover:bg-accent-hover hover:shadow-[0_4px_16px_rgba(168,71,31,0.25)] w-full sm:w-auto"
             >
               {dict["home.hero.cta"]}
             </a>
@@ -238,10 +238,10 @@ export function Hero({ locale, dict }: HeroProps) {
 
               {/* ── Animation card ── */}
               <motion.div
-                className="bg-surface rounded-[12px] border border-border overflow-hidden"
+                className="bg-surface rounded-[16px] border border-border overflow-hidden"
                 style={{ boxShadow: cardShadow }}
               >
-                <div className="min-h-[400px] md:min-h-[480px] relative">
+                <div className="min-h-[600px] md:min-h-[640px] relative">
                   <AnimatePresence mode="wait">
 
                     {/* ── Stage 0: Search / Discovery ── */}
@@ -370,7 +370,7 @@ export function Hero({ locale, dict }: HeroProps) {
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
                     <div className="flex items-center justify-center">
-                      <div className="inline-flex rounded-[999px] border border-border bg-surface p-[4px] shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                      <div className="inline-flex rounded-[999px] border border-border bg-surface p-[4px] shadow-[0_2px_8px_rgba(26,22,18,0.05)]">
                         {tabs.map((label, i) => (
                           <button
                             key={i}
@@ -384,7 +384,7 @@ export function Hero({ locale, dict }: HeroProps) {
                             {activeStage === i && (
                               <motion.div
                                 layoutId="activeTab"
-                                className="absolute inset-0 rounded-[999px] bg-surface-alt border border-border shadow-[0_1px_3px_rgba(0,0,0,0.06)]"
+                                className="absolute inset-0 rounded-[999px] bg-surface-alt border border-border shadow-[0_1px_3px_rgba(26,22,18,0.05)]"
                                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
                               />
                             )}
@@ -450,7 +450,7 @@ function OfferScreen({ locale, dict }: { locale: Locale; dict: Record<string, st
             <div className="max-w-[520px] mx-auto mt-[20px] md:mt-[24px] space-y-[12px]">
               {["offerStep1", "offerStep2", "offerStep3"].map((key, i) => (
                 <div key={key} className="flex items-start gap-[12px]">
-                  <span className="w-[24px] h-[24px] rounded-full bg-surface-alt border border-border flex items-center justify-center text-[12px] font-medium text-text-muted flex-shrink-0 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+                  <span className="w-[24px] h-[24px] rounded-full bg-surface-alt border border-border flex items-center justify-center text-[12px] font-medium text-text-muted flex-shrink-0 shadow-[0_1px_3px_rgba(26,22,18,0.05)]">
                     {i + 1}
                   </span>
                   <p className="text-[14px] md:text-[15px] leading-[1.5] text-text-muted pt-[2px]">{dict[`home.hero.${key}`]}</p>
@@ -458,11 +458,11 @@ function OfferScreen({ locale, dict }: { locale: Locale; dict: Record<string, st
               ))}
             </div>
             <div className="mt-[24px] md:mt-[32px] flex flex-col sm:flex-row items-center justify-center gap-[12px]">
-              <a href={waLink(locale)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-accent text-white text-[15px] font-medium transition-all hover:bg-accent-hover hover:shadow-[0_4px_16px_rgba(37,99,235,0.3)] w-full sm:w-auto">
+              <a href={waLink(locale)} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-accent text-white text-[15px] font-medium transition-all hover:bg-accent-hover hover:shadow-[0_4px_16px_rgba(168,71,31,0.25)] w-full sm:w-auto">
                 <Check size={18} strokeWidth={2} />
                 {dict["home.hero.continueLabel"]}
               </a>
-              <button onClick={() => setView("feedback")} className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-surface border border-border text-[15px] text-text-muted font-medium w-full sm:w-auto transition-all hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+              <button onClick={() => setView("feedback")} className="flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[8px] bg-surface border border-border text-[15px] text-text-muted font-medium w-full sm:w-auto transition-all hover:shadow-[0_2px_8px_rgba(26,22,18,0.05)]">
                 <X size={18} strokeWidth={2} />
                 {dict["home.hero.dontLabel"]}
               </button>
@@ -472,7 +472,7 @@ function OfferScreen({ locale, dict }: { locale: Locale; dict: Record<string, st
 
         {view === "feedback" && (
           <motion.div key="offer-feedback" className="max-w-[480px] mx-auto" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.35 }}>
-            <div className="rounded-[12px] border border-border bg-surface-alt p-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+            <div className="rounded-[12px] border border-border bg-surface-alt p-[24px] shadow-[0_4px_20px_rgba(26,22,18,0.05)]">
               <div className="flex items-center gap-[8px] mb-[16px]">
                 <MessageCircle size={18} strokeWidth={1.75} className="text-text-muted" />
                 <p className="text-[15px] font-medium text-text">{dict["home.hero.fb.heading"] || "No problem. Mind telling us why?"}</p>
@@ -480,16 +480,16 @@ function OfferScreen({ locale, dict }: { locale: Locale; dict: Record<string, st
               <p className="text-[13px] text-text-faint mb-[16px]">{dict["home.hero.fb.sub"] || "This helps us improve. One tap, no sign-up."}</p>
               <div className="space-y-[8px]">
                 {reasons.map((r) => (
-                  <button key={r.key} onClick={() => setSelectedReason(r.key)} className={`w-full text-left px-[16px] py-[12px] rounded-[8px] border text-[14px] transition-all ${selectedReason === r.key ? "border-accent bg-accent/5 text-text shadow-[0_0_0_1px_var(--accent)]" : "border-border bg-surface text-text-muted hover:border-text/20 hover:shadow-[0_1px_4px_rgba(0,0,0,0.04)]"}`}>
+                  <button key={r.key} onClick={() => setSelectedReason(r.key)} className={`w-full text-left px-[16px] py-[12px] rounded-[8px] border text-[14px] transition-all ${selectedReason === r.key ? "border-accent bg-accent/5 text-text shadow-[0_0_0_1px_var(--accent)]" : "border-border bg-surface text-text-muted hover:border-text/20 hover:shadow-[0_1px_4px_rgba(26,22,18,0.03)]"}`}>
                     {r.label}
                   </button>
                 ))}
               </div>
               <div className="flex gap-[8px] mt-[16px]">
-                <button onClick={() => setView("offer")} className="flex-1 py-[12px] rounded-[8px] text-[14px] font-medium border border-border bg-surface text-text-muted transition-all hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                <button onClick={() => setView("offer")} className="flex-1 py-[12px] rounded-[8px] text-[14px] font-medium border border-border bg-surface text-text-muted transition-all hover:shadow-[0_2px_8px_rgba(26,22,18,0.05)]">
                   {dict["home.hero.fb.back"] || "Back"}
                 </button>
-                <button onClick={() => { if (selectedReason) setView("thanks"); }} disabled={!selectedReason} className={`flex-[2] py-[12px] rounded-[8px] text-[14px] font-medium transition-all ${selectedReason ? "bg-text text-surface hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)]" : "bg-surface text-text-faint border border-border cursor-not-allowed"}`}>
+                <button onClick={() => { if (selectedReason) setView("thanks"); }} disabled={!selectedReason} className={`flex-[2] py-[12px] rounded-[8px] text-[14px] font-medium transition-all ${selectedReason ? "bg-text text-surface hover:shadow-[0_4px_12px_rgba(26,22,18,0.08)]" : "bg-surface text-text-faint border border-border cursor-not-allowed"}`}>
                   {dict["home.hero.fb.send"] || "Send feedback"}
                 </button>
               </div>
@@ -499,13 +499,13 @@ function OfferScreen({ locale, dict }: { locale: Locale; dict: Record<string, st
 
         {view === "thanks" && (
           <motion.div key="offer-thanks" className="max-w-[480px] mx-auto" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }}>
-            <div className="rounded-[12px] border border-border bg-surface-alt p-[32px] shadow-[0_4px_20px_rgba(0,0,0,0.06)] text-center">
+            <div className="rounded-[12px] border border-border bg-surface-alt p-[32px] shadow-[0_4px_20px_rgba(26,22,18,0.05)] text-center">
               <div className="w-[48px] h-[48px] rounded-full bg-success/10 flex items-center justify-center mx-auto mb-[16px]">
                 <Check size={24} strokeWidth={2} className="text-success" />
               </div>
               <p className="text-[16px] font-medium text-text">{dict["home.hero.fb.thanks"] || "Thanks for letting us know."}</p>
               <p className="text-[14px] text-text-faint mt-[8px]">{dict["home.hero.fb.thanksBody"] || "If you change your mind, we're here."}</p>
-              <a href={waLink(locale)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-[8px] mt-[24px] px-[24px] py-[12px] rounded-[8px] bg-surface border border-border text-[14px] text-text-muted font-medium transition-all hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+              <a href={waLink(locale)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-[8px] mt-[24px] px-[24px] py-[12px] rounded-[8px] bg-surface border border-border text-[14px] text-text-muted font-medium transition-all hover:shadow-[0_2px_8px_rgba(26,22,18,0.05)]">
                 {dict["home.hero.fb.changeMind"] || "Actually, let's talk"}
               </a>
             </div>
@@ -534,7 +534,7 @@ function SearchBar({
           ))}
         </div>
       </div>
-      <div className="flex items-center gap-[10px] rounded-[999px] border border-border px-[18px] py-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.06)] bg-surface">
+      <div className="flex items-center gap-[10px] rounded-[999px] border border-border px-[18px] py-[12px] shadow-[0_2px_8px_rgba(26,22,18,0.05)] bg-surface">
         <Search size={18} strokeWidth={1.75} className="text-text-faint flex-shrink-0" />
         <span className="text-[16px] md:text-[17px] text-text flex-1 min-w-0 truncate">
           {phase === "idle" ? (
@@ -607,7 +607,7 @@ function SalehBuilder({ progress, statusText }: { progress: number; statusText: 
       <div className="h-[3px] bg-surface-alt rounded-full overflow-hidden mb-[24px]">
         <motion.div className="h-full bg-accent rounded-full" animate={{ width: `${p}%` }} transition={{ duration: 0.1, ease: "linear" }} />
       </div>
-      <div className="rounded-[8px] border border-border bg-surface overflow-hidden relative shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+      <div className="rounded-[8px] border border-border bg-surface overflow-hidden relative shadow-[0_4px_20px_rgba(26,22,18,0.05)]">
         <div className="px-[12px] py-[7px] border-b border-border bg-surface-alt flex items-center gap-[6px] relative z-10">
           <div className="flex gap-[5px]">
             <span className="w-[8px] h-[8px] rounded-full bg-[#ff5f57]" />
@@ -653,7 +653,7 @@ const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: 
   {
     x: "8%", y: "58%", w: "160px", rotate: -6, delay: 0.4, float: [-6, 6],
     el: (
-      <div className="rounded-[8px] border border-border bg-surface shadow-[0_4px_20px_rgba(0,0,0,0.08)] px-[10px] py-[8px] flex items-center justify-between">
+      <div className="rounded-[8px] border border-border bg-surface shadow-[0_4px_20px_rgba(26,22,18,0.06)] px-[10px] py-[8px] flex items-center justify-between">
         <div className="h-[6px] w-[28px] rounded bg-text/15" />
         <div className="flex gap-[6px]"><div className="h-[5px] w-[18px] rounded bg-text/10" /><div className="h-[5px] w-[18px] rounded bg-text/10" /><div className="h-[5px] w-[18px] rounded bg-text/10" /></div>
       </div>
@@ -671,7 +671,7 @@ const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: 
   {
     x: "18%", y: "74%", w: "130px", rotate: 4, delay: 0.8, float: [-5, 7],
     el: (
-      <div className="rounded-[8px] border border-border bg-surface shadow-[0_6px_24px_rgba(0,0,0,0.08)] overflow-hidden">
+      <div className="rounded-[8px] border border-border bg-surface shadow-[0_6px_24px_rgba(26,22,18,0.06)] overflow-hidden">
         <div className="h-[48px] bg-surface-alt flex items-center justify-center">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-text-faint"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" /><circle cx="8.5" cy="8.5" r="2" stroke="currentColor" strokeWidth="1.5" /><path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </div>
@@ -682,7 +682,7 @@ const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: 
   {
     x: "62%", y: "76%", w: "150px", rotate: -4, delay: 1.0, float: [-7, 5],
     el: (
-      <div className="space-y-[6px] rounded-[8px] border border-border bg-surface shadow-[0_6px_24px_rgba(0,0,0,0.08)] p-[10px]">
+      <div className="space-y-[6px] rounded-[8px] border border-border bg-surface shadow-[0_6px_24px_rgba(26,22,18,0.06)] p-[10px]">
         <div className="h-[4px] w-[40px] rounded bg-text/12" />
         <div className="rounded-[6px] border border-border bg-surface-alt px-[10px] py-[8px] flex items-center gap-[6px]"><div className="h-[5px] w-[60px] rounded bg-text/8" /></div>
         <div className="rounded-[6px] bg-accent/15 border border-accent/25 px-[10px] py-[7px] flex items-center justify-center"><div className="h-[5px] w-[36px] rounded bg-accent/40" /></div>
@@ -692,7 +692,7 @@ const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: 
   {
     x: "2%", y: "70%", w: "90px", rotate: 8, delay: 1.2, float: [-4, 8],
     el: (
-      <div className="rounded-[8px] border border-border bg-surface shadow-[0_4px_16px_rgba(0,0,0,0.08)] px-[10px] py-[8px] flex items-center gap-[3px]">
+      <div className="rounded-[8px] border border-border bg-surface shadow-[0_4px_16px_rgba(26,22,18,0.06)] px-[10px] py-[8px] flex items-center gap-[3px]">
         {[...Array(5)].map((_, i) => (
           <svg key={i} width="10" height="10" viewBox="0 0 12 12" fill={i < 4 ? "var(--accent)" : "none"} stroke={i < 4 ? "none" : "var(--border)"} strokeWidth="1"><path d="M6 1l1.5 3.1L11 4.5 8.5 7l.6 3.5L6 8.8 2.9 10.5l.6-3.5L1 4.5l3.5-.4L6 1z" /></svg>
         ))}
@@ -702,7 +702,7 @@ const uiPieces: { el: React.ReactNode; x: string; y: string; w: string; rotate: 
   {
     x: "82%", y: "68%", w: "80px", rotate: -8, delay: 0.9, float: [-6, 6],
     el: (
-      <div className="rounded-[999px] border border-border bg-surface shadow-[0_4px_16px_rgba(0,0,0,0.08)] px-[10px] py-[6px] flex items-center gap-[6px]">
+      <div className="rounded-[999px] border border-border bg-surface shadow-[0_4px_16px_rgba(26,22,18,0.06)] px-[10px] py-[6px] flex items-center gap-[6px]">
         <div className="w-[20px] h-[11px] rounded-full bg-accent/20 relative"><div className="absolute right-[1px] top-[1px] w-[9px] h-[9px] rounded-full bg-accent" /></div>
         <div className="h-[4px] w-[24px] rounded bg-text/10" />
       </div>
@@ -768,7 +768,7 @@ function LogoMarquee() {
 /* ── Finished screenshot ── */
 function SalehFinished() {
   return (
-    <div className="rounded-[8px] border border-border bg-surface overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+    <div className="rounded-[8px] border border-border bg-surface overflow-hidden shadow-[0_8px_30px_rgba(26,22,18,0.06)]">
       <div className="px-[12px] py-[7px] border-b border-border bg-surface-alt flex items-center gap-[6px]">
         <div className="flex gap-[5px]">
           <span className="w-[8px] h-[8px] rounded-full bg-[#ff5f57]" />

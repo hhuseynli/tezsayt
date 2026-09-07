@@ -31,7 +31,7 @@
   },
   "home": {
     "meta": {
-      "title": "Tezsayt — Azərbaycan biznesləri üçün vebsaytlar",
+      "title": "Tezsayt",
       "desc": "Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam sayt 7 günə hazır olur. 500 AZN-dən başlayır."
     },
     "hero": {
@@ -51,7 +51,7 @@
       "offerTitle": "Bu ana səhifə sizindir. Pulsuzdur.",
       "offerStep1": "İndicə hazırladıq — ödəniş yoxdur, öhdəlik yoxdur.",
       "offerStep2": "Bəyəndiniz? Tam saytı 7 günə hazırlayırıq.",
-      "offerStep3": "Bəyənmədiniz? Heç nə ödəmirsiniz. Sadəcə gedin.",
+      "offerStep3": "Bəyənmədiniz? Heç nə ödəmirsiniz. Heç bir öhdəlik yoxdur.",
       "fb": {
         "heading": "Problem yoxdur. Səbəbini deyə bilərsiniz?",
         "sub": "Bu bizə yaxşılaşmağa kömək edir. Bir toxunuş, qeydiyyat yoxdur.",
@@ -69,8 +69,7 @@
     },
     "proof": {
       "label": "Hazırladığımız işlər",
-      "moreFromClients": "Müştərilərdən daha çox",
-      "logosCaption": "Bu qurumların hakatonlarında iştirak edib nəticə göstərmişik."
+      "moreFromClients": "Müştərilərdən daha çox"
     },
     "how": {
       "heading": "Heç bir risk yoxdur",
@@ -123,9 +122,8 @@
     },
     "team": {
       "heading": "Arxasında kim dayanır",
-      "body1": "Hakatonlar və dostlarımız üçün vebsayt hazırlamaqla başladıq. Hər yerdə eyni problemi gördüyümüz üçün davam etdik: bizneslər ya yavaş şablon üçün agentliyə artıq ödəyirdi, ya da yarıda itən frilanser tuturdular.",
+      "body1": "Dostlarımız və yerli bizneslər üçün vebsayt hazırlamaqla başladıq. Hər yerdə eyni problemi gördüyümüz üçün davam etdik: bizneslər ya yavaş şablon üçün agentliyə artıq ödəyirdi, ya da yarıda itən frilanser tuturdular.",
       "body2": "Kodun təkrarlanan hissələrini AI ilə idarə edirik, buna görə də 2 ay əvəzinə 1 həftədə təhvil verə bilirik və ana səhifənizi heç nə ödəmədən hazırlayırıq. Dizayn qərarlarını və müştərilərinizin nəyə ehtiyacı olduğunu isə biz özümüz düşünürük.",
-      "hackLabel": "Təzyiq altında nə hazırlamışıq",
       "aboutLink": "Haqqımızda ətraflı"
     },
     "contact": {
@@ -193,7 +191,7 @@
   },
   "work": {
     "meta": {
-      "title": "İşlərimiz — Tezsayt",
+      "title": "İşlərimiz | Tezsayt.dev",
       "desc": "Azərbaycanda bizneslər üçün hazırladığımız vebsaytlar və sistemlər."
     },
     "heading": "Hazırladığımız işlər",
@@ -201,10 +199,8 @@
     "filter": {
       "all": "Hamısı",
       "clients": "Müştəri işləri",
-      "hackathons": "Hakaton layihələri"
-    },
-    "hackathons": {
-      "intro": "Müştəri işlərindən əlavə, Azərbaycanda yarışma hakatonlarında da işləyən sistemlər hazırlamışıq."
+      "typeLabel": "Sayt növü",
+      "industryLabel": "Sahə"
     },
     "testimonials": {
       "heading": "Müştərilər nə deyir"
@@ -216,7 +212,7 @@
   },
   "services": {
     "meta": {
-      "title": "Xidmətlər və qiymətlər — Tezsayt",
+      "title": "Xidmətlər və qiymətlər | Tezsayt.dev",
       "desc": "500 AZN-dən başlayan vebsaytlar, 7 günə hazır olur. Ödəniş etmədən pulsuz ana səhifə nümunəsi alırsınız."
     },
     "heading": "Nə hazırlayırıq",
@@ -309,24 +305,20 @@
   },
   "about": {
     "meta": {
-      "title": "Haqqımızda — Tezsayt",
+      "title": "Haqqımızda | Tezsayt.dev",
       "desc": "Azərbaycanda bizneslər üçün vebsayt hazırlayan iki kompüter elmləri tələbəsi."
     },
     "heading": "İki nəfərik, menecerimiz yoxdur",
     "intro": "Azərbaycan biznesləri üçün vebsayt hazırlayırıq, çünki eyni problemi dəfələrlə gördük və daha yaxşı həll oluna biləcəyini düşündük.",
     "story": {
       "heading": "Necə başladı",
-      "body1": "Hakatonlarda tanış olduq: logistika sistemləri, izdiham aşkarlanması, RFID izləmə kimi real problemlər üzərində 48 saat ərzində işləyirdik. Sonra dostlar biznesləri üçün vebsayt istəməyə başladı və bir şeyi fərq etdik.",
+      "body1": "Birlikdə proqram layihələri hazırlayarkən tanış olduq. Real problemlər, sıx müddətlər. Sonra dostlar biznesləri üçün vebsayt istəməyə başladı və bir şeyi fərq etdik.",
       "body2": "Danışdığımız hər biznes sahibinin qarşısında eyni 2 seçim var idi: ya agentliyə 2000 manat ödəyib şablon üçün 2 ay gözləmək, ya da 400 manata frilanser tutub bitirməsini ümid etmək. Hər iki halda sizdən əvvəlcə ödəniş istənilir, amma hələ heç nə görməmisiniz.",
       "body3": "Biz ardıcıllığı dəyişdik. Əvvəlcə ana səhifənizi hazırlayırıq, siz baxırsınız, sonra qərar verirsiniz. Bunu edə bilirik, çünki kifayət qədər sürətliyik."
     },
     "why": {
       "heading": "Niyə AI-dən istifadə edirik",
       "body": "Dəbdə olduğu üçün deyil. AI sayəsində keyfiyyətli sayt həftələr əvəzinə günlərə hazır olur və bu qənaəti sizə ötürə bilirik. AI təkrarlanan kodu idarə edir, dizayn qərarlarını, strukturu və müştərilərinizin nəyə ehtiyacı olduğu barədə düşünməni isə biz özümüz edirik."
-    },
-    "hack": {
-      "heading": "Təzyiq altında nə hazırlamışıq",
-      "intro": "Hakaton işləri bizə heç nəyi pozmadan sürətlə təhvil verməyi öyrətdi və buklet saytından daha mürəkkəb layihələri idarə edə bildiyimizin sübutudur."
     },
     "values": {
       "heading": "Necə işləyirik",
@@ -363,7 +355,7 @@
   },
   "contact": {
     "meta": {
-      "title": "Əlaqə — Tezsayt",
+      "title": "Əlaqə | Tezsayt.dev",
       "desc": "Pulsuz ana səhifə nümunəsi ilə başlayın, bir neçə saat ərzində cavab veririk."
     },
     "heading": "Pulsuz nümunədən başlayaq",
@@ -394,12 +386,12 @@
     "back": "Ana səhifəyə qayıdın"
   },
   "og": {
-    "title": "Tezsayt — Pulsuz ana səhifə nümunəsi, yalnız bəyənsəniz ödəyin",
+    "title": "Tezsayt.dev | Pulsuz ana səhifə nümunəsi, yalnız bəyənsəniz ödəyin",
     "desc": "Azərbaycan biznesləri üçün vebsaytlar, 7 günə hazır olur. 500 AZN-dən başlayır."
   },
   "guides": {
     "meta": {
-      "title": "Bələdçilər — Tezsayt",
+      "title": "Bələdçilər | Tezsayt.dev",
       "desc": "Azərbaycanda bizneslər üçün vebsayt hazırlamaq barədə bələdçilər və məqalələr."
     },
     "heading": "Bələdçilər",

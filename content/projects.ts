@@ -1,8 +1,11 @@
 import { type Localized } from "./types";
 
+export type ProjectType = "landing" | "business" | "store" | "platform";
+
 export type Project = {
   slug: string;
   client: string;
+  type: ProjectType;
   industry: Localized;
   description: Localized;
   image: string;
@@ -11,10 +14,19 @@ export type Project = {
   tags: Localized[];
 };
 
+/** Localized labels for project types */
+export const projectTypeLabels: Record<ProjectType, Localized> = {
+  landing: { az: "Landing səhifə", ru: "Лендинг", en: "Landing page" },
+  business: { az: "Biznes sayt", ru: "Бизнес-сайт", en: "Business site" },
+  store: { az: "Onlayn mağaza", ru: "Интернет-магазин", en: "Online store" },
+  platform: { az: "Platforma", ru: "Платформа", en: "Platform" },
+};
+
 export const projects: Project[] = [
   {
     slug: "saleh",
     client: "Saleh Tech School",
+    type: "business",
     industry: { az: "Təhsil", ru: "Образование", en: "Education" },
     description: {
       az: "6-18 yaş uşaqlar üçün texnologiya kursları təklif edən məktəb.",
@@ -29,6 +41,7 @@ export const projects: Project[] = [
   {
     slug: "kraamzorg",
     client: "Kraamzorg",
+    type: "landing",
     industry: { az: "Səhiyyə", ru: "Здравоохранение", en: "Healthcare" },
     description: {
       az: "Analıq qayğısı mütəxəssislərini ailələrlə birləşdirən sayt.",
@@ -43,6 +56,7 @@ export const projects: Project[] = [
   {
     slug: "mindmorph",
     client: "MindMorph",
+    type: "platform",
     industry: { az: "Texnologiya", ru: "Технологии", en: "Technology" },
     description: {
       az: "Koqnitiv məşq və zehni sağlamlıq platforması.",
@@ -52,11 +66,15 @@ export const projects: Project[] = [
     image: "/images/projects/mindmorph.png",
     url: "https://mindmorph.co.uk",
     featured: true,
-    tags: [{ az: "Səhiyyə", ru: "Здравоохранение", en: "Healthcare" }],
+    tags: [
+      { az: "Səhiyyə", ru: "Здравоохранение", en: "Healthcare" },
+      { az: "Texnologiya", ru: "Технологии", en: "Technology" },
+    ],
   },
   {
     slug: "ztopup",
     client: "Zelix Topup",
+    type: "store",
     industry: { az: "E-ticarət", ru: "Электронная коммерция", en: "E-commerce" },
     description: {
       az: "Oyun top-up və pin kod satış platforması.",
@@ -74,6 +92,7 @@ export const projects: Project[] = [
   {
     slug: "byin",
     client: "Infinity Investment",
+    type: "business",
     industry: { az: "Maliyyə xidmətləri", ru: "Финансовые услуги", en: "Financial services" },
     description: {
       az: "İnvestisiya şirkəti üçün korporativ vebsayt.",
@@ -83,11 +102,15 @@ export const projects: Project[] = [
     image: "/images/projects/byin.png",
     url: "https://byininvest.com",
     featured: false,
-    tags: [{ az: "Maliyyə", ru: "Финансы", en: "Finance" }],
+    tags: [
+      { az: "Maliyyə", ru: "Финансы", en: "Finance" },
+      { az: "Korporativ", ru: "Корпоративный", en: "Corporate" },
+    ],
   },
   {
     slug: "meridiana",
     client: "Meridiana",
+    type: "business",
     industry: { az: "Texnologiya", ru: "Технологии", en: "Technology" },
     description: {
       az: "Tərtibatçılara yönəlmiş texnologiya şirkəti saytı.",
@@ -97,6 +120,9 @@ export const projects: Project[] = [
     image: "/images/projects/meridiana.png",
     url: "https://meridiana.dev",
     featured: false,
-    tags: [{ az: "Texnologiya", ru: "Технологии", en: "Technology" }],
+    tags: [
+      { az: "Texnologiya", ru: "Технологии", en: "Technology" },
+      { az: "Korporativ", ru: "Корпоративный", en: "Corporate" },
+    ],
   },
 ];

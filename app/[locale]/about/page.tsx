@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { LOCALES, SITE_URL, type Locale } from "@/lib/constants";
 import { getDictionary, t } from "@/lib/i18n";
-import { hackathons } from "@/content/hackathons";
 import { team } from "@/content/team";
-import { HackathonCard } from "@/components/cards/HackathonCard";
 import { Button } from "@/components/ui/Button";
 import { Instagram } from "@/components/ui/icons/Instagram";
 import { WhatsApp } from "@/components/ui/icons/WhatsApp";
@@ -118,16 +116,6 @@ export default async function AboutPage({ params }: Props) {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-bg">
-        <div className="max-w-[1120px] mx-auto px-[20px] md:px-[24px] py-[64px] md:py-[96px]">
-          <h2 className="font-serif text-[26px] md:text-[32px] font-normal leading-[1.2] tracking-[-0.02em]">{dict["about.hack.heading"]}</h2>
-          <p className="text-[16px] text-text-muted mt-[12px] max-w-[60ch]">{dict["about.hack.intro"]}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[20px] mt-[32px]">
-            {hackathons.map((h) => <HackathonCard key={h.slug} event={tl(h.event, loc)} organizer={h.organizer} project={tl(h.project, loc)} description={tl(h.built, loc)} image={h.image} tags={h.tags.map(t => tl(t, loc))} />)}
           </div>
         </div>
       </section>

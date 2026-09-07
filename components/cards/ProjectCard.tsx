@@ -3,10 +3,18 @@ import { BrowserMockup } from "@/components/ui/BrowserMockup";
 import { Badge } from "@/components/ui/Badge";
 
 type ProjectCardProps = {
-  client: string; industry: string; description: string; image: string; url: string | null; viewSiteLabel: string;
+  client: string;
+  industry: string;
+  description: string;
+  image: string;
+  url: string | null;
+  viewSiteLabel: string;
+  tags?: string[];
 };
 
-export function ProjectCard({ client, industry, description, image, url, viewSiteLabel }: ProjectCardProps) {
+export function ProjectCard({ client, industry, description, image, url, viewSiteLabel, tags }: ProjectCardProps) {
+  const displayTags = tags && tags.length > 0 ? tags : [industry];
+
   return (
     <div className="bg-surface border border-border rounded-[12px] overflow-hidden shadow-[var(--shadow-card)] transition-all duration-200 hover:shadow-[var(--shadow-lift)] hover:-translate-y-[2px]">
       <div className="relative">
@@ -18,7 +26,11 @@ export function ProjectCard({ client, industry, description, image, url, viewSit
         )}
       </div>
       <div className="p-[20px]">
-        <Badge>{industry}</Badge>
+        <div className="flex flex-wrap gap-[6px]">
+          {displayTags.map((tag) => (
+            <Badge key={tag}>{tag}</Badge>
+          ))}
+        </div>
         <h3 className="font-serif text-[20px] font-normal leading-[1.3] mt-[10px]">{client}</h3>
         <p className="text-[14px] text-text-muted mt-[8px]">{description}</p>
         {url ? (

@@ -36,7 +36,7 @@ Translation uses a custom hook reading flat JSON dictionaries in `locales/{az,ru
 
 ### Content model
 
-All content in `content/*.ts` as typed arrays. Translatable text fields use `{ az: string; ru: string; en: string }` objects. Content types: `Project`, `Hackathon`, `Testimonial`, `Service`, `FaqItem`, and team data.
+All content in `content/*.ts` as typed arrays. Translatable text fields use `{ az: string; ru: string; en: string }` objects. Content types: `Project`, `Testimonial`, `Service`, `FaqItem`, and team data.
 
 `testimonials.ts` starts empty — components must render nothing (no wrapper, no heading, no spacing) when empty.
 
@@ -48,7 +48,7 @@ All content in `content/*.ts` as typed arrays. Translatable text fields use `{ a
 - `app/[locale]/layout.tsx` — locale-aware layout
 - `components/sections/` — page sections (Hero, Proof, HowItWorks, WhyWebsite, Pricing, Team, ContactSection)
 - `components/ui/` — reusable primitives (Button, Badge, Card, Accordion, BrowserMockup)
-- `components/cards/` — domain cards (ProjectCard, HackathonCard, TestimonialCard, PricingCard)
+- `components/cards/` — domain cards (ProjectCard, TestimonialCard, PricingCard)
 
 ### Routes
 

@@ -31,7 +31,7 @@
   },
   "home": {
     "meta": {
-      "title": "Tezsayt — Websites for Azerbaijani businesses",
+      "title": "Tezsayt",
       "desc": "We build your homepage first, free. If you like it, the full site is ready in seven days. From 500 AZN."
     },
     "hero": {
@@ -69,8 +69,7 @@
     },
     "proof": {
       "label": "Work we've shipped",
-      "moreFromClients": "More from clients",
-      "logosCaption": "Competed and delivered results at hackathons by these organizations."
+      "moreFromClients": "More from clients"
     },
     "how": {
       "heading": "No risk. Here's how it works.",
@@ -123,9 +122,8 @@
     },
     "team": {
       "heading": "Who's behind it",
-      "body1": "We started building websites for hackathons and for friends, and kept going because we saw the same gap everywhere: businesses either overpaid an agency for a slow template, or hired a freelancer who disappeared halfway through.",
+      "body1": "We started building websites for friends and local businesses, and kept going because we saw the same gap everywhere: businesses either overpaid an agency for a slow template, or hired a freelancer who disappeared halfway through.",
       "body2": "We use AI to handle the repetitive parts of writing code. That's why we deliver in a week instead of two months, and why we can afford to build your homepage before you've paid anything. The design decisions and the thinking about what your customers actually need — that's us.",
-      "hackLabel": "What we've built under pressure",
       "aboutLink": "More about us"
     },
     "contact": {
@@ -193,7 +191,7 @@
   },
   "work": {
     "meta": {
-      "title": "Work — Tezsayt",
+      "title": "Work | Tezsayt.dev",
       "desc": "Websites and systems we've built for businesses in Azerbaijan."
     },
     "heading": "Work we've shipped",
@@ -201,10 +199,8 @@
     "filter": {
       "all": "All",
       "clients": "Client work",
-      "hackathons": "Hackathon projects"
-    },
-    "hackathons": {
-      "intro": "Beyond client work, we've shipped working systems in competitive hackathons across Azerbaijan. This is what we build when the clock is running."
+      "typeLabel": "Site type",
+      "industryLabel": "Industry"
     },
     "testimonials": {
       "heading": "What clients say"
@@ -216,7 +212,7 @@
   },
   "services": {
     "meta": {
-      "title": "Services and pricing — Tezsayt",
+      "title": "Services and pricing | Tezsayt.dev",
       "desc": "Websites from 500 AZN, delivered in seven days. Free homepage draft before you pay anything."
     },
     "heading": "What we build",
@@ -309,24 +305,20 @@
   },
   "about": {
     "meta": {
-      "title": "About — Tezsayt",
+      "title": "About | Tezsayt.dev",
       "desc": "Two computer science students building websites for businesses in Azerbaijan."
     },
     "heading": "Two people. No account managers.",
     "intro": "We're building websites for Azerbaijani businesses because we kept seeing the same problem and thought it could be solved better.",
     "story": {
       "heading": "How this started",
-      "body1": "We met building things for hackathons. Logistics systems, crowd detection, RFID tracking — real problems, forty-eight hour deadlines. Then friends started asking us to build websites for their businesses, and we noticed something.",
+      "body1": "We met while building software projects together. Real problems, tight deadlines. Then friends started asking us to build websites for their businesses, and we noticed something.",
       "body2": "Every business owner we spoke to had the same two options. Pay an agency two thousand manat and wait two months for a template. Or hire a freelancer for four hundred and hope they finish. Neither is good, and both ask you to pay before you've seen anything.",
       "body3": "So we changed the order. We build your homepage first, you look at it, and then you decide. It only works because we're fast enough to afford it."
     },
     "why": {
       "heading": "Why AI-assisted",
       "body": "Not because it's fashionable. Because it means a high-quality site takes days instead of weeks, and we can pass that saving on. AI handles the repetitive code. We handle the design thinking, the structure, the business logic, and the decisions about what your customers actually need. You get both speed and quality — that's the entire point."
-    },
-    "hack": {
-      "heading": "What we've built under pressure",
-      "intro": "Hackathon work is where we learned to ship fast without breaking things. It's also proof we can handle projects more complex than a brochure site."
     },
     "values": {
       "heading": "How we work",
@@ -363,7 +355,7 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact — Tezsayt",
+      "title": "Contact | Tezsayt.dev",
       "desc": "Start with a free homepage draft. We reply within a few hours."
     },
     "heading": "Let's start with the free draft",
@@ -394,12 +386,12 @@
     "back": "Back to homepage"
   },
   "og": {
-    "title": "Tezsayt — Free homepage draft, pay only if you like it",
+    "title": "Tezsayt.dev | Free homepage draft, pay only if you like it",
     "desc": "Websites for Azerbaijani businesses. Ready in seven days. From 500 AZN."
   },
   "guides": {
     "meta": {
-      "title": "Guides — Tezsayt",
+      "title": "Guides | Tezsayt.dev",
       "desc": "Guides and articles about building websites for businesses in Azerbaijan."
     },
     "heading": "Guides",

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { AGENCY_NAME, type Locale } from "@/lib/constants";
 import { cn, waLink, igLink } from "@/lib/utils";
@@ -46,8 +47,8 @@ export function Header({ locale, dict }: HeaderProps) {
   const mobileMenu = menuOpen && mounted ? createPortal(
     <div className="fixed inset-0 z-[100] bg-bg flex flex-col md:hidden">
       <div className="h-[64px] flex items-center justify-between px-[24px] flex-shrink-0">
-        <Link href={`/${locale}`} className="font-serif text-[18px] font-normal text-text" onClick={() => setMenuOpen(false)}>
-          {AGENCY_NAME}
+        <Link href={`/${locale}`} className="flex items-center" onClick={() => setMenuOpen(false)}>
+          <Image src="/images/tezsayt-logo.png" alt={AGENCY_NAME} width={140} height={32} className="h-[24px] w-auto" priority />
         </Link>
         <button className="p-[4px] text-text" onClick={() => setMenuOpen(false)} aria-label="Close menu">
           <X size={24} />
@@ -79,8 +80,8 @@ export function Header({ locale, dict }: HeaderProps) {
         scrolled ? "border-b border-border" : "border-b border-transparent"
       )}>
         <div className="max-w-[1120px] mx-auto px-[24px] h-[64px] flex items-center justify-between">
-          <Link href={`/${locale}`} className="font-serif text-[18px] font-normal text-text tracking-[-0.01em]">
-            {AGENCY_NAME}
+          <Link href={`/${locale}`} className="flex items-center">
+            <Image src="/images/tezsayt-logo.png" alt={AGENCY_NAME} width={140} height={32} className="h-[24px] w-auto" priority />
           </Link>
 
           <nav className="hidden md:flex items-center gap-[32px]">
