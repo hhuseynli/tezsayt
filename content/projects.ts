@@ -39,6 +39,24 @@ export const projects: Project[] = [
     tags: [{ az: "Təhsil", ru: "Образование", en: "Education" }],
   },
   {
+    slug: "xsolla-game-recap",
+    client: "Xsolla Game Recap",
+    type: "platform",
+    industry: { az: "Oyun", ru: "Игры", en: "Gaming" },
+    description: {
+      az: "Oyunçular üçün oyun statistikası və xülasə platforması.",
+      ru: "Платформа игровой статистики и обзоров для геймеров.",
+      en: "Game statistics and recap platform for gamers.",
+    },
+    image: "/images/projects/xsolla-game-recap.png",
+    url: "https://team-noclip.vercel.app",
+    featured: true,
+    tags: [
+      { az: "Oyun", ru: "Игры", en: "Gaming" },
+      { az: "Texnologiya", ru: "Технологии", en: "Technology" },
+    ],
+  },
+  {
     slug: "kraamzorg",
     client: "Kraamzorg",
     type: "landing",
@@ -65,7 +83,7 @@ export const projects: Project[] = [
     },
     image: "/images/projects/mindmorph.png",
     url: "https://mindmorph.co.uk",
-    featured: true,
+    featured: false,
     tags: [
       { az: "Səhiyyə", ru: "Здравоохранение", en: "Healthcare" },
       { az: "Texnologiya", ru: "Технологии", en: "Technology" },

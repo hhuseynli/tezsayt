@@ -712,6 +712,7 @@ const logos = [
   { src: "/images/logos/gdg.png", alt: "GDG", h: 20 },
   { src: "/images/logos/idda.png", alt: "IDDA", h: 40 },
   { src: "/images/logos/holberton.png", alt: "Holberton", h: 36 },
+  { src: "/images/logos/xsolla-logo.png", alt: "Xsolla", h: 48, dark: true },
 ];
 
 function LogoMarquee() {
@@ -727,7 +728,7 @@ function LogoMarquee() {
                 alt={logo.alt}
                 width={logo.h * 3}
                 height={logo.h}
-                className="opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
+                className={`opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300${"dark" in logo && logo.dark ? " brightness-[0.3]" : ""}`}
                 style={{ height: logo.h, width: "auto" }}
               />
             ))}
