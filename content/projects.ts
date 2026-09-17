@@ -34,7 +34,7 @@ export const projects: Project[] = [
       en: "Technology school offering courses for kids aged 6–18.",
     },
     image: "/images/projects/saleh.png",
-    url: "https://saleh-tech-school.onrender.com",
+    url: "https://salehtechschool.az",
     featured: true,
     tags: [{ az: "Təhsil", ru: "Образование", en: "Education" }],
   },

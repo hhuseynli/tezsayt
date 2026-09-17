@@ -565,7 +565,7 @@ function SalehBuilder({ progress, statusText }: { progress: number; statusText: 
             <span className="w-[8px] h-[8px] rounded-full bg-[#28c840]" />
           </div>
           <div className="flex-1 mx-[10px] bg-surface rounded-[4px] border border-border px-[10px] py-[3px]">
-            <motion.span className="text-[11px] text-text-faint" animate={{ opacity: p > 10 ? 1 : 0 }}>saleh-tech-school.com</motion.span>
+            <motion.span className="text-[11px] text-text-faint" animate={{ opacity: p > 10 ? 1 : 0 }}>salehtechschool.az</motion.span>
           </div>
         </div>
         <div className="p-[16px] space-y-[10px]">
@@ -750,7 +750,7 @@ function SalehFinished() {
           <span className="w-[8px] h-[8px] rounded-full bg-[#28c840]" />
         </div>
         <div className="flex-1 mx-[10px] bg-surface rounded-[4px] border border-border px-[10px] py-[3px]">
-          <span className="text-[11px] text-text-faint">saleh-tech-school.com</span>
+          <span className="text-[11px] text-text-faint">salehtechschool.az</span>
         </div>
       </div>
       <Image src="/images/projects/saleh.png" alt="Saleh Tech School homepage" width={1280} height={800} className="w-full h-auto block" priority />
