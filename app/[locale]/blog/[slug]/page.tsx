@@ -6,9 +6,7 @@ import { SITE_URL, AGENCY_NAME, type Locale } from "@/lib/constants";
 import { getDictionary, t } from "@/lib/i18n";
 import { getPostBySlug, getPublishedPosts, getTranslations, getRelatedPosts } from "@/lib/blog";
 import { interpolatePriceTokens } from "@/components/blog/PriceTag";
-import { Button } from "@/components/ui/Button";
-import { WhatsApp } from "@/components/ui/icons/WhatsApp";
-import { waLink } from "@/lib/utils";
+import { BlogCta } from "@/components/blog/BlogCta";
 import { BlogPostingJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -57,7 +55,9 @@ export default async function BlogPostPage({ params }: Props) {
   const dict = await getDictionary(loc);
   const translations = await getTranslations(post.translationKey);
   const related = await getRelatedPosts(post);
-  const html = interpolatePriceTokens(post.html, loc);
+  // Wrap <table> in overflow container for mobile, then interpolate prices
+  let html = post.html.replace(/<table>/g, '<div class="overflow-x-auto -mx-[4px] px-[4px]"><table>').replace(/<\/table>/g, '</table></div>');
+  html = interpolatePriceTokens(html, loc);
 
   return (
     <article className="bg-bg">
@@ -141,15 +141,13 @@ export default async function BlogPostPage({ params }: Props) {
         />
 
         {/* CTA block */}
-        <div className="mt-[48px] border border-border rounded-[12px] p-[24px] bg-surface-alt">
-          <p className="font-serif text-[20px] font-normal leading-[1.3]">{dict["blog.cta.heading"]}</p>
-          <p className="text-[15px] text-text-muted mt-[8px]">{dict["blog.cta.body"]}</p>
-          <div className="mt-[16px]">
-            <Button variant="primary" href={waLink(loc)} target="_blank" rel="noopener noreferrer" icon={<WhatsApp />}>
-              {dict["blog.cta.button"]}
-            </Button>
-          </div>
-        </div>
+        <BlogCta
+          locale={loc}
+          heading={dict["blog.cta.heading"]}
+          body={dict["blog.cta.body"]}
+          whatsappLabel={dict["common.whatsapp"]}
+          instagramLabel={dict["common.instagram"]}
+        />
 
         {/* Related posts */}
         {related.length > 0 && (

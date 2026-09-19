@@ -7,6 +7,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 import type { Locale } from "./constants";
 import type { TierId } from "@/content/offering";
@@ -61,7 +62,10 @@ const AZ_CHAR_MAP: Record<string, string> = {
 };
 
 export function transliterateSlug(text: string): string {
-  return text
+  // Handle İ (capital I with dot) before lowercasing — it produces
+  // a combining dot mark when lowercased which breaks the slug
+  let normalized = text.replace(/İ/g, "i").replace(/I/g, "i");
+  return normalized
     .toLowerCase()
     .split("")
     .map((ch) => AZ_CHAR_MAP[ch] || ch)
@@ -180,7 +184,7 @@ export function checkForLiteralValues(content: string, filePath: string): string
 // ─── Loading ────────────────────────────────────────────────────────────────
 
 async function renderMarkdown(content: string): Promise<string> {
-  const result = await remark().use(remarkHtml, { sanitize: false }).process(content);
+  const result = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(content);
   return result.toString();
 }
 
@@ -233,9 +237,43 @@ export async function getTranslations(translationKey: string): Promise<Post[]> {
 /** Get related posts by tags, excluding the current post */
 export async function getRelatedPosts(post: Post, limit = 3): Promise<Post[]> {
   const published = await getPublishedPosts(post.lang);
-  return published
-    .filter((p) => p.slug !== post.slug && p.tags.some((t) => post.tags.includes(t)))
-    .slice(0, limit);
+  const others = published.filter((p) => p.slug !== post.slug);
+
+  // 1. Explicit frontmatter links (relatedPages that are blog slugs)
+  const explicit: Post[] = [];
+  for (const ref of post.relatedPages) {
+    // relatedPages can be blog slugs like "/blog/slug" or money pages like "/services"
+    const blogSlug = ref.replace(/^\/blog\//, "").replace(/^\/[a-z]{2}\/blog\//, "");
+    const found = others.find((p) => p.slug === blogSlug);
+    if (found) explicit.push(found);
+  }
+
+  if (explicit.length >= limit) return explicit.slice(0, limit);
+
+  // 2. Score remaining by shared tags (excluding generic tags)
+  const genericTags = new Set(["bakı", "sayt", "biznes"]);
+  const postSpecificTags = post.tags.filter((t) => !genericTags.has(t));
+  const remaining = others.filter((p) => !explicit.includes(p));
+
+  const scored = remaining.map((p) => {
+    let score = 0;
+    // Same category = strong signal
+    if (p.category === post.category) score += 3;
+    // Shared specific tags
+    for (const t of postSpecificTags) {
+      if (p.tags.includes(t)) score += 2;
+    }
+    // Shared tiers
+    for (const t of post.relatedTiers) {
+      if (p.relatedTiers.includes(t)) score += 1;
+    }
+    return { post: p, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  const tagBased = scored.filter((s) => s.score > 0).map((s) => s.post);
+
+  return [...explicit, ...tagBased].slice(0, limit);
 }
 
 /** Get all unique categories for a locale */

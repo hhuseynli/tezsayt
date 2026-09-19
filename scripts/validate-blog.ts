@@ -68,6 +68,12 @@ async function main() {
       }
     }
 
+    // Check rendered HTML for unrendered pipe tables
+    if (post.html.includes("|---|")) {
+      console.error(`    ✗ Unrendered markdown table found in HTML output (|---|)`);
+      errors++;
+    }
+
     // Check dateModified >= datePublished
     if (post.dateModified < post.datePublished) {
       console.error(`    ✗ dateModified (${post.dateModified}) is before datePublished (${post.datePublished})`);
