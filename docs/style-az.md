@@ -102,6 +102,28 @@ When a number is interpolated, the following word must work for any value:
 - "30 gündə" — only works if the number doesn't change; prefer "müddəti 30 gündür"
   or restructure
 
+## Brand name suffixes
+
+- "Tezsayt-da" (locative), "Tezsayt-ın" (genitive), "Tezsayt-dan" (ablative)
+- Hyphen before suffix, consistent everywhere
+
+## Latin acronym suffixes
+
+- "Google-da", "Google-dan", "Google-un"
+- "AI-dən", "AI-ə", "AI-da" (treat AI as ending in a vowel sound)
+- "SEO-dan", "SEO-nun"
+- "GEO" — avoid as standalone term; use "AI axtarışı" or "generativ axtarış"
+  and introduce GEO once in parentheses as the industry term
+
+## Settled naming (D2 resolved)
+
+| Concept | Settled AZ name | Avoid |
+|---|---|---|
+| 100 AZN/ay support | Texniki dəstək planı | Əsas, Care Plan — Basic |
+| Google SEO service | Google Business + Yerli SEO | Local SEO |
+| Backup | ehtiyat nüsxə | backup (in user-facing text) |
+| Content (general) | məzmun | kontent (except "SMM kontent") |
+
 ## Heading conventions
 
 - Headings are buyer questions or plain descriptive phrases

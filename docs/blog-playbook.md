@@ -100,6 +100,40 @@ npx tsx scripts/validate-blog.ts
 
 Posts with passed `reviewBy` dates show as warnings.
 
+## Pre-publish checklist
+
+Before setting `status: "published"`:
+
+- [ ] Opens with 40–60 word direct answer to the title question
+- [ ] Title is the buyer's real question (not our vocabulary)
+- [ ] Sub-questions as H2s
+- [ ] Entities named: "Tezsayt", "Bakı" — not "we", "here"
+- [ ] At least one table, list, or comparison where content supports it
+- [ ] Internal links to relevant money pages (/services, /contact)
+- [ ] Links to 2-3 related posts with descriptive anchor text
+- [ ] No urgency framing ("ən yaxşı vaxt bu gündür", "gec qaldıqca rəqib öndə")
+- [ ] No unsupported claims — every factual statement has a basis
+- [ ] Third-party figures have named source, date, and `reviewBy` set
+- [ ] Product names match `offering.ts` (Texniki dəstək planı, not Əsas/Care Plan)
+- [ ] All AZ text checked against `style-az.md`
+- [ ] New AZ strings appended to `az-review-queue.md`
+- [ ] `reviewBy` date set (6 months from publish is default)
+- [ ] Where Instagram is discussed: concede what it does well before arguing what it can't
+- [ ] No "Tezsayt-ın hazırladığı hər saytda..." claims without verification
+
+## Build checks that catch violations
+
+1. **Unrendered tables:** build fails if `|---|` appears in rendered HTML
+2. **Literal prices/durations:** warns on `\d+ AZN` or `\d+ gün` outside tokens
+3. **Stale reviewBy:** warns on posts past their review date
+4. **Frontmatter validity:** fails on missing/malformed required fields
+
+## Note on legacy posts
+
+The first four posts were written before all build checks existed. They've been
+through a remediation pass (Issue 3b). Any other pre-existing post needs the same
+treatment — run it through the pre-publish checklist before considering it clean.
+
 ## Seasonality
 
 Baku SMB rhythm:

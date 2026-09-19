@@ -10,7 +10,7 @@ author: "Hüseyn Hüseynli"
 category: "Sahiblik"
 tags: ["domen", "hostinq", "sahiblik", "bakı"]
 relatedTiers: ["landing", "business", "store"]
-relatedPages: ["/services", "/about"]
+relatedPages: ["/services", "/blog/saytin-aylig-xerci-ne-qeder-olur"]
 heroImage: ""
 heroAlt: ""
 draft: false

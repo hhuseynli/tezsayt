@@ -273,7 +273,7 @@ export const monthlyServices: MonthlyService[] = [
       en: "Technical support plan",
     },
     description: {
-      az: "Hostinq, domen, təhlükəsizlik yamaları, aylıq backup",
+      az: "Hostinq, domen, təhlükəsizlik yamaları, aylıq ehtiyat nüsxə",
       ru: "Хостинг, домен, патчи безопасности, ежемесячный бэкап",
       en: "Hosting, domain, security patches, monthly backup",
     },

@@ -10,6 +10,18 @@ export function middleware(request: NextRequest) {
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
+  // 301 redirects for changed blog slugs
+  const slugRedirects: Record<string, string> = {
+    "/blog/seo-ve-geo-niye-vacibdir": "/blog/google-da-biznesimi-nece-tapirlar",
+  };
+  for (const [old, newSlug] of Object.entries(slugRedirects)) {
+    for (const loc of LOCALES) {
+      if (pathname === `/${loc}${old}`) {
+        return NextResponse.redirect(new URL(`/${loc}${newSlug}`, request.url), 301);
+      }
+    }
+  }
+
   if (pathnameHasLocale) return NextResponse.next();
 
   // Only redirect the root path
