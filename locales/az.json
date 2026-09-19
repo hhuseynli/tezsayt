@@ -189,7 +189,8 @@
       "label": "Neçə səhifə?"
     },
     "languages": {
-      "label": "Neçə dil?"
+      "label": "Neçə dil?",
+      "hint": "AZ + RU standartdır. 3-cü dil (məs. EN) əlavə ödənişlidir."
     },
     "addons": {
       "label": "Funksiyalar"

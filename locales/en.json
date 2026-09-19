@@ -189,7 +189,8 @@
       "label": "How many pages?"
     },
     "languages": {
-      "label": "How many languages?"
+      "label": "How many languages?",
+      "hint": "AZ + RU is standard. 3rd language (e.g. EN) is an add-on."
     },
     "addons": {
       "label": "Features"

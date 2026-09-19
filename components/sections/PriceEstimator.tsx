@@ -51,7 +51,7 @@ const monthlyServices: Record<string, { price: number; requires?: string }> = Ob
 export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<string, string> }) {
   const [type, setType] = useState<SiteType>("business");
   const [pages, setPages] = useState(5);
-  const [languages, setLanguages] = useState(1);
+  const [languages, setLanguages] = useState(2);
   const [features, setFeatures] = useState<Set<string>>(new Set());
   const [oneTimeSelected, setOneTimeSelected] = useState<Set<string>>(new Set());
   const [onRequestSelected, setOnRequestSelected] = useState<Set<string>>(new Set());
@@ -82,19 +82,21 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
   let oneTime = base || 0;
   const extraPages = Math.max(0, pages - includedPages[type]) * EXTRA_PAGE_PRICE;
   oneTime += extraPages;
-  oneTime += (languages - 1) * EXTRA_LANGUAGE_PRICE;
+  // AZ+RU standard (2 languages free); charge only for 3rd+
+  const extraLanguages = Math.max(0, languages - 2);
+  oneTime += extraLanguages * EXTRA_LANGUAGE_PRICE;
   for (const f of features) oneTime += featureAddons[f] || 0;
   for (const a of oneTimeSelected) {
     const addon = oneTimeAddons[a];
     if (addon?.flat) oneTime += addon.flat;
     if (addon?.perPage) {
-      if (a === "translation") oneTime += addon.perPage * pages * Math.max(0, languages - 1);
+      if (a === "translation") oneTime += addon.perPage * pages * extraLanguages;
       else oneTime += addon.perPage * pages;
     }
   }
   const oneTimeMin = Math.floor(oneTime / 50) * 50;
   const oneTimeMax = Math.ceil((oneTime * 1.15) / 50) * 50;
-  const days = baseDays[type] + Math.floor(extraPages / 50) + (languages - 1) * 2 + features.size * 2;
+  const days = baseDays[type] + Math.floor(extraPages / 50) + extraLanguages * 2 + features.size * 2;
 
   // --- Calculate monthly ---
   let monthly = 0;
@@ -182,14 +184,15 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
       <div>
         <p className="text-[14px] font-medium mb-[8px]">{dict["estimator.languages.label"]}</p>
         <div className="flex">
-          {[1, 2, 3].map((n, i) => (
+          {[2, 3].map((n, i) => (
             <button key={n} onClick={() => setLanguages(n)} className={cn(
               "px-[20px] py-[10px] text-[14px] font-medium border transition-colors",
               languages === n ? "bg-accent text-white border-accent" : "bg-surface text-text border-border",
-              i === 0 && "rounded-l-[8px]", i === 2 && "rounded-r-[8px]", i > 0 && "border-l-0",
+              i === 0 && "rounded-l-[8px]", i === 1 && "rounded-r-[8px]", i > 0 && "border-l-0",
             )}>{n}</button>
           ))}
         </div>
+        <p className="text-[12px] text-text-faint mt-[6px]">{dict["estimator.languages.hint"]}</p>
       </div>
 
       {/* Features (existing) */}
