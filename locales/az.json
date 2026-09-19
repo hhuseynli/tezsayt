@@ -3,6 +3,7 @@
     "work": "İşlərimiz",
     "services": "Xidmətlər",
     "about": "Haqqımızda",
+    "blog": "Bloq",
     "contact": "Əlaqə",
     "cta": "Pulsuz nümunə alın"
   },
@@ -408,6 +409,23 @@
     },
     "heading": "Bələdçilər",
     "empty": "Hələ məqalə yoxdur, tezliklə əlavə ediləcək."
+  },
+  "blog": {
+    "meta": {
+      "title": "Bloq | Tezsayt.dev",
+      "desc": "Bakıda biznes sahibləri üçün sayt, domen, hostinq və onlayn görünürlük barədə məqalələr."
+    },
+    "heading": "Bloq",
+    "sub": "Bakıda biznes sahibləri üçün sayt qurmaq, domen, hostinq və onlayn görünürlük barədə məqalələr.",
+    "empty": "Hələ məqalə yoxdur, tezliklə əlavə ediləcək.",
+    "readMore": "Oxuyun",
+    "backToList": "Bütün məqalələr",
+    "related": "Oxşar məqalələr",
+    "cta": {
+      "heading": "Pulsuz nümunədən başlayaq",
+      "body": "Biznesiniz barədə danışın, ana səhifənizi pulsuz hazırlayaq.",
+      "button": "WhatsApp-a yazın"
+    }
   },
   "notFound": {
     "heading": "Səhifə tapılmadı",

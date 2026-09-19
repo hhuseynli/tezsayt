@@ -3,6 +3,7 @@
     "work": "Work",
     "services": "Services",
     "about": "About",
+    "blog": "Blog",
     "contact": "Contact",
     "cta": "Get free draft"
   },
@@ -408,6 +409,23 @@
     },
     "heading": "Guides",
     "empty": "No articles yet. Check back soon."
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog | Tezsayt.dev",
+      "desc": "Articles for business owners in Baku: websites, domains, hosting, and online presence."
+    },
+    "heading": "Blog",
+    "sub": "Articles for business owners in Baku about websites, domains, hosting, and getting found online.",
+    "empty": "No articles yet. Check back soon.",
+    "readMore": "Read",
+    "backToList": "All articles",
+    "related": "Related articles",
+    "cta": {
+      "heading": "Let's start with the free draft",
+      "body": "Tell us about your business and we'll build your homepage — free.",
+      "button": "Message on WhatsApp"
+    }
   },
   "notFound": {
     "heading": "Page not found",
