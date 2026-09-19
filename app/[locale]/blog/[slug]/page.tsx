@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { SITE_URL, type Locale } from "@/lib/constants";
+import { SITE_URL, AGENCY_NAME, type Locale } from "@/lib/constants";
 import { getDictionary, t } from "@/lib/i18n";
 import { getPostBySlug, getPublishedPosts, getTranslations, getRelatedPosts } from "@/lib/blog";
 import { interpolatePriceTokens } from "@/components/blog/PriceTag";
 import { Button } from "@/components/ui/Button";
 import { WhatsApp } from "@/components/ui/icons/WhatsApp";
 import { waLink } from "@/lib/utils";
+import { BlogPostingJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -60,6 +61,12 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article className="bg-bg">
+      <BlogPostingJsonLd post={post} locale={loc} />
+      <BreadcrumbJsonLd locale={loc} items={[
+        { name: AGENCY_NAME, url: `${SITE_URL}/${loc}` },
+        { name: dict["blog.heading"], url: `${SITE_URL}/${loc}/blog` },
+        { name: post.title },
+      ]} />
       <div className="max-w-[720px] mx-auto px-[20px] md:px-[24px] py-[48px] md:py-[64px]">
         {/* Back link */}
         <Link

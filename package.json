@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check:locales": "npx tsx scripts/check-locales.ts"
+    "check:locales": "npx tsx scripts/check-locales.ts",
+    "check:drift": "npx tsx scripts/check-drift.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

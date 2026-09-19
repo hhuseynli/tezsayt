@@ -9,6 +9,7 @@ import { Accordion } from "@/components/ui/Accordion";
 import { PriceEstimator } from "@/components/sections/PriceEstimator";
 import { ScrollReveal, RevealItem } from "@/components/ScrollReveal";
 import { tl } from "@/content/types";
+import { FAQPageJsonLd } from "@/components/seo/JsonLd";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -28,6 +29,7 @@ export default async function ServicesPage({ params }: Props) {
 
   return (
     <div>
+      <FAQPageJsonLd locale={loc} />
       {/* Header */}
       <section className="bg-bg">
         <div className="max-w-[1120px] mx-auto px-[20px] md:px-[24px] pt-[48px] md:pt-[64px] pb-[48px]">
