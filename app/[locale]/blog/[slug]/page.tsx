@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: Props) {
         { name: dict["blog.heading"], url: `${SITE_URL}/${loc}/blog` },
         { name: post.title },
       ]} />
-      <div className="max-w-[720px] mx-auto px-[20px] md:px-[24px] py-[48px] md:py-[64px]">
+      <div className="max-w-[860px] mx-auto px-[20px] md:px-[48px] py-[48px] md:py-[64px]">
         {/* Back link */}
         <Link
           href={`/${loc}/blog`}
