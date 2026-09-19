@@ -7,7 +7,7 @@
     "cta": "Pulsuz nümunə alın"
   },
   "footer": {
-    "tagline": "Azərbaycan biznesləri üçün tez hazırlanan, sizə məxsus vebsaytlar.",
+    "tagline": "Azərbaycan biznesləri üçün tez hazırlanan, sizə məxsus saytlar.",
     "rights": "© 2026 Tezsayt. Bütün hüquqlar qorunur."
   },
   "common": {
@@ -19,7 +19,7 @@
     "learnMore": "Ətraflı",
     "seeAll": "Bütün layihələrə baxın",
     "from": "Başlanğıc qiymət",
-    "readyIn": "Hazır olur",
+    "readyIn": "Müddət",
     "goodFor": "Kimə uyğundur",
     "mostPopular": "Ən populyar"
   },
@@ -32,35 +32,35 @@
   "home": {
     "meta": {
       "title": "Tezsayt",
-      "desc": "Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam saytı tez hazırlayırıq. Bəyənməsəniz, heç nə ödəmirsiniz."
+      "desc": "Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam saytı qururuq. Bəyənməsəniz, heç nə ödəmirsiniz."
     },
     "hero": {
       "h1": "Kimsə sizi internetdə axtaranda nə tapır?",
-      "sub": "Heç nə? Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam saytı hazırlayırıq. Bəyənməsəniz, heç nə ödəmirsiniz.",
+      "sub": "Heç nə? Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam saytı qururuq. Bəyənməsəniz, heç nə ödəmirsiniz.",
       "cta": "Pulsuz ana səhifə alın",
       "searchQuery": "Saleh Tech School Bakı",
       "searchPlaceholder": "Axtar",
       "resultCount": "Təxminən 3 nəticə",
       "nothingToFind": "Əsl sayt yoxdur. Yalnız qırıntılar.",
-      "weCanFix": "Biz bunu düzəldə bilərik.",
+      "weCanFix": "Bunu düzəldə bilərik.",
       "building": "Ana səhifə hazırlanır…",
       "ready": "Ana səhifə hazırdır.",
       "likeIt": "Bəyəndiniz?",
-      "continueLabel": "Tam saytı hazırla",
-      "dontLabel": "Mənə uyğun deyil — heç nə ödəmirəm",
+      "continueLabel": "Tam saytı quraq",
+      "dontLabel": "Uyğun deyil — heç nə ödəmirəm",
       "offerTitle": "Bu ana səhifə sizindir. Pulsuzdur.",
       "offerStep1": "İndicə hazırladıq — ödəniş yoxdur, öhdəlik yoxdur.",
-      "offerStep2": "Bəyəndiniz? Tam saytı hazırlayırıq.",
-      "offerStep3": "Bəyənmədiniz? Heç nə ödəmirsiniz. Heç bir öhdəlik yoxdur.",
+      "offerStep2": "Bəyəndiniz? Tam saytı qururuq.",
+      "offerStep3": "Bəyənmədiniz? Heç nə ödəmirsiniz. Öhdəlik yoxdur.",
       "fb": {
-        "heading": "Problem yoxdur. Səbəbini deyə bilərsiniz?",
-        "sub": "Bu bizə yaxşılaşmağa kömək edir. Bir toxunuş, qeydiyyat yoxdur.",
-        "noNeed": "Hazırda veb-sayta ehtiyacım yoxdur",
-        "hasWebsite": "Artıq veb-saytım var",
-        "tooExpensive": "Çox bahadır deyə düşünürəm",
+        "heading": "Problem deyil. Səbəbini deyə bilərsiniz?",
+        "sub": "Bu bizə yaxşılaşmağa kömək edir. Bir toxunuş, qeydiyyat lazım deyil.",
+        "noNeed": "Hazırda sayta ehtiyacım yoxdur",
+        "hasWebsite": "Artıq saytım var",
+        "tooExpensive": "Bahadır deyə düşünürəm",
         "notConvinced": "Hələ əmin deyiləm",
         "other": "Başqa səbəb",
-        "send": "Rəy göndər",
+        "send": "Göndər",
         "back": "Geri",
         "thanks": "Bildirdiyiniz üçün təşəkkür edirik.",
         "thanksBody": "Fikrinizi dəyişsəniz, buradayıq.",
@@ -75,15 +75,15 @@
       "heading": "Heç bir risk yoxdur",
       "step1": {
         "title": "Biznesiniz barədə danışın",
-        "body": "10 dəqiqəlik söhbət edəcəyik. Nə ilə məşğul olduğunuzu, müştərilərinizin kim olduğunu və saytdan nə gözlədiyinizi öyrənəcəyik."
+        "body": "10 dəqiqəlik söhbət edəcəyik. Nə ilə məşğul olduğunuzu, müştərilərinizin kim olduğunu və saytdan nə istədiyinizi öyrənəcəyik."
       },
       "step2": {
         "title": "Ana səhifənizi pulsuz hazırlayırıq",
-        "body": "3 gün ərzində real, işləyən səhifə alacaqsınız. Bu maket deyil, biznesinizin əsl saytıdır və telefonunuzdan baxa bilərsiniz."
+        "body": "3 gün ərzində real, işləyən səhifə alacaqsınız. Maket deyil — biznesinizin əsl saytıdır, telefonunuzdan baxa bilərsiniz."
       },
       "step3": {
         "title": "Qərar sizindir",
-        "body": "Bəyənsəniz, qalanını hazırlayırıq və o zaman ödəyirsiniz. Bəyənməsəniz, heç nə ödəmirsiniz və heç bir öhdəlik qalmır."
+        "body": "Bəyənsəniz, qalanını qururuq və o zaman ödəyirsiniz. Bəyənməsəniz, heç nə ödəmirsiniz, heç bir öhdəlik qalmır."
       },
       "tab1": "Söhbət",
       "tab2": "Pulsuz nümunə",
@@ -94,23 +94,23 @@
       "fineprint": "Pulsuz nümunə ana səhifəni və bir düzəliş dövrünü əhatə edir."
     },
     "why": {
-      "heading": "Vebsayt nəyi dəyişir?",
-      "intro": "Bakıda heç kim diş həkimini Google-dan tapmır, amma tövsiyə ilə zəng arasında bir mərhələ var. Vebsayt məhz o mərhələdə özünü doğruldur.",
+      "heading": "Sayt nəyi dəyişir?",
+      "intro": "Bakıda heç kim diş həkimini Google-dan tapmır, amma tövsiyə ilə zəng arasında bir addım var. Sayt məhz o addımda işə düşür.",
       "p1": {
         "title": "Tövsiyə yarı yola çatdırır, saytınız işi bitirir",
-        "body": "Kimsə dostuna sizdən danışır, o dost isə zəng etməzdən əvvəl sizi axtarır. 30 saniyədə tapdığı nəticə sizə zəng edib-etməyəcəyini müəyyən edir. Peşəkar sayt bu 30 saniyəni sizin xeyrinizə çevirir."
+        "body": "Kimsə dostuna sizdən danışır, dost zəng etməzdən əvvəl sizi axtarır. 30 saniyədə tapdığı nəticə zəng edib-etməyəcəyini həll edir. Peşəkar sayt bu 30 saniyəni sizin xeyrinizə çevirir."
       },
       "p2": {
         "title": "İnstaqram hesabınız əslində sizin deyil",
-        "body": "Hesablar oğurlanır, məhdudlaşdırılır, itirilir. Meta alqoritmi dəyişəndə əhatəniz də dəyişir. Vebsayt isə internetdə həmişəlik sizə məxsus olan yeganə şeydir, heç kim onu sizdən ala bilməz."
+        "body": "Hesablar oğurlanır, məhdudlaşdırılır, itirilir. Meta alqoritmi dəyişəndə sizə çatan adam sayı da dəyişir. Sayt isə internetdə həmişə sizə məxsus olan yeganə şeydir — heç kim onu sizdən ala bilməz."
       },
       "p3": {
         "title": "Eyni suala ayda 50 dəfə cavab verməkdən qurtulun",
-        "body": "Xidmətlər, qiymətlər və iş saatları saytda yazılanda müştərilər artıq hər şeyi bilərək gəlir. Söhbətlər qısalır, satışa yaxınlaşır və siz vaxtınızı əsl işinizə sərf edirsiniz."
+        "body": "Xidmətlər, qiymətlər və iş saatları saytda yazılanda müştərilər hər şeyi bilərək gəlir. Söhbətlər qısalır, satışa yaxınlaşır, siz vaxtınızı əsl işinizə sərf edirsiniz."
       },
       "p4": {
         "title": "Telefon nömrəsi yox, şirkət kimi görünürsünüz",
-        "body": "Korporativ müştərilər, təchizatçılar, tərəfdaşlar və ya tenderlər üçün vebsayt minimum tələbdir. Saytı olmayan biznes ciddi qəbul edilmir, bu sadə həqiqətdir."
+        "body": "Korporativ müştərilər, təchizatçılar, tərəfdaşlar və ya tenderlər üçün sayt minimum tələbdir. Saytı olmayan biznes ciddi qəbul olunmur — bu sadə həqiqətdir."
       }
     },
     "pricing": {
@@ -128,8 +128,8 @@
     },
     "team": {
       "heading": "Arxasında kim dayanır",
-      "body1": "Dostlarımız və yerli bizneslər üçün vebsayt hazırlamaqla başladıq. Hər yerdə eyni problemi gördüyümüz üçün davam etdik: bizneslər ya yavaş şablon üçün agentliyə artıq ödəyirdi, ya da yarıda itən frilanser tuturdular.",
-      "body2": "Kodun təkrarlanan hissələrini AI ilə idarə edirik, buna görə müddəti qısaldırıq və ana səhifənizi heç nə ödəmədən hazırlayırıq. Dizayn qərarlarını və müştərilərinizin nəyə ehtiyacı olduğunu isə biz özümüz düşünürük.",
+      "body1": "Dostlarımız və yerli bizneslər üçün sayt hazırlamaqla başladıq. Hər yerdə eyni problemi gördük: bizneslər ya yavaş şablon üçün agentliyə artıq ödəyirdi, ya da yarıda itən frilanser tuturdular.",
+      "body2": "Kodun təkrarlanan hissələrini AI ilə həll edirik — ona görə müddəti qısaldırıq və ana səhifənizi heç nə ödəmədən hazırlaya bilirik. Dizayn, struktur və müştərilərinizin nəyə ehtiyacı olduğunu isə biz özümüz düşünürük.",
       "aboutLink": "Haqqımızda ətraflı"
     },
     "contact": {
@@ -145,23 +145,23 @@
       "booking": "Rezervasiya sistemi",
       "payments": "Onlayn ödəniş",
       "blog": "Bloq və ya xəbərlər",
-      "admin": "Admin panel",
+      "admin": "İdarəetmə paneli",
       "translation": "Tərcümə (əlavə dil)",
       "copywriting": "Mətn yazımı",
       "whatsappBot": "WhatsApp bot",
-      "adsSetup": "Reklam kampaniyası quraşdırılması"
+      "adsSetup": "Reklam kampaniyasının qurulması"
     },
     "onRequest": {
-      "label": "Fərdi qiymətli xidmətlər",
+      "label": "Sorğu əsasında qiymətləndirilən xidmətlər",
       "photography": "Fotoqrafiya",
-      "branding": "Loqo / Branding",
+      "branding": "Loqo / Brendinq",
       "whatsappAdvanced": "WhatsApp bot (genişləndirilmiş)",
-      "tag": "Tələb əsasında"
+      "tag": "Sorğu əsasında"
     },
     "monthlyServices": {
       "label": "Aylıq xidmətlər (ixtiyari)",
-      "carePlan": "Care Plan — Basic",
-      "gbpSeo": "Google Business + Local SEO",
+      "carePlan": "Texniki dəstək planı",
+      "gbpSeo": "Google Business + Yerli SEO",
       "analyticsReport": "Aylıq analitika hesabatı",
       "smmContent": "SMM (kontent, fotosuz)",
       "whatsappUpkeep": "WhatsApp bot dəstəyi",
@@ -172,11 +172,11 @@
       "label": "Təxmini qiymət",
       "oneTime": "Bir dəfəlik qiymət",
       "monthly": "Aylıq xidmətlər",
-      "timeline": "Təhvil müddəti",
+      "timeline": "Təxmini müddət",
       "days": "gün",
       "customPrice": "Fərdi təklif"
     },
-    "disclaimer": "Bir dəfəlik qiymət quraşdırma üçündür. Aylıq xidmətlər ixtiyaridir və istənilən vaxt ləğv edilə bilər.",
+    "disclaimer": "Bir dəfəlik qiymət saytın qurulması üçündür. Aylıq xidmətlər ixtiyaridir və istənilən vaxt ləğv edilə bilər.",
     "cta": "Pulsuz nümunədən başlayın",
     "type": {
       "label": "Layihə növü",
@@ -199,7 +199,7 @@
   "work": {
     "meta": {
       "title": "İşlərimiz | Tezsayt.dev",
-      "desc": "Azərbaycanda bizneslər üçün hazırladığımız vebsaytlar və sistemlər."
+      "desc": "Azərbaycanda bizneslər üçün hazırladığımız saytlar və sistemlər."
     },
     "heading": "Hazırladığımız işlər",
     "sub": "Real bizneslər, real saytlar, hazırda yayında.",
@@ -220,10 +220,10 @@
   "services": {
     "meta": {
       "title": "Xidmətlər və qiymətlər | Tezsayt.dev",
-      "desc": "Azərbaycan biznesləri üçün vebsaytlar. Ödəniş etmədən əvvəl pulsuz ana səhifə nümunəsi alırsınız."
+      "desc": "Azərbaycan biznesləri üçün saytlar. Ödəniş etmədən pulsuz ana səhifə nümunəsi alırsınız."
     },
     "heading": "Nə hazırlayırıq",
-    "sub": "4 növ layihə, açıq qiymətlər. Heç birinə qərar vermədən əvvəl pulsuz ana səhifə nümunəsi alırsınız.",
+    "sub": "4 növ layihə, açıq qiymətlər. Hər birindən əvvəl pulsuz ana səhifə nümunəsi alırsınız.",
     "includes": {
       "label": "Həmişə daxildir"
     },
@@ -240,8 +240,8 @@
       "heading": "Hər layihədə bunlar var",
       "1": "Hər telefonda düzgün görünən mobil versiya",
       "2": "Sürətli yüklənmə",
-      "3": "Domen və hostinq quraşdırılması (texniki tərəfi biz həll edirik)",
-      "4": "Google Analytics (kim ziyarət edir, haradan gəlir, hamısını görürsünüz)",
+      "3": "Domen və hostinq qurulması (texniki tərəfi biz həll edirik)",
+      "4": "Google Analytics (kim ziyarət edir, haradan gəlir — hamısını görürsünüz)",
       "5": "Yayımdan sonra 30 gün pulsuz dəstək",
       "6": "Tam sahiblik: kod, domen və məlumatlar sizindir"
     },
@@ -250,22 +250,22 @@
       "1": {
         "title": "Tanışlıq",
         "when": "1-ci gün",
-        "body": "Biznesiniz, müştəriləriniz və hədəfləriniz barədə öyrənirik, rəqiblərinizin nə etdiyinə baxırıq."
+        "body": "Biznesiniz, müştəriləriniz və hədəfləriniz barədə öyrənirik. Rəqiblərinizin nə etdiyinə baxırıq."
       },
       "2": {
         "title": "Pulsuz ana səhifə nümunəsi",
         "when": "1–3-cü günlər",
-        "body": "Ana səhifənizi hazırlayıb sizə canlı link və qısa izahatla göndəririk. Ödəniş və öhdəlik yoxdur."
+        "body": "Ana səhifənizi hazırlayıb sizə canlı link göndəririk. Ödəniş və öhdəlik yoxdur."
       },
       "3": {
         "title": "Təklif",
         "when": "Eyni gün",
-        "body": "İstiqaməti bəyənsəniz, sabit həcm, sabit qiymət və təhvil tarixi olan təklif alırsınız."
+        "body": "Bəyənsəniz, sabit həcm, sabit qiymət və təhvil tarixi olan təklif alırsınız."
       },
       "4": {
         "title": "Hazırlanma",
-        "when": "4–10-cu günlər",
-        "body": "Qalanını hazırlayırıq, gedişatı görürsünüz və istənilən vaxt rəy bildirə bilərsiniz."
+        "when": "Depozitdən sonra",
+        "body": "Qalanını qururuq. Gedişatı görürsünüz, istənilən vaxt rəy bildirə bilərsiniz. 3 düzəliş dövrü daxildir."
       },
       "5": {
         "title": "Yayım və təhvil",
@@ -274,8 +274,8 @@
       }
     },
     "maintenance": {
-      "heading": "Yayımdan sonra saytınız təhlükəsiz, yenilənmiş və sürətli qalsın",
-      "body": "30 günlük pulsuz dəstək müddəti bitəndən sonra aşağıdakı ixtiyari xidmətlərdən seçə bilərsiniz.",
+      "heading": "Yayımdan sonra saytınız təhlükəsiz, yeni və sürətli qalsın",
+      "body": "30 günlük pulsuz dəstək bitəndən sonra aşağıdakı ixtiyari xidmətlərdən seçə bilərsiniz.",
       "optional": "İxtiyari — istənilən vaxt ləğv edilə bilər",
       "basic": {
         "name": "Əsas",
@@ -283,9 +283,9 @@
         "features": [
           "Hostinq və domen idarəetməsi",
           "Təhlükəsizlik yamaları",
-          "Aylıq backup"
+          "Aylıq ehtiyat nüsxə"
         ],
-        "desc": "Saytınız işləyir, təhlükəsizdir və siz heç nə ilə məşğul olmursunuz."
+        "desc": "Saytınız işləyir, təhlükəsizdir, siz heç nə ilə məşğul olmursunuz."
       },
       "standard": {
         "name": "Standart",
@@ -295,7 +295,7 @@
           "Məzmun yeniləmələri (2 saat/ay)",
           "Aylıq analitika hesabatı"
         ],
-        "desc": "Saytınızdakı məzmunu biz yeniləyirik, siz biznesinizlə məşğul olursunuz."
+        "desc": "Saytdakı məzmunu biz yeniləyirik, siz biznesinizlə məşğul olursunuz."
       },
       "growth": {
         "name": "Böyümə",
@@ -318,37 +318,37 @@
   "about": {
     "meta": {
       "title": "Haqqımızda | Tezsayt.dev",
-      "desc": "Azərbaycanda bizneslər üçün vebsayt hazırlayan iki kompüter elmləri tələbəsi."
+      "desc": "Azərbaycanda bizneslər üçün sayt hazırlayan iki proqramçı tələbə."
     },
     "heading": "İki nəfərik, menecerimiz yoxdur",
-    "intro": "Azərbaycan biznesləri üçün vebsayt hazırlayırıq, çünki eyni problemi dəfələrlə gördük və daha yaxşı həll oluna biləcəyini düşündük.",
+    "intro": "Azərbaycan biznesləri üçün sayt hazırlayırıq. Eyni problemi dəfələrlə gördük və daha yaxşısını edə biləcəyimizə inandıq.",
     "story": {
       "heading": "Necə başladı",
-      "body1": "Birlikdə proqram layihələri hazırlayarkən tanış olduq. Real problemlər, sıx müddətlər. Sonra dostlar biznesləri üçün vebsayt istəməyə başladı və bir şeyi fərq etdik.",
-      "body2": "Danışdığımız hər biznes sahibinin qarşısında eyni 2 seçim var idi: ya agentliyə 2000 manat ödəyib şablon üçün 2 ay gözləmək, ya da 400 manata frilanser tutub bitirməsini ümid etmək. Hər iki halda sizdən əvvəlcə ödəniş istənilir, amma hələ heç nə görməmisiniz.",
+      "body1": "Birlikdə proqram layihələri hazırlayarkən tanış olduq. Real problemlər, sıx müddətlər. Sonra dostlar biznesləri üçün sayt istəməyə başladı və bir şeyi fərq etdik.",
+      "body2": "Danışdığımız hər biznes sahibinin qarşısında eyni 2 seçim var idi: ya agentliyə böyük pul ödəyib şablon üçün aylarla gözləmək, ya da frilanseri tutub bitirməsini ümid etmək. Hər iki halda əvvəlcə ödəniş istənilir, amma hələ heç nə görməmisiniz.",
       "body3": "Biz ardıcıllığı dəyişdik. Əvvəlcə ana səhifənizi hazırlayırıq, siz baxırsınız, sonra qərar verirsiniz. Bunu edə bilirik, çünki kifayət qədər sürətliyik."
     },
     "why": {
       "heading": "Niyə AI-dən istifadə edirik",
-      "body": "Dəbdə olduğu üçün deyil. AI sayəsində keyfiyyətli sayt həftələr əvəzinə günlərə hazır olur və bu qənaəti sizə ötürə bilirik. AI təkrarlanan kodu idarə edir, dizayn qərarlarını, strukturu və müştərilərinizin nəyə ehtiyacı olduğu barədə düşünməni isə biz özümüz edirik."
+      "body": "Dəbdə olduğu üçün deyil. AI sayəsində sayt həftələr əvəzinə günlərə hazır olur və bu qənaəti sizə ötürürük. AI təkrarlanan kodu idarə edir, dizayn qərarlarını, strukturu və müştərilərinizin nəyə ehtiyacı olduğunu isə biz özümüz düşünürük."
     },
     "values": {
       "heading": "Necə işləyirik",
       "1": {
         "title": "Şəffaf qiymətlər",
-        "body": "Layihəyə başlamazdan əvvəl dəqiq rəqəmi bilirsiniz. Gizli xərclər, gözlənilməz hesablar və ya sonradan ortaya çıxan əlavə ödənişlər olmur. Razılaşdığımız qiymət, son qiymətdir."
+        "body": "Layihəyə başlamazdan əvvəl dəqiq rəqəmi bilirsiniz. Gizli xərclər, gözlənilməz hesablar olmur. Razılaşdığımız qiymət — son qiymətdir."
       },
       "2": {
         "title": "Sürətli təhvil",
-        "body": "AI ilə təkrarlanan işləri avtomatlaşdırdığımız üçün keyfiyyəti qoruyaraq müddəti qısaldırıq. Hər layihə növünün öz müddəti var, xidmətlər səhifəsində görə bilərsiniz."
+        "body": "AI ilə təkrarlanan işləri avtomatlaşdırdığımız üçün keyfiyyəti qoruyaraq müddəti qısaldırıq. Hər layihə növünün öz müddəti var — xidmətlər səhifəsində görə bilərsiniz."
       },
       "3": {
         "title": "Tam sahiblik",
-        "body": "Kod, domen və bütün məlumatlar 1-ci gündən sizin adınıza qeydiyyatdan keçir. İstədiyiniz zaman başqa komanda ilə işləyə bilərsiniz, heç nə bizə bağlı qalmır."
+        "body": "Kod, domen və bütün məlumatlar birinci gündən sizin adınızadır. İstənilən vaxt başqa komanda ilə işləyə bilərsiniz — heç nə bizə bağlı deyil."
       },
       "4": {
         "title": "Yerli anlayış",
-        "body": "Azərbaycanda biznesin necə işlədiyini, müştərilərinizin nə gözlədiyini və yerli bazarın xüsusiyyətlərini bilirik. Saytınız buradakı insanlar üçün hazırlanır."
+        "body": "Azərbaycanda biznesin necə işlədiyini, müştərilərinizin nə gözlədiyini bilirik. Saytınız buradakı insanlar üçün hazırlanır."
       }
     },
     "comparison": {
@@ -368,7 +368,7 @@
   "contact": {
     "meta": {
       "title": "Əlaqə | Tezsayt.dev",
-      "desc": "Pulsuz ana səhifə nümunəsi ilə başlayın, bir neçə saat ərzində cavab veririk."
+      "desc": "Pulsuz ana səhifə nümunəsi ilə başlayın. Bir neçə saat ərzində cavab veririk."
     },
     "heading": "Pulsuz nümunədən başlayaq",
     "body": "Biznesinizin nə ilə məşğul olduğunu yazın, bir neçə saat ərzində cavab verəcəyik.",
@@ -385,26 +385,26 @@
       "reachHint": "Telefon, İnstaqram və ya e-poçt",
       "submit": "Göndərin",
       "error": {
-        "name": "Zəhmət olmasa adınızı yazın",
-        "need": "Zəhmət olmasa nəyə ehtiyacınız olduğunu yazın",
-        "reach": "Zəhmət olmasa sizinlə necə əlaqə saxlayacağımızı yazın",
-        "send": "Xəta baş verdi, əvəzinə WhatsApp-a yazın."
+        "name": "Adınızı yazın",
+        "need": "Nəyə ehtiyacınız olduğunu yazın",
+        "reach": "Sizinlə necə əlaqə saxlayacağımızı yazın",
+        "send": "Xəta baş verdi. Əvəzinə WhatsApp-a yazın."
       }
     }
   },
   "thanks": {
     "heading": "Mesajınız qəbul edildi",
-    "body": "Bir neçə saat ərzində cavab verəcəyik. Təcilidirsə, WhatsApp-a yaza bilərsiniz, adətən daha sürətli olur.",
+    "body": "Bir neçə saat ərzində cavab verəcəyik. Təcilidirsə, WhatsApp-a yazın — adətən daha sürətli olur.",
     "back": "Ana səhifəyə qayıdın"
   },
   "og": {
-    "title": "Tezsayt.dev | Pulsuz ana səhifə nümunəsi, yalnız bəyənsəniz ödəyin",
-    "desc": "Azərbaycan biznesləri üçün vebsaytlar. Əvvəlcə pulsuz ana səhifə, bəyənsəniz tam sayt."
+    "title": "Tezsayt.dev | Pulsuz ana səhifə nümunəsi — yalnız bəyənsəniz ödəyin",
+    "desc": "Azərbaycan biznesləri üçün saytlar. Əvvəlcə pulsuz ana səhifə, bəyənsəniz tam sayt."
   },
   "guides": {
     "meta": {
       "title": "Bələdçilər | Tezsayt.dev",
-      "desc": "Azərbaycanda bizneslər üçün vebsayt hazırlamaq barədə bələdçilər və məqalələr."
+      "desc": "Azərbaycanda bizneslər üçün sayt hazırlamaq barədə bələdçilər və məqalələr."
     },
     "heading": "Bələdçilər",
     "empty": "Hələ məqalə yoxdur, tezliklə əlavə ediləcək."
@@ -417,35 +417,35 @@
   "faq": {
     "catch": {
       "q": "Pulsuz nümunənin hiyləsi nədir?",
-      "a": "Heç bir hiylə yoxdur. Ana səhifənizi ona görə hazırlayırıq ki, nə edə bildiyimizi göstərməyin ən sürətli yoludur, portfoliodan və satış zəngindən daha sürətli. Öz biznesini real saytda görən insanların əksəriyyəti qalanını da hazırlatmaq istəyir. Bəziləri istəmir, bu da normaldır. Biz 3 gün sübut etməyi 3 gün mübahisə etməkdən üstün tuturuq."
+      "a": "Heç bir hiylə yoxdur. Ana səhifənizi ona görə hazırlayırıq ki, nə edə bildiyimizi göstərməyin ən sürətli yoludur — portfoliodan və ya satış zəngindən daha sürətli. Öz biznesini real saytda görən insanların çoxu qalanını da sifariş edir. Bəziləri etmir — bu da normaldır. Biz 3 gün sübut etməyi 3 gün mübahisə etməkdən üstün tuturuq."
     },
     "fast": {
       "q": "Bu qədər sürətli necə işləyirsiniz?",
-      "a": "AI kodun təkrarlanan hissələrini idarə edir, yəni əvvəllər günlərlə yazılacaq işləri avtomatlaşdırır. Bu bizə dizayn, struktur və konkret biznesinizə uyğunlaşdırmağa fokuslanmağa imkan verir. Keyfiyyət düşmür, müddət qısalır."
+      "a": "AI kodun təkrarlanan hissələrini idarə edir — əvvəllər günlərlə yazılacaq işi avtomatlaşdırır. Bizə dizayn, struktur və konkret biznesinizə uyğunlaşdırma qalır. Keyfiyyət düşmür, müddət qısalır."
     },
     "own": {
       "q": "Hər şey həqiqətən mənə məxsus olur?",
-      "a": "Bəli. Domen 1-ci gündən sizin adınıza qeydiyyatdan keçir, kod sizə təhvil verilir və hostinq hesabı sizindir. Gələn il başqası ilə işləmək istəsəniz, hər şeyi özünüzlə aparırsınız, heç nə bizə bağlı deyil."
+      "a": "Bəli. Domen birinci gündən sizin adınıza qeydiyyatdan keçir, kod sizə verilir, hostinq hesabı sizindir. Gələn il başqası ilə işləmək istəsəniz, hər şeyi aparırsınız — heç nə bizə bağlı deyil."
     },
     "changes": {
       "q": "Yayımdan sonra dəyişiklik lazım olsa nə edim?",
-      "a": "Yayımdan sonra 30 gün pulsuz dəstək alırsınız, sadəcə xəta düzəltmə deyil, real dəyişikliklər. Ondan sonra ya ixtiyari aylıq texniki xidmət planı seçə bilərsiniz, ya da hər dəyişiklik üçün ayrıca ödəyə bilərsiniz. Məcburi abunəlik yoxdur."
+      "a": "Yayımdan sonra 30 gün pulsuz dəstək alırsınız — sadəcə xəta düzəltmə deyil, həqiqi dəyişikliklər. Ondan sonra ya ixtiyari aylıq dəstək planı seçirsiniz, ya da hər dəyişiklik üçün ayrıca ödəyirsiniz. Məcburi abunəlik yoxdur."
     },
     "prepare": {
       "q": "Nə hazırlamalıyam?",
-      "a": "Varsa logonuz, biznesinizin təsviri və istifadə etmək istədiyiniz şəkillər. Mətn yazmamısınızsa kömək edərik, logonuz yoxdursa sadə bir logo da hazırlaya bilərik."
+      "a": "Varsa logonuz, biznesinizin təsviri və istifadə etmək istədiyiniz şəkillər. Mətniniz yoxdursa kömək edərik, logonuz yoxdursa sadə bir loqo hazırlaya bilərik."
     },
     "payment": {
       "q": "Ödəniş necə işləyir?",
-      "a": "Pulsuz nümunəni təsdiqləyənə qədər heç nə ödəmirsiniz. Təsdiqləyəndən sonra tam hazırlanmanın başlanması üçün yarısını, yayımda isə qalan yarısını ödəyirsiniz."
+      "a": "Pulsuz nümunəni bəyənənə qədər heç nə ödəmirsiniz. Bəyəndikdən sonra işə başlamaq üçün yarısını, yayımda qalan yarısını ödəyirsiniz."
     },
     "outside": {
       "q": "Bakıdan kənarda işləyirsiniz?",
-      "a": "Bəli, Azərbaycanın hər yerində və beynəlxalq səviyyədə işləyirik. Hər şey uzaqdan edilir."
+      "a": "Bəli — Azərbaycanın istənilən yerində və beynəlxalq. Hər şey uzaqdan edilir."
     },
     "languages": {
       "q": "Sayt birdən çox dildə ola bilər?",
-      "a": "Bəli. Azərbaycan, rus və ingilis dilləri bizim üçün standartdır. Əlavə dillər qiymətə az miqdarda əlavə edir və müddətə 1–2 gün artırır."
+      "a": "Bəli. Azərbaycan və rus dilləri standartdır. Əlavə dillər qiymətə az miqdarda əlavə edir və müddətə bir neçə gün artırır."
     }
   }
 }

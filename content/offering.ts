@@ -198,7 +198,7 @@ export const featureAddons: FeatureAddon[] = [
   },
   {
     id: "admin",
-    label: { az: "Admin panel", ru: "Панель управления", en: "Admin panel" },
+    label: { az: "İdarəetmə paneli", ru: "Панель управления", en: "Admin panel" },
     price: 400,
     availableFor: ["store", "custom"],
   },
@@ -231,14 +231,14 @@ export const oneTimeAddons: OneTimeAddon[] = [
   },
   {
     id: "adsSetup",
-    label: { az: "Reklam kampaniyası quraşdırılması", ru: "Настройка рекламной кампании", en: "Ad campaign setup" },
+    label: { az: "Reklam kampaniyasının qurulması", ru: "Настройка рекламной кампании", en: "Ad campaign setup" },
     perPage: null, flat: 300,
   },
 ];
 
 export const onRequestServices = [
   { id: "photography", label: { az: "Fotoqrafiya", ru: "Фотография", en: "Photography" } },
-  { id: "branding", label: { az: "Loqo / Brending", ru: "Логотип / Брендинг", en: "Logo / Branding" } },
+  { id: "branding", label: { az: "Loqo / Brendinq", ru: "Логотип / Брендинг", en: "Logo / Branding" } },
   { id: "whatsappAdvanced", label: { az: "WhatsApp bot (genişləndirilmiş)", ru: "WhatsApp бот (расширенный)", en: "WhatsApp bot (advanced)" } },
 ] as const;
 
@@ -303,7 +303,7 @@ export const monthlyServices: MonthlyService[] = [
       en: "Google Business + Local SEO",
     },
     description: {
-      az: "Google Business profilinin idarəsi və yerli axtarış optimallaşdırması",
+      az: "Google Business profilinizi idarə edirik, yerli axtarışda görünürsünüz",
       ru: "Управление профилем Google Business и оптимизация локального поиска",
       en: "Google Business profile management and local search optimization",
     },
@@ -333,7 +333,7 @@ export const monthlyServices: MonthlyService[] = [
       en: "SMM (content only, no photos)",
     },
     description: {
-      az: "Sosial media üçün mətn kontenti",
+      az: "Sosial media üçün mətn və kontent",
       ru: "Текстовый контент для социальных сетей",
       en: "Text content for social media",
     },
@@ -348,7 +348,7 @@ export const monthlyServices: MonthlyService[] = [
       en: "WhatsApp bot support",
     },
     description: {
-      az: "WhatsApp botunun davamlı dəstəyi və yeniləmələri",
+      az: "WhatsApp botunun işləməsi və yenilənməsi",
       ru: "Постоянная поддержка и обновления WhatsApp бота",
       en: "Ongoing WhatsApp bot maintenance and updates",
     },
@@ -367,7 +367,7 @@ export const facts = {
   ownership: {
     /** Surfaces: ownership section, FAQ, footer, comparison pages */
     model: {
-      az: "Hər hesab — hostinq, domen, analitika — sizin adınıza yaradılır. Biz sizin icazənizlə işləyirik. Bizi çıxartmaq üçün şifrələri sıfırlayırsınız, vəssalam.",
+      az: "Hər hesab — hostinq, domen, analitika — sizin adınıza yaradılır. Sizdən icazə ilə işləyirik. Bizi çıxartmaq istəsəniz, şifrələri sıfırlayırsınız, vəssalam.",
       ru: "Каждый аккаунт — хостинг, домен, аналитика — создаётся на ваше имя. Мы работаем с вашего разрешения. Чтобы нас убрать — сбросьте пароли, и всё.",
       en: "Every account — hosting, domain, analytics — is created in your name. We work at your discretion. To remove us, reset the passwords. That's it.",
     } satisfies Localized,
@@ -379,7 +379,7 @@ export const facts = {
     } satisfies Localized,
     /** What happens when care plan is cancelled — §12 #8 */
     onCancellation: {
-      az: "Aylıq planı ləğv etdikdə, giriş məlumatlarımızı proaktiv şəkildə silirik.",
+      az: "Aylıq planı ləğv etsəniz, girişimizi dərhal öz başımıza ləğv edirik.",
       ru: "При отмене плана мы проактивно удаляем наши данные для входа.",
       en: "When you cancel the plan, we proactively remove our credentials.",
     } satisfies Localized,
@@ -401,13 +401,13 @@ export const facts = {
     } satisfies Localized,
     /** How the draft is delivered — §10 */
     delivery: {
-      az: "Canlı link olaraq bizim infrastrukturumuzda təqdim edilir",
+      az: "Öz serverimizdə canlı link kimi təqdim edilir",
       ru: "Предоставляется как рабочая ссылка на нашей инфраструктуре",
       en: "Delivered as a live link on our infrastructure",
     } satisfies Localized,
     /** When source code transfers — §10 */
     sourceTransfer: {
-      az: "Mənbə kodu ödənişdən sonra sizə keçir",
+      az: "Kod ödənişdən sonra sizə verilir",
       ru: "Исходный код передаётся после оплаты",
       en: "Source code transfers to you at payment",
     } satisfies Localized,
@@ -430,7 +430,7 @@ export const facts = {
   /** §12 #4: Payment structure */
   payment: {
     structure: {
-      az: "Pulsuz nümunəni təsdiqləyənə qədər heç nə ödəmirsiniz. Sonra tam hazırlanmanın başlanması üçün 50%, yayımda isə qalan 50%.",
+      az: "Pulsuz nümunəni bəyənənə qədər heç nə ödəmirsiniz. Bəyəndikdən sonra işə başlamaq üçün 50% depozit, yayımda qalan 50%.",
       ru: "Ничего, пока не одобрите бесплатный макет. Затем 50% для начала работы и 50% при запуске.",
       en: "Nothing until you approve the free draft. Then 50% to begin the full build and 50% at launch.",
     } satisfies Localized,
@@ -447,7 +447,7 @@ export const facts = {
 
   /** §12 #6: Domain renewal */
   domainRenewal: {
-    az: "Aylıq dəstək planınız varsa, domen yeniləməsi bizim üzərimizdədir.",
+    az: "Aylıq dəstək planınız varsa, domenin yenilənməsini biz ödəyirik.",
     ru: "Если у вас есть план ежемесячной поддержки, продление домена — наша обязанность.",
     en: "If you have a monthly support plan, domain renewal is on us.",
   } satisfies Localized,
@@ -456,7 +456,7 @@ export const facts = {
   freeSupport: {
     days: 30,
     description: {
-      az: "Yayımdan sonra 30 təqvim günü pulsuz dəstək — real dəyişikliklər, yalnız xəta düzəltmə deyil",
+      az: "Yayımdan sonra 30 təqvim günü pulsuz dəstək — sadəcə xəta deyil, həqiqi dəyişikliklər",
       ru: "30 календарных дней бесплатной поддержки после запуска — реальные правки, а не только баг-фиксы",
       en: "30 calendar days of free support after launch — real changes, not just bug fixes",
     } satisfies Localized,
