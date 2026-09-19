@@ -14,7 +14,7 @@ import { WhatsApp } from "@/components/ui/icons/WhatsApp";
 
 type HeaderProps = { locale: Locale; dict: Record<string, string> };
 
-const navKeys = ["work", "services", "about", "contact"] as const;
+const navKeys = ["work", "services", "blog", "about", "contact"] as const;
 
 export function Header({ locale, dict }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);

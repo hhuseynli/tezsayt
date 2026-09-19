@@ -4,18 +4,25 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "check:offering": "npx tsx scripts/validate-offering.ts",
+    "check:blog": "npx tsx scripts/validate-blog.ts",
+    "prebuild": "npx tsx scripts/validate-offering.ts && npx tsx scripts/validate-blog.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check:locales": "npx tsx scripts/check-locales.ts"
+    "check:locales": "npx tsx scripts/check-locales.ts",
+    "check:drift": "npx tsx scripts/check-drift.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^13.1.1",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.33.0",
     "next": "16.3.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {

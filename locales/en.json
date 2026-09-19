@@ -3,6 +3,7 @@
     "work": "Work",
     "services": "Services",
     "about": "About",
+    "blog": "Blog",
     "contact": "Contact",
     "cta": "Get free draft"
   },
@@ -32,11 +33,11 @@
   "home": {
     "meta": {
       "title": "Tezsayt",
-      "desc": "We build your homepage first, free. If you like it, the full site is ready in seven days. From 500 AZN."
+      "desc": "We build your homepage first, free. Like it, we build the full site. Don't, you pay nothing."
     },
     "hero": {
       "h1": "When someone asks about you, what do they find?",
-      "sub": "Nothing? We'll build your homepage first — free. Like it, we'll build the full site in 7 days. Don't, you pay nothing.",
+      "sub": "Nothing? We'll build your homepage first — free. Like it, we build the full site. Don't, you pay nothing.",
       "cta": "Get your free homepage",
       "searchQuery": "Saleh Tech School Baku",
       "searchPlaceholder": "Search",
@@ -46,11 +47,11 @@
       "building": "Building homepage…",
       "ready": "Homepage ready.",
       "likeIt": "Like it?",
-      "continueLabel": "Build the full site — 7 days",
+      "continueLabel": "Build the full site",
       "dontLabel": "Not for me — I pay nothing",
       "offerTitle": "This homepage is yours. Free.",
       "offerStep1": "We just built it — no payment, no obligation.",
-      "offerStep2": "Like it? We'll build the full site in 7 days.",
+      "offerStep2": "Like it? We'll build the full site.",
       "offerStep3": "Don't? You pay nothing. Walk away.",
       "fb": {
         "heading": "No problem. Mind telling us why?",
@@ -83,7 +84,7 @@
       },
       "step3": {
         "title": "You decide",
-        "body": "Like it? We build the rest in seven days and you pay then. Don't like it? Walk away. No invoice, no obligation."
+        "body": "Like it? We build the rest and you pay then. Don't like it? Walk away. No invoice, no obligation."
       },
       "tab1": "Chat",
       "tab2": "Free draft",
@@ -119,7 +120,7 @@
       "included": {
         "label": "Included in every project",
         "1": "Mobile-optimized",
-        "2": "Under one second load time",
+        "2": "Fast loading",
         "3": "Domain and hosting setup",
         "4": "Thirty days free support",
         "5": "You own everything"
@@ -129,7 +130,7 @@
     "team": {
       "heading": "Who's behind it",
       "body1": "We started building websites for friends and local businesses, and kept going because we saw the same gap everywhere: businesses either overpaid an agency for a slow template, or hired a freelancer who disappeared halfway through.",
-      "body2": "We use AI to handle the repetitive parts of writing code. That's why we deliver in a week instead of two months, and why we can afford to build your homepage before you've paid anything. The design decisions and the thinking about what your customers actually need — that's us.",
+      "body2": "We use AI to handle the repetitive parts of writing code. That's how we cut delivery times and can afford to build your homepage before you've paid anything. The design decisions and the thinking about what your customers actually need — that's us.",
       "aboutLink": "More about us"
     },
     "contact": {
@@ -189,7 +190,8 @@
       "label": "How many pages?"
     },
     "languages": {
-      "label": "How many languages?"
+      "label": "How many languages?",
+      "hint": "AZ + RU is standard. 3rd language (e.g. EN) is an add-on."
     },
     "addons": {
       "label": "Features"
@@ -219,7 +221,7 @@
   "services": {
     "meta": {
       "title": "Services and pricing | Tezsayt.dev",
-      "desc": "Websites from 500 AZN, delivered in seven days. Free homepage draft before you pay anything."
+      "desc": "Websites for businesses in Azerbaijan. Free homepage draft before you pay anything."
     },
     "heading": "What we build",
     "sub": "Four kinds of project. Published prices. A free homepage draft before you commit to any of them.",
@@ -229,13 +231,16 @@
     "bestFor": {
       "label": "Best for"
     },
+    "languages": {
+      "standard": "Included languages"
+    },
     "timeline": {
       "label": "Timeline"
     },
     "always": {
       "heading": "In every project",
       "1": "Mobile-optimized — works properly on every phone",
-      "2": "Fast loading — under one second",
+      "2": "Fast loading",
       "3": "Domain and hosting setup — we handle the technical side",
       "4": "Google Analytics — see who visits and where they come from",
       "5": "Thirty days of free support after launch",
@@ -271,7 +276,8 @@
     },
     "maintenance": {
       "heading": "Keep your site secure, updated, and fast after launch",
-      "body": "When the 30-day free support ends, you can continue with the Basic plan.",
+      "body": "When the 30-day free support ends, you can choose from the following optional services.",
+      "optional": "Optional — cancel anytime",
       "basic": {
         "name": "Basic",
         "price": "100",
@@ -307,7 +313,8 @@
     },
     "faq": {
       "heading": "Questions"
-    }
+    },
+    "clockNote": "Timeline starts after deposit. Revisions don't count toward the timeline."
   },
   "about": {
     "meta": {
@@ -334,7 +341,7 @@
       },
       "2": {
         "title": "Fast delivery",
-        "body": "You won't wait 6 weeks for a 5-page site. We automate repetitive tasks with AI, cutting timelines without cutting quality."
+        "body": "We automate repetitive tasks with AI, cutting timelines without cutting quality. Each project type has its own timeline — see the services page."
       },
       "3": {
         "title": "Full ownership",
@@ -393,7 +400,7 @@
   },
   "og": {
     "title": "Tezsayt.dev | Free homepage draft, pay only if you like it",
-    "desc": "Websites for Azerbaijani businesses. Ready in seven days. From 500 AZN."
+    "desc": "Websites for Azerbaijani businesses. Free homepage draft first, pay only if you like it."
   },
   "guides": {
     "meta": {
@@ -402,6 +409,23 @@
     },
     "heading": "Guides",
     "empty": "No articles yet. Check back soon."
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog | Tezsayt.dev",
+      "desc": "Articles for business owners in Baku: websites, domains, hosting, and online presence."
+    },
+    "heading": "Blog",
+    "sub": "Articles for business owners in Baku about websites, domains, hosting, and getting found online.",
+    "empty": "No articles yet. Check back soon.",
+    "readMore": "Read",
+    "backToList": "All articles",
+    "related": "Related articles",
+    "cta": {
+      "heading": "Let's start with the free draft",
+      "body": "Tell us about your business and we'll build your homepage — free.",
+      "button": "Message on WhatsApp"
+    }
   },
   "notFound": {
     "heading": "Page not found",
