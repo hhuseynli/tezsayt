@@ -1,11 +1,17 @@
 import { AGENCY_NAME, SITE_URL, EMAIL, WHATSAPP_NUMBER, INSTAGRAM_HANDLE } from "@/lib/constants";
 import type { Locale } from "@/lib/constants";
+import { facts, tiers, formatTurnaroundShort } from "@/content/offering";
 
 export function LocalBusinessJsonLd({ locale }: { locale: Locale }) {
+  const entryTier = tiers[0];
+  const entryRange = formatTurnaroundShort(entryTier.turnaround, locale);
+  const businessTier = tiers.find((t) => t.id === "business")!;
+  const businessRange = formatTurnaroundShort(businessTier.turnaround, locale);
+
   const descriptions: Record<Locale, string> = {
-    az: "Azərbaycan biznesləri üçün veb-saytlar. 7 günə hazır. 500 AZN-dən başlayaraq.",
-    ru: "Сайты для бизнеса в Азербайджане. Готовы за 7 дней. От 500 AZN.",
-    en: "Websites for Azerbaijani businesses. Ready in seven days. From 500 AZN.",
+    az: `Azərbaycan biznesləri üçün veb-saytlar. ${facts.entryPrice} AZN-dən başlayaraq. Vizitkart ${entryRange}, Biznes saytı ${businessRange}.`,
+    ru: `Сайты для бизнеса в Азербайджане. От ${facts.entryPrice} AZN. Визитка ${entryRange}, Бизнес-сайт ${businessRange}.`,
+    en: `Websites for Azerbaijani businesses. From ${facts.entryPrice} AZN. Business card ${entryRange}, Business site ${businessRange}.`,
   };
 
   const jsonLd = {
@@ -26,7 +32,7 @@ export function LocalBusinessJsonLd({ locale }: { locale: Locale }) {
       "@type": "Country",
       name: "Azerbaijan",
     },
-    priceRange: "500-5000 AZN",
+    priceRange: facts.schemaOrgPriceRange,
     sameAs: [
       `https://instagram.com/${INSTAGRAM_HANDLE}`,
     ],
@@ -36,7 +42,7 @@ export function LocalBusinessJsonLd({ locale }: { locale: Locale }) {
       "@type": "Offer",
       name: "Free homepage draft",
       price: "0",
-      priceCurrency: "AZN",
+      priceCurrency: facts.currency,
       description: "We build your homepage before you pay anything.",
     },
   };

@@ -32,11 +32,11 @@
   "home": {
     "meta": {
       "title": "Tezsayt",
-      "desc": "Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam sayt 7 günə hazır olur. 500 AZN-dən başlayır."
+      "desc": "Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam saytı tez hazırlayırıq. Bəyənməsəniz, heç nə ödəmirsiniz."
     },
     "hero": {
       "h1": "Kimsə sizi internetdə axtaranda nə tapır?",
-      "sub": "Heç nə? Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam sayt 7 günə hazır olur. Bəyənməsəniz, heç nə ödəmirsiniz.",
+      "sub": "Heç nə? Əvvəlcə ana səhifənizi pulsuz hazırlayırıq. Bəyənsəniz, tam saytı hazırlayırıq. Bəyənməsəniz, heç nə ödəmirsiniz.",
       "cta": "Pulsuz ana səhifə alın",
       "searchQuery": "Saleh Tech School Bakı",
       "searchPlaceholder": "Axtar",
@@ -46,11 +46,11 @@
       "building": "Ana səhifə hazırlanır…",
       "ready": "Ana səhifə hazırdır.",
       "likeIt": "Bəyəndiniz?",
-      "continueLabel": "Tam saytı hazırla — 7 gün",
+      "continueLabel": "Tam saytı hazırla",
       "dontLabel": "Mənə uyğun deyil — heç nə ödəmirəm",
       "offerTitle": "Bu ana səhifə sizindir. Pulsuzdur.",
       "offerStep1": "İndicə hazırladıq — ödəniş yoxdur, öhdəlik yoxdur.",
-      "offerStep2": "Bəyəndiniz? Tam saytı 7 günə hazırlayırıq.",
+      "offerStep2": "Bəyəndiniz? Tam saytı hazırlayırıq.",
       "offerStep3": "Bəyənmədiniz? Heç nə ödəmirsiniz. Heç bir öhdəlik yoxdur.",
       "fb": {
         "heading": "Problem yoxdur. Səbəbini deyə bilərsiniz?",
@@ -83,7 +83,7 @@
       },
       "step3": {
         "title": "Qərar sizindir",
-        "body": "Bəyənsəniz, qalanını 7 günə hazırlayırıq və o zaman ödəyirsiniz. Bəyənməsəniz, heç nə ödəmirsiniz və heç bir öhdəlik qalmır."
+        "body": "Bəyənsəniz, qalanını hazırlayırıq və o zaman ödəyirsiniz. Bəyənməsəniz, heç nə ödəmirsiniz və heç bir öhdəlik qalmır."
       },
       "tab1": "Söhbət",
       "tab2": "Pulsuz nümunə",
@@ -119,7 +119,7 @@
       "included": {
         "label": "Hər layihəyə daxildir",
         "1": "Mobil üçün optimallaşdırılıb",
-        "2": "1 saniyədən az yüklənmə vaxtı",
+        "2": "Sürətli yüklənmə",
         "3": "Domen və hostinq quraşdırılması",
         "4": "30 gün pulsuz dəstək",
         "5": "Hər şey sizə məxsusdur"
@@ -129,7 +129,7 @@
     "team": {
       "heading": "Arxasında kim dayanır",
       "body1": "Dostlarımız və yerli bizneslər üçün vebsayt hazırlamaqla başladıq. Hər yerdə eyni problemi gördüyümüz üçün davam etdik: bizneslər ya yavaş şablon üçün agentliyə artıq ödəyirdi, ya da yarıda itən frilanser tuturdular.",
-      "body2": "Kodun təkrarlanan hissələrini AI ilə idarə edirik, buna görə də 2 ay əvəzinə 1 həftədə təhvil verə bilirik və ana səhifənizi heç nə ödəmədən hazırlayırıq. Dizayn qərarlarını və müştərilərinizin nəyə ehtiyacı olduğunu isə biz özümüz düşünürük.",
+      "body2": "Kodun təkrarlanan hissələrini AI ilə idarə edirik, buna görə müddəti qısaldırıq və ana səhifənizi heç nə ödəmədən hazırlayırıq. Dizayn qərarlarını və müştərilərinizin nəyə ehtiyacı olduğunu isə biz özümüz düşünürük.",
       "aboutLink": "Haqqımızda ətraflı"
     },
     "contact": {
@@ -159,7 +159,7 @@
       "tag": "Tələb əsasında"
     },
     "monthlyServices": {
-      "label": "Aylıq xidmətlər (isteğe bağlı)",
+      "label": "Aylıq xidmətlər (ixtiyari)",
       "carePlan": "Care Plan — Basic",
       "gbpSeo": "Google Business + Local SEO",
       "analyticsReport": "Aylıq analitika hesabatı",
@@ -219,7 +219,7 @@
   "services": {
     "meta": {
       "title": "Xidmətlər və qiymətlər | Tezsayt.dev",
-      "desc": "500 AZN-dən başlayan vebsaytlar, 7 günə hazır olur. Ödəniş etmədən pulsuz ana səhifə nümunəsi alırsınız."
+      "desc": "Azərbaycan biznesləri üçün vebsaytlar. Ödəniş etmədən əvvəl pulsuz ana səhifə nümunəsi alırsınız."
     },
     "heading": "Nə hazırlayırıq",
     "sub": "4 növ layihə, açıq qiymətlər. Heç birinə qərar vermədən əvvəl pulsuz ana səhifə nümunəsi alırsınız.",
@@ -235,7 +235,7 @@
     "always": {
       "heading": "Hər layihədə bunlar var",
       "1": "Hər telefonda düzgün görünən mobil versiya",
-      "2": "1 saniyədən az yüklənmə vaxtı",
+      "2": "Sürətli yüklənmə",
       "3": "Domen və hostinq quraşdırılması (texniki tərəfi biz həll edirik)",
       "4": "Google Analytics (kim ziyarət edir, haradan gəlir, hamısını görürsünüz)",
       "5": "Yayımdan sonra 30 gün pulsuz dəstək",
@@ -271,7 +271,8 @@
     },
     "maintenance": {
       "heading": "Yayımdan sonra saytınız təhlükəsiz, yenilənmiş və sürətli qalsın",
-      "body": "30 günlük pulsuz dəstək müddəti bitəndə Əsas plandan davam edə bilərsiniz.",
+      "body": "30 günlük pulsuz dəstək müddəti bitəndən sonra aşağıdakı ixtiyari xidmətlərdən seçə bilərsiniz.",
+      "optional": "İxtiyari — istənilən vaxt ləğv edilə bilər",
       "basic": {
         "name": "Əsas",
         "price": "100",
@@ -334,7 +335,7 @@
       },
       "2": {
         "title": "Sürətli təhvil",
-        "body": "5 səhifəlik sayt üçün 6 həftə gözləməyəcəksiniz. AI ilə təkrarlanan işləri avtomatlaşdırdığımız üçün keyfiyyəti qoruyaraq müddəti qısaldırıq."
+        "body": "AI ilə təkrarlanan işləri avtomatlaşdırdığımız üçün keyfiyyəti qoruyaraq müddəti qısaldırıq. Hər layihə növünün öz müddəti var, xidmətlər səhifəsində görə bilərsiniz."
       },
       "3": {
         "title": "Tam sahiblik",
@@ -393,7 +394,7 @@
   },
   "og": {
     "title": "Tezsayt.dev | Pulsuz ana səhifə nümunəsi, yalnız bəyənsəniz ödəyin",
-    "desc": "Azərbaycan biznesləri üçün vebsaytlar, 7 günə hazır olur. 500 AZN-dən başlayır."
+    "desc": "Azərbaycan biznesləri üçün vebsaytlar. Əvvəlcə pulsuz ana səhifə, bəyənsəniz tam sayt."
   },
   "guides": {
     "meta": {

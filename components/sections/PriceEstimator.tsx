@@ -7,40 +7,46 @@ import { WhatsApp } from "@/components/ui/icons/WhatsApp";
 import { cn } from "@/lib/utils";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import type { Locale } from "@/lib/constants";
+import {
+  tiers,
+  featureAddons as offeringFeatureAddons,
+  oneTimeAddons as offeringOneTimeAddons,
+  onRequestServices as offeringOnRequestServices,
+  monthlyServices as offeringMonthlyServices,
+  EXTRA_PAGE_PRICE,
+  EXTRA_LANGUAGE_PRICE,
+  perMonthLabel,
+  type TierId,
+} from "@/content/offering";
+import { tl } from "@/content/types";
 
-type SiteType = "landing" | "business" | "store" | "custom";
+type SiteType = TierId;
 
-// --- Pricing config ---
-const basePrice: Record<SiteType, number | null> = { landing: 500, business: 800, store: 2000, custom: null };
-const includedPages: Record<SiteType, number> = { landing: 1, business: 6, store: 8, custom: 8 };
-const baseDays: Record<SiteType, number> = { landing: 4, business: 9, store: 12, custom: 21 };
+// --- Pricing config derived from offering.ts ---
+const basePrice: Record<SiteType, number | null> = Object.fromEntries(
+  tiers.map((t) => [t.id, t.price.amount])
+) as Record<SiteType, number | null>;
+const includedPages: Record<SiteType, number> = Object.fromEntries(
+  tiers.map((t) => [t.id, t.includedPages])
+) as Record<SiteType, number>;
+const baseDays: Record<SiteType, number> = Object.fromEntries(
+  tiers.map((t) => [t.id, t.estimatorBaseDays])
+) as Record<SiteType, number>;
 
-const featureAddons: Record<string, number> = { booking: 200, payments: 300, blog: 150, admin: 400 };
+const featureAddons: Record<string, number> = Object.fromEntries(
+  offeringFeatureAddons.map((a) => [a.id, a.price])
+);
+const featuresPerType: Record<SiteType, string[]> = Object.fromEntries(
+  tiers.map((t) => [t.id, offeringFeatureAddons.filter((a) => a.availableFor.includes(t.id)).map((a) => a.id)])
+) as Record<SiteType, string[]>;
 
-// Which features are relevant per project type
-const featuresPerType: Record<SiteType, string[]> = {
-  landing: ["booking"],
-  business: ["booking", "blog"],
-  store: ["payments", "blog", "admin"],
-  custom: ["booking", "payments", "blog", "admin"],
-};
+const oneTimeAddons: Record<string, { perPage?: number; flat?: number }> = Object.fromEntries(
+  offeringOneTimeAddons.map((a) => [a.id, { ...(a.perPage ? { perPage: a.perPage } : {}), ...(a.flat ? { flat: a.flat } : {}) }])
+);
 
-const oneTimeAddons: Record<string, { perPage?: number; flat?: number }> = {
-  translation: { perPage: 12 },
-  copywriting: { perPage: 35 },
-  whatsappBot: { flat: 400 },
-  adsSetup: { flat: 300 },
-};
-
-const onRequestServices = ["photography", "branding", "whatsappAdvanced"] as const;
-
-const monthlyServices: Record<string, { price: number; requires?: string }> = {
-  carePlan: { price: 100 },
-  gbpSeo: { price: 50 },
-  analyticsReport: { price: 20 },
-  smmContent: { price: 300 },
-  whatsappUpkeep: { price: 75, requires: "whatsappBot" },
-};
+const monthlyServices: Record<string, { price: number; requires?: string }> = Object.fromEntries(
+  offeringMonthlyServices.map((s) => [s.id, { price: s.price, ...(s.requires ? { requires: s.requires } : {}) }])
+);
 
 export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<string, string> }) {
   const [type, setType] = useState<SiteType>("business");
@@ -74,9 +80,9 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
   const base = basePrice[type];
   const isCustom = base === null;
   let oneTime = base || 0;
-  const extraPages = Math.max(0, pages - includedPages[type]) * 50;
+  const extraPages = Math.max(0, pages - includedPages[type]) * EXTRA_PAGE_PRICE;
   oneTime += extraPages;
-  oneTime += (languages - 1) * 150;
+  oneTime += (languages - 1) * EXTRA_LANGUAGE_PRICE;
   for (const f of features) oneTime += featureAddons[f] || 0;
   for (const a of oneTimeSelected) {
     const addon = oneTimeAddons[a];
@@ -100,12 +106,9 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
   }
 
   // --- WhatsApp message ---
-  const typeLabels: Record<SiteType, string> = {
-    landing: dict["estimator.type.landing"] || "Landing",
-    business: dict["estimator.type.business"] || "Business",
-    store: dict["estimator.type.store"] || "Store",
-    custom: dict["estimator.type.custom"] || "Custom",
-  };
+  const typeLabels: Record<SiteType, string> = Object.fromEntries(
+    tiers.map((t) => [t.id, tl(t.name, locale)])
+  ) as Record<SiteType, string>;
 
   function buildWaLink() {
     let msg = `Salam! ${typeLabels[type]} üçün maraqlanıram.\n`;
@@ -119,27 +122,21 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
   }
 
-  const types: { key: SiteType; label: string }[] = [
-    { key: "landing", label: dict["estimator.type.landing"] },
-    { key: "business", label: dict["estimator.type.business"] },
-    { key: "store", label: dict["estimator.type.store"] },
-    { key: "custom", label: dict["estimator.type.custom"] },
-  ];
+  const types: { key: SiteType; label: string }[] = tiers.map((t) => ({
+    key: t.id,
+    label: tl(t.name, locale),
+  }));
 
-  const allFeatures = [
-    { key: "booking", label: dict["estimator.addon.booking"] },
-    { key: "payments", label: dict["estimator.addon.payments"] },
-    { key: "blog", label: dict["estimator.addon.blog"] },
-    { key: "admin", label: dict["estimator.addon.admin"] },
-  ];
+  const allFeatures = offeringFeatureAddons.map((a) => ({
+    key: a.id,
+    label: tl(a.label, locale),
+  }));
   const featureList = allFeatures.filter(f => featuresPerType[type].includes(f.key));
 
-  const oneTimeAddonList = [
-    { key: "translation", label: dict["estimator.addon.translation"] },
-    { key: "copywriting", label: dict["estimator.addon.copywriting"] },
-    { key: "whatsappBot", label: dict["estimator.addon.whatsappBot"] },
-    { key: "adsSetup", label: dict["estimator.addon.adsSetup"] },
-  ];
+  const oneTimeAddonList = offeringOneTimeAddons.map((a) => ({
+    key: a.id,
+    label: tl(a.label, locale),
+  }));
 
   const Checkbox = ({ checked, onToggle, children, muted }: { checked: boolean; onToggle: () => void; children: React.ReactNode; muted?: boolean }) => (
     <label className="flex items-center gap-[12px] cursor-pointer">
@@ -223,9 +220,9 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
       <div>
         <p className="text-[14px] font-medium mb-[8px]">{dict["estimator.onRequest.label"]}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px]">
-          {onRequestServices.map((key) => (
-            <Checkbox key={key} checked={onRequestSelected.has(key)} onToggle={() => toggle(onRequestSelected, key, setOnRequestSelected)} muted>
-              {dict[`estimator.onRequest.${key}`]} <span className="text-[12px] text-text-faint ml-[4px]">({dict["estimator.onRequest.tag"]})</span>
+          {offeringOnRequestServices.map((svc) => (
+            <Checkbox key={svc.id} checked={onRequestSelected.has(svc.id)} onToggle={() => toggle(onRequestSelected, svc.id, setOnRequestSelected)} muted>
+              {tl(svc.label, locale)} <span className="text-[12px] text-text-faint ml-[4px]">({dict["estimator.onRequest.tag"]})</span>
             </Checkbox>
           ))}
         </div>
@@ -235,14 +232,14 @@ export function PriceEstimator({ locale, dict }: { locale: Locale; dict: Record<
       <div className="border-t border-border pt-[24px]">
         <p className="text-[14px] font-medium mb-[8px]">{dict["estimator.monthlyServices.label"]}</p>
         <div className="bg-surface-alt rounded-[12px] p-[20px] space-y-[12px]">
-          {Object.entries(monthlyServices).map(([key, svc]) => {
+          {offeringMonthlyServices.map((svc) => {
             if (svc.requires && !oneTimeSelected.has(svc.requires)) return null;
             return (
-              <div key={key} className="flex items-center justify-between">
-                <Checkbox checked={monthlySelected.has(key)} onToggle={() => toggle(monthlySelected, key, setMonthlySelected)}>
-                  {dict[`estimator.monthlyServices.${key}`]}
+              <div key={svc.id} className="flex items-center justify-between">
+                <Checkbox checked={monthlySelected.has(svc.id)} onToggle={() => toggle(monthlySelected, svc.id, setMonthlySelected)}>
+                  {tl(svc.label, locale)}
                 </Checkbox>
-                <span className="text-[13px] text-text-muted ml-[8px] flex-shrink-0">{svc.price} AZN/ay</span>
+                <span className="text-[13px] text-text-muted ml-[8px] flex-shrink-0">{svc.price} {perMonthLabel(locale)}</span>
               </div>
             );
           })}

@@ -4,6 +4,7 @@ import { LOCALES, SITE_URL, type Locale } from "@/lib/constants";
 import { getDictionary, t } from "@/lib/i18n";
 import { services } from "@/content/services";
 import { faqItems } from "@/content/faq";
+import { monthlyServices, perMonthLabel } from "@/content/offering";
 import { Accordion } from "@/components/ui/Accordion";
 import { PriceEstimator } from "@/components/sections/PriceEstimator";
 import { ScrollReveal, RevealItem } from "@/components/ScrollReveal";
@@ -17,14 +18,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t(dict, "services.meta.title"), description: t(dict, "services.meta.desc"), alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${SITE_URL}/${l}/services`])) } };
 }
 
-// Monthly support prices per service tier
-const supportPrices: Record<string, number> = {
-  landing: 100,
-  business: 100,
-  store: 200,
-  custom: 200,
-};
-
 export default async function ServicesPage({ params }: Props) {
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
@@ -32,12 +25,6 @@ export default async function ServicesPage({ params }: Props) {
   const always = [1, 2, 3, 4, 5, 6].map((n) => dict[`services.always.${n}`]);
   const processSteps = [1, 2, 3, 4, 5].map((n) => ({ title: dict[`services.process.${n}.title`], when: dict[`services.process.${n}.when`], body: dict[`services.process.${n}.body`] }));
   const faqData = faqItems.map((item) => ({ question: tl(item.question, loc), answer: tl(item.answer, loc) }));
-
-  const tiers = [
-    { key: "basic", features: dict["services.maintenance.basic.features"] },
-    { key: "standard", features: dict["services.maintenance.standard.features"] },
-    { key: "growth", features: dict["services.maintenance.growth.features"] },
-  ];
 
   return (
     <div>
@@ -49,7 +36,7 @@ export default async function ServicesPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Service cards — 2x2 grid with support upsell line (#6) */}
+      {/* Service cards — 2x2 grid */}
       <section className="bg-bg">
         <div className="max-w-[1120px] mx-auto px-[20px] md:px-[24px] pb-[64px]">
           <ScrollReveal>
@@ -67,11 +54,6 @@ export default async function ServicesPage({ params }: Props) {
                       <div className="flex items-baseline justify-between">
                         <span className="text-[13px] text-text-muted">{dict["services.timeline.label"]}</span>
                         <span className="text-[14px] font-medium">{tl(s.timeline, loc)}</span>
-                      </div>
-                      {/* Support upsell line */}
-                      <div className="flex items-baseline justify-between">
-                        <span className="text-[12px] text-text-faint">{dict["services.maintenance.supportLine"]}</span>
-                        <span className="text-[12px] text-accent">{supportPrices[s.slug] || 100} {dict["services.maintenance.perMonth"]}</span>
                       </div>
                       <div className="border-t border-border pt-[8px] mt-[8px]">
                         <span className="text-[12px] text-text-faint">{dict["services.bestFor.label"]}: {tl(s.bestFor, loc)}</span>
@@ -97,44 +79,23 @@ export default async function ServicesPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Care plans — 3 tiers with equal visual weight (#1, #2, #3) */}
+      {/* Monthly services — à la carte, all optional */}
       <section className="bg-bg">
         <div className="max-w-[1120px] mx-auto px-[20px] md:px-[24px] py-[64px] md:py-[96px]">
           <h2 className="font-serif text-[26px] md:text-[32px] font-normal leading-[1.2] tracking-[-0.02em]">{dict["services.maintenance.heading"]}</h2>
           <p className="text-[16px] text-text-muted mt-[12px] max-w-[60ch]">{dict["services.maintenance.body"]}</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[20px] mt-[32px] pt-[14px]">
-            {(["basic", "standard", "growth"] as const).map((tier, i) => {
-              const name = dict[`services.maintenance.${tier}.name`];
-              const price = dict[`services.maintenance.${tier}.price`];
-              // Features stored as comma-joined string from flattened JSON
-              const features: string[] = [];
-              for (let j = 0; j < 5; j++) {
-                const key = `services.maintenance.${tier}.features.${j}`;
-                if (dict[key]) features.push(dict[key]);
-              }
-
-              return (
-                <div key={tier} className={`bg-bg rounded-[12px] p-[24px] flex flex-col relative ${i === 1 ? "border-2 border-accent" : "border border-border"}`}>
-                  {i === 1 && <span className="absolute -top-[14px] left-1/2 -translate-x-1/2 bg-accent text-white text-[12px] font-medium px-[12px] py-[4px] rounded-[999px] whitespace-nowrap">{dict["common.mostPopular"]}</span>}
-                  <h3 className="font-serif text-[20px] font-normal">{name}</h3>
-                  <p className="text-[14px] text-text-muted mt-[6px]">{dict[`services.maintenance.${tier}.desc`]}</p>
-                  <div className="flex items-baseline gap-[4px] mt-[12px]">
-                    <span className="font-serif text-[28px]">{price}</span>
-                    <span className="text-[14px] text-text-muted">{dict["services.maintenance.perMonth"]}</span>
-                  </div>
-                  <div className="border-t border-border my-[16px]" />
-                  <div className="space-y-[8px] flex-1">
-                    {features.map((f, j) => (
-                      <div key={j} className="flex items-start gap-[8px]">
-                        <Check size={14} className="text-success mt-[3px] flex-shrink-0" strokeWidth={2} />
-                        <span className="text-[14px]">{f}</span>
-                      </div>
-                    ))}
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px] mt-[32px]">
+            {monthlyServices.map((svc) => (
+              <div key={svc.id} className="bg-bg border border-border rounded-[12px] p-[20px]">
+                <div className="flex items-baseline justify-between">
+                  <h3 className="font-serif text-[18px] font-normal">{tl(svc.label, loc)}</h3>
+                  <span className="font-serif text-[18px]">{svc.price} {perMonthLabel(loc)}</span>
                 </div>
-              );
-            })}
+                <p className="text-[14px] text-text-muted mt-[6px]">{tl(svc.description, loc)}</p>
+                <p className="text-[12px] text-text-faint mt-[8px]">{dict["services.maintenance.optional"]}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -155,9 +116,6 @@ export default async function ServicesPage({ params }: Props) {
                   <span className="text-[13px] text-text-faint">{step.when}</span>
                 </div>
                 <p className="text-[15px] text-text-muted mt-[6px]">{step.body}</p>
-                {i === processSteps.length - 1 && (
-                  <p className="text-[13px] text-text-faint italic mt-[6px]">{dict["services.maintenance.body"]}</p>
-                )}
               </div>
             ))}
           </div>
@@ -169,7 +127,6 @@ export default async function ServicesPage({ params }: Props) {
               const isLeft = i % 2 === 0;
               return (
                 <div key={i} className="relative grid grid-cols-[1fr_48px_1fr] mb-[40px] last:mb-0">
-                  {/* Left side */}
                   <div className={isLeft ? "text-right pr-[24px]" : ""}>
                     {isLeft && (
                       <>
@@ -178,17 +135,12 @@ export default async function ServicesPage({ params }: Props) {
                           <h3 className="font-serif text-[20px] font-normal leading-[1.3]">{step.title}</h3>
                         </div>
                         <p className="text-[15px] text-text-muted mt-[8px]">{step.body}</p>
-                        {i === processSteps.length - 1 && (
-                          <p className="text-[13px] text-text-faint italic mt-[8px]">{dict["services.maintenance.body"]}</p>
-                        )}
                       </>
                     )}
                   </div>
-                  {/* Circle */}
                   <div className="flex justify-center">
                     <div className="w-[36px] h-[36px] rounded-full bg-accent text-white flex items-center justify-center text-[15px] font-semibold relative z-10">{i + 1}</div>
                   </div>
-                  {/* Right side */}
                   <div className={!isLeft ? "pl-[24px]" : ""}>
                     {!isLeft && (
                       <>
@@ -197,9 +149,6 @@ export default async function ServicesPage({ params }: Props) {
                           <span className="text-[13px] text-text-faint">{step.when}</span>
                         </div>
                         <p className="text-[15px] text-text-muted mt-[8px]">{step.body}</p>
-                        {i === processSteps.length - 1 && (
-                          <p className="text-[13px] text-text-faint italic mt-[8px]">{dict["services.maintenance.body"]}</p>
-                        )}
                       </>
                     )}
                   </div>

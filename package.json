@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "check:offering": "npx tsx scripts/validate-offering.ts",
+    "prebuild": "npx tsx scripts/validate-offering.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
