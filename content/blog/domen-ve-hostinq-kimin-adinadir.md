@@ -18,7 +18,7 @@ reviewBy: "2027-03-19"
 status: "published"
 ---
 
-Tezsayt-da hər hesab — domen, hostinq, analitika — birinci gündən sizin adınıza yaradılır. Biz sizdən icazə ilə işləyirik. İstədiyiniz an şifrələri sıfırlayıb bizi çıxara bilərsiniz — heç bir müraciət, heç bir gözləmə lazım deyil. Bu məqalədə bunun niyə vacib olduğunu və başqalarından nə ilə fərqləndiyini izah edirik.
+Tezsayt-da hər hesab — domen, hostinq, analitika — birinci gündən sizin adınıza yaradılır. Biz sizdən icazə ilə işləyirik. İstədiyiniz an şifrələri sıfırlayıb bizi çıxara bilərsiniz — müraciət də lazım deyil, gözləmə də.
 
 ## Niyə bu sual vacibdir?
 
@@ -53,7 +53,7 @@ Aylıq dəstək planınız varsa, domenin yenilənməsini biz ödəyirik. Planı
 
 Bunu açıq deyirik çünki fərqimiz bunadır. Bakıda bir neçə ümumi model var:
 
-- **Agentliyin serverində:** sayt agentliyin infrastrukturundadır. Siz hesaba giriş əldə etmirsiniz. Əlaqə kəsiləndə sayt yoxa çıxır.
+- **Agentliyin serverində:** sayt agentliyin serverindədir. Siz hesaba giriş əldə etmirsiniz. Əlaqə kəsiləndə sayt yoxa çıxır.
 - **Domen agentliyin adına:** siz saytı ödəmisiniz, amma domen başqasının adınadır. Köçürmək üçün agentliyin razılığı lazımdır.
 - **Frilanserin hesabında:** frilanser pulu alır, saytı öz hesabında qurur, sonra əlaqəsiz olur. Siz heç bir hesaba giriş əldə etməmisiniz.
 

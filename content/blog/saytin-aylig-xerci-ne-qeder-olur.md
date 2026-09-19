@@ -18,7 +18,7 @@ reviewBy: "2027-03-19"
 status: "published"
 ---
 
-Saytın aylıq xərci iki hissədən ibarətdir: qaçılmaz texniki xərclər (domen və hostinq) və ixtiyari dəstək xidmətləri. Tezsayt-da bütün aylıq xidmətlər ixtiyaridir — istənilən vaxt ləğv edə bilərsiniz. Bu məqalədə hər bir xərci ayrıca izah edirik ki, gizli sürpriz olmasın.
+Saytın aylıq xərci iki hissədir: qaçılmaz texniki xərclər (domen və hostinq) və ixtiyari dəstək xidmətləri. Tezsayt-da bütün aylıq xidmətlər ixtiyaridir — istənilən vaxt ləğv edə bilərsiniz. Hər xərci ayrıca izah edirik ki, sürpriz olmasın.
 
 ## Qaçılmaz xərclər — saytı olan hər kəsdə var
 
