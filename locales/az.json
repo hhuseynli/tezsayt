@@ -229,6 +229,9 @@
     "bestFor": {
       "label": "Kimə uyğundur"
     },
+    "languages": {
+      "standard": "Daxil olan dillər"
+    },
     "timeline": {
       "label": "Müddət"
     },
@@ -308,7 +311,8 @@
     },
     "faq": {
       "heading": "Suallar"
-    }
+    },
+    "clockNote": "Müddət depozit alındıqdan sonra başlayır. Düzəlişlər müddətə daxil deyil."
   },
   "about": {
     "meta": {

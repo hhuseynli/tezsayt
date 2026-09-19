@@ -4,7 +4,7 @@ import { LOCALES, SITE_URL, type Locale } from "@/lib/constants";
 import { getDictionary, t } from "@/lib/i18n";
 import { services } from "@/content/services";
 import { faqItems } from "@/content/faq";
-import { monthlyServices, perMonthLabel } from "@/content/offering";
+import { monthlyServices, perMonthLabel, tiers as offeringTiers } from "@/content/offering";
 import { Accordion } from "@/components/ui/Accordion";
 import { PriceEstimator } from "@/components/sections/PriceEstimator";
 import { ScrollReveal, RevealItem } from "@/components/ScrollReveal";
@@ -55,6 +55,16 @@ export default async function ServicesPage({ params }: Props) {
                         <span className="text-[13px] text-text-muted">{dict["services.timeline.label"]}</span>
                         <span className="text-[14px] font-medium">{tl(s.timeline, loc)}</span>
                       </div>
+                      {(() => {
+                        const tier = offeringTiers.find((t) => t.id === s.slug);
+                        const langs = tier ? tl(tier.standardLanguages, loc) : "";
+                        return langs && langs !== "AZ" ? (
+                          <div className="flex items-baseline justify-between">
+                            <span className="text-[12px] text-text-faint">{dict["services.languages.standard"]}</span>
+                            <span className="text-[12px] text-accent font-medium">{langs}</span>
+                          </div>
+                        ) : null;
+                      })()}
                       <div className="border-t border-border pt-[8px] mt-[8px]">
                         <span className="text-[12px] text-text-faint">{dict["services.bestFor.label"]}: {tl(s.bestFor, loc)}</span>
                       </div>
@@ -64,6 +74,7 @@ export default async function ServicesPage({ params }: Props) {
               ))}
             </div>
           </ScrollReveal>
+          <p className="text-[13px] text-text-faint mt-[16px]">{dict["services.clockNote"]}</p>
         </div>
       </section>
 

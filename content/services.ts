@@ -6,7 +6,7 @@
  */
 
 import { type Localized } from "./types";
-import { tiers, formatTurnaroundShort, type TierId } from "./offering";
+import { tiers, formatTurnaround, type TierId } from "./offering";
 
 export type Service = {
   slug: string;
@@ -22,9 +22,9 @@ export type Service = {
 function tierTimeline(tierId: TierId): Localized {
   const tier = tiers.find((t) => t.id === tierId)!;
   return {
-    az: formatTurnaroundShort(tier.turnaround, "az"),
-    ru: formatTurnaroundShort(tier.turnaround, "ru"),
-    en: formatTurnaroundShort(tier.turnaround, "en"),
+    az: formatTurnaround(tier.turnaround, "az"),
+    ru: formatTurnaround(tier.turnaround, "ru"),
+    en: formatTurnaround(tier.turnaround, "en"),
   };
 }
 

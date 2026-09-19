@@ -229,6 +229,9 @@
     "bestFor": {
       "label": "Best for"
     },
+    "languages": {
+      "standard": "Included languages"
+    },
     "timeline": {
       "label": "Timeline"
     },
@@ -308,7 +311,8 @@
     },
     "faq": {
       "heading": "Questions"
-    }
+    },
+    "clockNote": "Timeline starts after deposit. Revisions don't count toward the timeline."
   },
   "about": {
     "meta": {
