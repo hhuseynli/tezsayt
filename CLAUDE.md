@@ -112,6 +112,90 @@ The `docs/` folder contains complete specifications:
 
 **Read these before building any component.** Specs are fixed — build exactly as described.
 
+## Business content dependency map
+
+When any business-related file changes, **propagate the change to all its dependents** listed below. Walk the graph: if A → B → C and you change A, update B and then C.
+
+### Source-of-truth hierarchy
+
+```
+docs/market-fit-strategy.md          ← Strategic source of truth (wins over everything)
+  └→ docs/brief.md                   ← Summarises strategy + §12 decisions for all issues
+      └→ docs/content-conventions.md ← Copy rules derived from brief + strategy
+
+content/offering.ts                  ← Single source of truth for ALL commercial facts
+                                       (prices, turnarounds, tiers, add-ons, business facts)
+```
+
+### Dependency graph
+
+```
+content/offering.ts
+  ├→ content/services.ts             (re-exports tiers as Service[])
+  │    ├→ components/sections/Pricing.tsx
+  │    └→ app/[locale]/services/page.tsx
+  ├→ components/sections/PriceEstimator.tsx
+  ├→ components/seo/JsonLd.tsx       (schema.org prices, FAQ)
+  ├→ components/blog/PriceTag.tsx
+  ├→ lib/blog.ts                     (blog metadata referencing prices)
+  ├→ app/llms.txt/route.ts           (LLM-facing site description)
+  └→ app/[locale]/services/page.tsx  (metadata, page content)
+
+lib/constants.ts                     (agency name, socials, Formspree, site URL, locales)
+  └→ 36 files — virtually every layout, page, and component
+
+content/team.ts
+  ├→ components/sections/Team.tsx
+  ├→ app/[locale]/about/page.tsx
+  └→ components/seo/JsonLd.tsx
+
+content/projects.ts
+  ├→ components/sections/Proof.tsx
+  ├→ app/[locale]/work/page.tsx
+  └→ components/seo/JsonLd.tsx
+
+content/faq.ts
+  ├→ app/[locale]/services/page.tsx
+  └→ components/seo/JsonLd.tsx
+
+content/testimonials.ts
+  └→ components/sections/TestimonialStrip.tsx
+
+locales/{az,ru,en}.json              (UI strings — headings, labels, CTAs)
+  └→ lib/i18n.ts → all components using useTranslation()
+```
+
+### Docs cross-references
+
+```
+docs/market-fit-strategy.md
+  ├→ docs/brief.md
+  ├→ docs/content-conventions.md
+  ├→ docs/seo-geo-playbook.md
+  └→ docs/blog-playbook.md
+
+docs/brief.md
+  ├→ docs/az-review-queue.md
+  └→ docs/content-conventions.md
+
+docs/content-conventions.md
+  └→ docs/style-az.md
+
+docs/claims-audit.md                 (verifies claims in offering.ts and strategy)
+docs/offering-findings.md            (extraction log — input to offering.ts)
+```
+
+### Change propagation rules
+
+1. **Price, turnaround, tier, or add-on change** → update `content/offering.ts` first, then verify every dependent component and page listed above still renders correctly. Update `docs/03-CONTENT.md` copy if it hardcodes the old value. Update `app/sitemap.ts` `STATIC_LAST_MODIFIED`.
+2. **Differentiator, positioning, or audience change** → update `docs/market-fit-strategy.md` first, then cascade through `docs/brief.md` → `docs/content-conventions.md` → locale JSONs and component copy.
+3. **Agency name, URL, or contact info change** → update `lib/constants.ts`. All 36+ consumers read from it so no manual propagation needed, but verify `app/llms.txt/route.ts`, JSON-LD, and OG metadata.
+4. **Team change** → update `content/team.ts`, verify About page and JSON-LD.
+5. **New project or portfolio change** → update `content/projects.ts`, verify Work page and Proof section.
+6. **FAQ change** → update `content/faq.ts`, verify services page and JSON-LD.
+7. **Copy/tone rule change** → update `docs/content-conventions.md`, then propagate to `docs/style-az.md` and review affected locale strings.
+8. **Any static content change** → update `STATIC_LAST_MODIFIED` in `app/sitemap.ts`.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know
