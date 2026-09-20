@@ -1,20 +1,51 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { LOCALES, DEFAULT_LOCALE, type Locale } from "@/lib/constants";
+
+const notFoundText: Record<Locale, { heading: string; body: string; back: string }> = {
+  az: {
+    heading: "Səhifə tapılmadı",
+    body: "Axtardığınız səhifə mövcud deyil.",
+    back: "Ana səhifəyə qayıdın",
+  },
+  ru: {
+    heading: "Страница не найдена",
+    body: "Страница, которую вы ищете, не существует.",
+    back: "На главную",
+  },
+  en: {
+    heading: "Page not found",
+    body: "The page you're looking for doesn't exist.",
+    back: "Back to homepage",
+  },
+};
 
 export default function LocaleNotFound() {
+  const pathname = usePathname();
+  const segment = pathname.split("/")[1];
+  const locale: Locale =
+    segment && LOCALES.includes(segment as Locale)
+      ? (segment as Locale)
+      : DEFAULT_LOCALE;
+
+  const text = notFoundText[locale];
+
   return (
     <section className="bg-bg">
       <div className="max-w-[560px] mx-auto px-[20px] py-[96px] text-center">
         <h1 className="font-serif text-[32px] md:text-[48px] font-normal leading-[1.1]">
-          Page not found
+          {text.heading}
         </h1>
         <p className="text-[16px] text-text-muted mt-[12px]">
-          The page you&apos;re looking for doesn&apos;t exist.
+          {text.body}
         </p>
         <Link
-          href="/"
+          href={`/${locale}`}
           className="inline-block text-accent font-medium hover:underline mt-[24px]"
         >
-          Back to homepage
+          {text.back}
         </Link>
       </div>
     </section>
