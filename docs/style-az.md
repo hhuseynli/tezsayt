@@ -67,19 +67,22 @@ These Turkish spellings leak in regularly. Always use the Azerbaijani form:
 
 ## Phrasings to avoid
 
-| Avoid | Use instead | Why |
-|---|---|---|
-| "keyfiyyətli həllər" | (describe the actual thing) | Empty marketing filler |
-| "innovativ yanaşma" | (describe what's actually different) | |
-| "hərtərəfli xidmət" | (list what's included) | |
-| "müasir texnologiyalar" | (name the technology or skip) | |
-| "professional komanda" | (name the people) | Two people, not a "komanda" |
-| "proaktiv şəkildə" | "dərhal", "öz başımıza" | "proaktiv" is corporate-speak in AZ |
-| "sizin icazənizlə işləyirik" | "sizdən icazə ilə işləyirik" or simpler | Calque of "at your discretion" |
-| "giriş məlumatlarımızı silirik" | "girişimizi ləğv edirik" | More natural |
-| "mənbə kodu" | "kod" | Non-technical reader doesn't need "mənbə" |
-| "infrastrukturumuzda" | "öz serverimizdə" | Reader knows "server" |
-| subordinate-clause pileups | Break into 2 sentences | AZ tolerates long sentences poorly |
+> **Status (2026-09-20):** The problematic phrases marked with ✅ below have been
+> fixed in `content/offering.ts`. Keep the rules here for future edits.
+
+| Avoid | Use instead | Why | Fixed? |
+|---|---|---|---|
+| "keyfiyyətli həllər" | (describe the actual thing) | Empty marketing filler | |
+| "innovativ yanaşma" | (describe what's actually different) | | |
+| "hərtərəfli xidmət" | (list what's included) | | |
+| "müasir texnologiyalar" | (name the technology or skip) | | |
+| "professional komanda" | (name the people) | Two people, not a "komanda" | |
+| "proaktiv şəkildə" | "dərhal", "öz başımıza" | "proaktiv" is corporate-speak in AZ | ✅ offering.ts |
+| "sizin icazənizlə işləyirik" | "sizdən icazə ilə işləyirik" or simpler | Calque of "at your discretion" | ✅ offering.ts |
+| "giriş məlumatlarımızı silirik" | "girişimizi ləğv edirik" | More natural | ✅ offering.ts |
+| "mənbə kodu" | "kod" | Non-technical reader doesn't need "mənbə" | ✅ offering.ts |
+| "infrastrukturumuzda" | "öz serverimizdə" | Reader knows "server" | ✅ offering.ts |
+| subordinate-clause pileups | Break into 2 sentences | AZ tolerates long sentences poorly | |
 
 ## Number and punctuation conventions
 

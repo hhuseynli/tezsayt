@@ -11,6 +11,7 @@ Replace `[AGENCY]` with the agency name throughout.
 ```
 nav.work            = Work
 nav.services        = Services
+nav.blog            = Blog
 nav.about           = About
 nav.contact         = Contact
 nav.cta             = Get free draft
@@ -42,10 +43,23 @@ whatsapp.prefill    = Hi, I'd like to ask about the free homepage draft.
 ### Hero
 
 ```
-home.hero.pill      = Free homepage draft
-home.hero.h1        = When someone asks about you, what do they find?
-home.hero.credibility = Built for 6 businesses. Systems shipped at hackathons run by Baku Metro, Pasha, and AZCON.
-home.hero.sub       = We build your homepage first — free. If you like it, the full site is ready in 7 days. If you don't, you owe us nothing.
+home.hero.h1        = (localized — see locales/en.json → home.hero.h1)
+home.hero.sub       = (localized — see locales/en.json → home.hero.sub)
+home.hero.cta       = (localized — see locales/en.json → home.hero.cta)
+
+# Interactive hero also uses these keys:
+home.hero.searchQuery       = (business name for search animation, e.g. "Saleh Tech School Baku")
+home.hero.searchPlaceholder = (placeholder text for search bar)
+home.hero.resultCount       = (e.g. "About 3 results")
+home.hero.nothingToFind     = (verdict message when no website found)
+home.hero.weCanFix          = (call to action after verdict)
+home.hero.building          = (status text during build animation)
+home.hero.ready             = (label when build completes)
+home.hero.offerTitle        = (heading for the offer screen)
+home.hero.offerStep1–3      = (numbered steps explaining the offer)
+home.hero.continueLabel     = (accept button label)
+home.hero.dontLabel         = (decline button label)
+home.hero.fb.*              = (feedback flow: heading, sub, reasons, send, thanks, etc.)
 ```
 
 ### Proof
@@ -100,7 +114,7 @@ home.pricing.sub     = Published prices. No "contact us for a quote."
 
 home.pricing.included.label = Included in every project
 home.pricing.included.1 = Mobile-optimized
-home.pricing.included.2 = Under one second load time
+home.pricing.included.2 = Fast loading
 home.pricing.included.3 = Domain and hosting setup
 home.pricing.included.4 = Thirty days free support
 home.pricing.included.5 = You own everything
@@ -111,35 +125,43 @@ home.pricing.estimatorToggle = Estimate your project
 ### Estimator
 
 ```
-estimator.type.label      = What do you need?
-estimator.type.landing    = Landing page
+estimator.type.label      = Project type
+estimator.type.landing    = Business card (single page)
 estimator.type.business   = Business site
 estimator.type.store      = Online store
 estimator.type.custom     = Custom tool
 
 estimator.pages.label     = How many pages?
 estimator.languages.label = How many languages?
-estimator.addons.label    = Anything extra?
+estimator.languages.hint  = AZ + RU is standard. 3rd language (e.g. EN) is an add-on.
+estimator.addons.label    = Features
 
 estimator.addon.booking   = Booking system
 estimator.addon.payments  = Online payments
 estimator.addon.blog      = Blog or news
 estimator.addon.admin     = Admin panel
 
-estimator.result.label    = Estimated
-estimator.result.timeline = Delivered in
-estimator.result.days     = days
-estimator.disclaimer      = This is an estimate, not a quote. Your free draft comes first — you'll have an exact number before any money changes hands.
-estimator.cta             = Start with a free draft
+estimator.oneTimeAddons.label = One-time add-ons
+estimator.onRequest.label     = On request
+estimator.onRequest.tag       = quote on request
+estimator.monthlyServices.label = Monthly services
+estimator.monthlyServices.none  = No monthly services selected
+
+estimator.result.oneTime     = One-time estimate
+estimator.result.monthly     = Monthly
+estimator.result.customPrice = By agreement
+estimator.result.timeline    = Delivered in
+estimator.result.days        = days
+estimator.disclaimer         = This is an estimate, not a quote. Your free draft comes first — you'll have an exact number before any money changes hands.
+estimator.cta                = Start with a free draft
 ```
 
 ### Team
 
 ```
-home.team.heading   = Two people. No account managers.
-home.team.body1     = We started building websites for hackathons and for friends, and kept going because we saw the same gap everywhere: businesses either overpaid an agency for a slow template, or hired a freelancer who disappeared halfway through.
-home.team.body2     = We use AI to handle the repetitive parts of writing code. That's why we deliver in a week instead of two months, and why we can afford to build your homepage before you've paid anything. The design decisions and the thinking about what your customers actually need — that's us.
-home.team.hackLabel = What we've built under pressure
+home.team.heading   = Who's behind it
+home.team.body1     = We started building websites for friends and local businesses, and kept going because we saw the same gap everywhere: businesses either overpaid an agency for a slow template, or hired a freelancer who disappeared halfway through.
+home.team.body2     = We use AI to handle the repetitive parts of writing code. That's how we cut delivery times and can afford to build your homepage before you've paid anything. The design decisions and the thinking about what your customers actually need — that's us.
 home.team.aboutLink = More about us
 ```
 
@@ -179,7 +201,7 @@ work.cta.body       = Tell us about your business and we'll build your homepage 
 
 ```
 services.meta.title = Services and pricing — [AGENCY]
-services.meta.desc  = Websites from 300 AZN, delivered in seven days. Free homepage draft before you pay anything.
+services.meta.desc  = Websites from 500 AZN. Free homepage draft before you pay anything.
 
 services.heading    = What we build
 services.sub        = Four kinds of project. Published prices. A free homepage draft before you commit to any of them.
@@ -190,7 +212,7 @@ services.timeline.label  = Timeline
 
 services.always.heading  = In every project
 services.always.1 = Mobile-optimized — works properly on every phone
-services.always.2 = Fast loading — under one second
+services.always.2 = Fast loading
 services.always.3 = Domain and hosting setup — we handle the technical side
 services.always.4 = Google Analytics — see who visits and where they come from
 services.always.5 = Thirty days of free support after launch
@@ -219,8 +241,15 @@ services.process.5.when  = Final day
 services.process.5.body  = We deploy, set up analytics, register the domain in your name, and walk you through everything.
 
 services.maintenance.heading = Keeping it running
-services.maintenance.body    = After launch we offer optional monthly maintenance — content updates, security patches, hosting management, small design changes. It's optional. There is no mandatory subscription.
-services.maintenance.price   = From 100 AZN per month
+services.maintenance.body    = After launch we offer optional à la carte monthly services. Each is independently selectable — no bundled tiers. There is no mandatory subscription.
+
+# Monthly services (from content/offering.ts → monthlyServices):
+# - Technical support plan: 100 AZN/mo (hosting, domain, security patches, monthly backup)
+# - Content updates (2 hrs/mo): 100 AZN/mo
+# - Google Business + Local SEO: 50 AZN/mo
+# - Monthly analytics report: 20 AZN/mo
+# - SMM (content only, no photos): 300 AZN/mo
+# - WhatsApp bot support: 75 AZN/mo (requires WhatsApp bot one-time add-on)
 
 services.faq.heading = Questions
 ```
@@ -228,29 +257,29 @@ services.faq.heading = Questions
 ### Services detail
 
 ```
-service.landing.name     = Landing page
+service.landing.name     = Business card (single page)
 service.landing.desc     = A single page focused on one action. Fast to build, fast to launch.
 service.landing.bestFor  = New businesses, product launches, events, a single service
-service.landing.timeline = 3–5 days
-service.landing.price    = 300
+service.landing.timeline = 3–5 calendar days
+service.landing.price    = 500
 
 service.business.name     = Business site
 service.business.desc     = Five to eight pages covering everything a professional business needs online.
 service.business.bestFor  = Clinics, law firms, consultancies, schools, service businesses
-service.business.timeline = 7–10 days
-service.business.price    = 600
+service.business.timeline = 7–10 calendar days
+service.business.price    = 800
 
 service.store.name     = Online store
 service.store.desc     = A full shop with product catalogue, cart, and payment.
 service.store.bestFor  = Retail, wholesale, product brands
-service.store.timeline = 10–14 days
-service.store.price    = 1000
+service.store.timeline = 10–14 calendar days
+service.store.price    = 2000
 
 service.custom.name     = Custom tool
 service.custom.desc     = A booking system, dashboard, internal tool, or client portal built around how you actually work.
 service.custom.bestFor  = Businesses with workflows that off-the-shelf tools don't solve
 service.custom.timeline = 2–4 weeks
-service.custom.price    = 1500
+service.custom.price    = By agreement
 ```
 
 ### FAQ
@@ -364,55 +393,28 @@ thanks.back    = Back to homepage
 
 ```
 home.meta.title = [AGENCY] — Websites for Azerbaijani businesses
-home.meta.desc  = We build your homepage first, free. If you like it, the full site is ready in seven days. From 300 AZN.
+home.meta.desc  = We build your homepage first, free. If you like it, the full site is ready in days. From 500 AZN.
 
 og.title        = [AGENCY] — Free homepage draft, pay only if you like it
-og.desc         = Websites for Azerbaijani businesses. Ready in seven days. From 300 AZN.
+og.desc         = Websites for Azerbaijani businesses. From 500 AZN.
 ```
 
 ---
 
 ## Content data — projects
 
-Six entries in `content/projects.ts`. Fill `description` for each from your own knowledge of the work. Structure:
+Seven entries in `content/projects.ts`. Each has a `type` field (`landing | business | store | platform`) and `tags: Localized[]`.
 
-| slug | client | industry | featured | url |
-|---|---|---|---|---|
-| mindmorph | MindMorph | (fill) | yes | https://mindmorph.co.uk |
-| byin | BYIN Invest | Financial services | yes | https://byininvest.com |
-| meridiana | Meridiana | Technology | yes | https://meridiana.dev |
-| kraamzorg | Kraamzorg | Healthcare | no | https://kraamzorg.az |
-| saleh | Saleh Tech School | Education | no | (fill) |
-| gaming | (fill) | Gaming | no | (fill) |
+| slug | client | type | industry | featured | url |
+|---|---|---|---|---|---|
+| saleh | Saleh Tech School | business | Education | yes | https://salehtechschool.az |
+| xsolla-game-recap | Xsolla Game Recap | platform | Gaming | yes | https://team-noclip.vercel.app |
+| kraamzorg | Kraamzorg | landing | Healthcare | yes | https://hhuseynli.github.io/Kraamzorg/ |
+| mindmorph | MindMorph | platform | Technology | no | https://mindmorph.co.uk |
+| ztopup | Zelix Topup | store | E-commerce | no | https://ztopup-game-sales-srp7.onrender.com |
+| byin | Infinity Investment | business | Financial services | no | https://byininvest.com |
+| meridiana | Meridiana | business | Technology | no | https://meridiana.dev |
 
-Featured projects appear on the homepage. All six appear on `/work`.
+Featured projects (first 3) appear on the homepage Proof section. All seven appear on `/work`.
 
-## Content data — hackathons
-
-Four entries in `content/hackathons.ts`.
-
-```
-metro     | Baku Metro Hackathon | Baku Metro
-  project: Crowd management system
-  problem: The metro had no way to see how full individual wagons were in real time.
-  built:   A computer vision model estimating passenger density inside wagons from camera feeds, with a live dashboard for operators.
-  tags:    Computer vision, Machine learning, Dashboard
-
-pasha     | Pasha Hackathon | Pasha Holding
-  project: RFID product location system
-  problem: Warehouses had no real-time product tracking without manual scanning.
-  built:   An indoor location system using passive RFID readers, with a live admin dashboard for inventory.
-  tags:    RFID, IoT, Inventory
-
-azcon     | AZCON Hackathon | AZCON
-  project: Multimodal logistics optimizer
-  problem: Freight routes combining road and rail had no unified optimization.
-  built:   A route optimization system that plans across multiple transport modes and compares cost and time.
-  tags:    Optimization, Logistics, Routing
-
-narimanov | Narimanov Hackathon | Narimanov District
-  project: Civic issue reporting platform
-  problem: Residents had no structured way to report and track local infrastructure problems.
-  built:   A mobile-first web app for submitting geolocated issue reports, with district-level tracking for administrators.
-  tags:    Geolocation, Civic tech, Mobile
-```
+Hackathon data is not a separate content type — hackathon affiliations are represented by the logo marquee in the Hero component (AZCON, Baku Metro, Pasha Holding, GDG, IDDA, Holberton, Xsolla).

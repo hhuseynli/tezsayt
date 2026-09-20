@@ -36,8 +36,11 @@ At build time all three locales must exist as files. Russian and English files s
 /[locale]/about           Team and story
 /[locale]/contact         Contact
 /[locale]/thank-you       Post-form confirmation
-/[locale]/guides          Blog index — build the route, leave empty
-/[locale]/guides/[slug]   Blog article — build the route, leave empty
+/[locale]/blog            Blog index (fully functional)
+/[locale]/blog/[slug]     Blog article (markdown posts from content/blog/)
+/[locale]/blog/feed.xml   RSS feed
+/[locale]/guides          Legacy stub (redirects or empty)
+/[locale]/guides/[slug]   Legacy stub
 ```
 
 ## File structure
@@ -56,6 +59,10 @@ At build time all three locales must exist as files. Russian and English files s
 │       ├── about/page.tsx
 │       ├── contact/page.tsx
 │       ├── thank-you/page.tsx
+│       ├── blog/
+│       │   ├── page.tsx
+│       │   ├── [slug]/page.tsx
+│       │   └── feed.xml/route.ts
 │       └── guides/
 │           ├── page.tsx
 │           └── [slug]/page.tsx
@@ -83,17 +90,23 @@ At build time all three locales must exist as files. Russian and English files s
 │   │   └── ContactSection.tsx
 │   ├── cards/
 │   │   ├── ProjectCard.tsx
-│   │   ├── HackathonCard.tsx
 │   │   ├── TestimonialCard.tsx
 │   │   └── PricingCard.tsx
+│   ├── blog/
+│   │   ├── BlogCta.tsx
+│   │   └── PriceTag.tsx
+│   ├── seo/
+│   │   └── JsonLd.tsx
 │   └── ContactForm.tsx
 ├── content/
+│   ├── types.ts              Locale and Localized type definitions
+│   ├── offering.ts           Single source of truth for all commercial facts
+│   ├── services.ts           Re-exports offering tiers as Service[]
 │   ├── projects.ts
-│   ├── hackathons.ts
 │   ├── testimonials.ts
-│   ├── services.ts
 │   ├── faq.ts
-│   └── team.ts
+│   ├── team.ts
+│   └── blog/                 Markdown blog posts (*.mdx)
 ├── locales/
 │   ├── az.json
 │   ├── ru.json
@@ -101,7 +114,8 @@ At build time all three locales must exist as files. Russian and English files s
 ├── lib/
 │   ├── i18n.ts
 │   ├── constants.ts
-│   └── utils.ts
+│   ├── utils.ts
+│   └── blog.ts              Blog post loading and metadata
 ├── public/
 │   ├── images/
 │   │   ├── projects/
@@ -137,24 +151,18 @@ Every content file exports a typed array. Text fields that need translation are 
 ```ts
 type Localized = { az: string; ru: string; en: string };
 
+type ProjectType = "landing" | "business" | "store" | "platform";
+
 type Project = {
   slug: string;
   client: string;
+  type: ProjectType;
   industry: Localized;
   description: Localized;
   image: string;
   url: string | null;
   featured: boolean;
-};
-
-type Hackathon = {
-  slug: string;
-  event: string;
-  organizer: string;
-  project: Localized;
-  problem: Localized;
-  built: Localized;
-  tags: string[];
+  tags: Localized[];
 };
 
 type Testimonial = {
@@ -175,6 +183,7 @@ type Service = {
   includes: Localized[];
   timeline: Localized;
   priceFrom: number;
+  priceLabel?: Localized;
 };
 
 type FaqItem = {
@@ -189,10 +198,10 @@ type FaqItem = {
 
 ## Behaviour rules
 
-- The homepage hero, including the credibility line and both CTA buttons, must fit within one mobile viewport at 390×844 without scrolling.
+- The homepage hero text (h1, subheadline, CTA button) fills the viewport and fades on scroll, followed by a scroll-revealed interactive card with three animated stages.
 - The language toggle writes the chosen locale to `localStorage` under the key `locale`. On subsequent visits, middleware reads it and redirects the root path accordingly. Browser language is never used to redirect.
 - The floating contact button appears after a 2 second delay with a fade-in, and is hidden when the contact section is in the viewport.
-- The price estimator outputs a range, computed as the base result rounded down to the nearest 50 and the base result plus 150 rounded up to the nearest 50. It never outputs a single number.
+- The price estimator outputs a range: `floor(total / 50) * 50` to `ceil(total × 1.15 / 50) * 50`. All pricing data from `content/offering.ts`. Outputs both a one-time and monthly estimate. Never a single number.
 - The contact form validates that name and message are non-empty before submitting, showing an inline error in red 13px text beneath the offending field.
 - On successful form submit, redirect to `/[locale]/thank-you`.
 - All external links open in a new tab with `rel="noopener noreferrer"`.

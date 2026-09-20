@@ -8,20 +8,20 @@ Defined as CSS custom properties in `globals.css` under `:root`.
 
 ```css
 :root {
-  --bg:            #FAFAF9;
-  --surface:       #FFFFFF;
-  --surface-alt:   #F4F4F2;
-  --border:        #E7E7E4;
-  --border-strong: #D4D4D0;
+  --bg:            #faf7f1;
+  --surface:       #ffffff;
+  --surface-alt:   #f5f2ec;
+  --border:        rgba(23, 19, 16, 0.10);
+  --border-strong: rgba(23, 19, 16, 0.22);
 
-  --text:          #18181B;
-  --text-muted:    #71717A;
-  --text-faint:    #A1A1AA;
+  --text:          #1a1612;
+  --text-muted:    rgba(26, 22, 18, 0.55);
+  --text-faint:    rgba(26, 22, 18, 0.38);
 
-  --accent:        #2563EB;
-  --accent-hover:  #1D4ED8;
-  --accent-bg:     #EFF4FF;
-  --accent-border: #BFD3FE;
+  --accent:        #a8471f;
+  --accent-hover:  #8c3a18;
+  --accent-bg:     #faf0eb;
+  --accent-border: #e8c4b0;
 
   --success:       #16A34A;
   --success-bg:    #F0FDF4;
@@ -89,8 +89,8 @@ Gap between cards in a grid: `20px`.
 Two only:
 
 ```css
---shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 1px 3px rgb(0 0 0 / 0.06);
---shadow-lift: 0 4px 8px rgb(0 0 0 / 0.05), 0 8px 24px rgb(0 0 0 / 0.08);
+--shadow-card: 0 1px 3px rgb(26 22 18 / 0.04), 0 2px 6px rgb(26 22 18 / 0.03);
+--shadow-lift: 0 4px 12px rgb(26 22 18 / 0.06), 0 12px 32px rgb(26 22 18 / 0.05);
 ```
 
 `--shadow-card` on resting cards. `--shadow-lift` on hover for project cards only. Nothing else gets a shadow.

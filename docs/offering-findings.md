@@ -1,4 +1,10 @@
-# Offering Findings — Phase 0b
+# Offering Findings — Phase 0b (HISTORICAL SNAPSHOT)
+
+> **Note (2026-09-20):** This is a historical extraction log from Phase 0b. The
+> single source of truth for all commercial facts is now `content/offering.ts`.
+> Prices and structures in this document may be stale — always verify against
+> `offering.ts` before acting on them.
+
 Extracted 2026-09-19. Every published commercial fact, with file path and language.
 
 ## Tier summary

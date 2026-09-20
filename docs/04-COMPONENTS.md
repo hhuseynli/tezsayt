@@ -12,11 +12,11 @@ Height 64px. Container max-width 1120px.
 
 **Left:** agency wordmark, text, weight 600, 18px, links to `/[locale]`.
 
-**Centre (desktop only, hidden below `md`):** nav links — Work, Services, About, Contact. 15px, weight 400, colour `--text-muted`. Active route is `--text` weight 500. Hover transitions colour over 200ms.
+**Centre (desktop only, hidden below `md`):** nav links — Work, Services, Blog, About, Contact. 15px, weight 400, colour `--text-muted`. Hover transitions colour over 200ms.
 
-**Right:** LanguageToggle, then a primary Button reading `nav.cta` that opens WhatsApp.
+**Right:** LanguageToggle. No CTA button in the header itself.
 
-**Mobile (below `md`):** wordmark left, LanguageToggle and a hamburger button right. Tapping the hamburger opens a full-screen overlay with background `--bg`, containing the four nav links at 24px weight 500 stacked with 24px gaps, then both contact buttons at full width. Close button top-right. Body scroll locks while open. Escape key closes it.
+**Mobile (below `md`):** wordmark left, LanguageToggle and a hamburger button right. Tapping the hamburger opens a full-screen overlay (portal to body) with background `--bg`, containing the five nav links at 24px `font-serif` font-normal stacked with 24px gaps, then Instagram (primary) and WhatsApp (secondary) buttons at full width. Close button top-right. Body scroll locks while open. Escape key closes it.
 
 ---
 
@@ -75,18 +75,49 @@ Below: `next/image` at `width: 100%`, `height: auto`, aspect ratio 16:10, `objec
 
 ## Hero
 
-Full-width section, background `--bg`, padding `80px 0 96px` desktop, `48px 0 64px` mobile.
+Two-part component: a viewport-filling text section that fades on scroll, followed by a scroll-revealed interactive card.
 
-Vertical stack, left-aligned on desktop within a max-width of 720px, centred text on mobile.
+### Part 1: Hero text
 
-1. **Pill** — `home.hero.pill`. Background `--accent-bg`, colour `--accent`, border `1px solid var(--accent-border)`, `padding: 6px 14px`, radius 999px, 13px weight 500. A 6px filled circle in `--accent` sits 8px to the left of the text.
-2. **H1** — `home.hero.h1`. Display scale. Margin top 24px.
-3. **Credibility line** — `home.hero.credibility`. 15px, `--text-muted`, margin top 16px, max-width 60ch.
-4. **Subheadline** — `home.hero.sub`. body-lg, `--text`, margin top 20px, max-width 60ch.
-5. **Button row** — margin top 32px, 12px gap, wraps on mobile to full-width stacked buttons. First button primary with the Instagram icon, second secondary with the WhatsApp icon. Both open in a new tab.
-6. **BrowserMockup** — margin top 64px, `priority` true, showing the strongest client screenshot.
+Full-viewport section, background `--bg`, centred text, `padding-top: 20vh` desktop / `18vh` mobile. `overflow: hidden`.
 
-**Constraint:** items 1 through 5 must fit within 844px viewport height at 390px width. Verify this before moving on.
+Content stack, max-width 720px, centred:
+1. **H1** — `home.hero.h1`. `font-serif`, 36px mobile / 52px tablet / 60px desktop, `font-normal`, `leading-[1.08]`, `tracking-[-0.025em]`. Fades in on mount.
+2. **Subheadline** — `home.hero.sub`. 16px mobile / 18px desktop, `text-text-muted`, margin top 16px / 24px, max-width 540px. Fades in with 150ms delay.
+3. **CTA button** — `home.hero.cta`. Primary button linking to WhatsApp. Margin top 32px. Full-width on mobile, auto on desktop. Fades in with 300ms delay.
+
+All three elements fade out and translate up as the user scrolls (driven by `useScroll` + `useTransform`, opacity 1→0 over first 40% of scroll).
+
+**Floating UI pieces** — Desktop only (`hidden md:block`). Seven decorative micro-UI elements (nav bar, CTA button, image card, browser mockup, form, star rating, toggle) positioned absolutely, appearing staggered (0.4–1.2s delay), each floating with a gentle infinite y-axis oscillation. Fade out with the hero text. `pointer-events: none`, `aria-hidden`.
+
+### Part 2: Interactive card
+
+Revealed by scroll — the card translates from `y: 80` to `y: 0`, scales from 0.94→1, and fades from 0.35→1 as it enters the viewport. A gradient mask from `--bg` to transparent overlays it during approach, fading out by 80% scroll progress.
+
+The card is a `--surface` rounded-16px container with border and a scroll-driven dynamic shadow. Minimum height 600px mobile / 640px desktop.
+
+**Three stages, played linearly on first reveal:**
+
+**Stage 0 — Search/Discovery.** A simulated Google search for a business name (`home.hero.searchQuery`). Sub-phases:
+- `typing` — characters appear one by one (70ms each) in a search bar with a Google-coloured "Search" wordmark
+- `submitted` → `results` — search tabs appear (All, Images, Maps), then three Google-like result entries (Instagram, Facebook, Maps)
+- `highlight` — the Maps result highlights in red, showing "No website"
+- `verdict` — results replaced by a centred `home.hero.nothingToFind` message in serif
+- `weCanFix` — `home.hero.weCanFix` fades in below in accent colour
+
+**Stage 1 — Build.** A progress bar (0→100% over ~4s) with a live wireframe-to-screenshot animation: skeleton blocks animate in as progress rises, and at ~85% the real project screenshot (`/images/projects/saleh.png`) fades in over the wireframe. Ends with a green "Ready" indicator.
+
+**Stage 2 — You decide.** Shows the finished screenshot in a browser mockup, an `home.hero.offerTitle` heading, three numbered steps (`offerStep1–3`), and two buttons:
+- Primary (accent): WhatsApp link with Check icon + `home.hero.continueLabel`
+- Secondary: `home.hero.dontLabel` → opens a **feedback view** (replaces content, does not append) with five reasons, a send button, then a thank-you message with a "change my mind" WhatsApp link
+
+**Tabs** appear after the full animation completes (`animDone`), allowing revisiting any stage. Clicking a tab shows the end-state of that stage. Labels come from `home.how.step1–3.title`.
+
+**Reduced motion:** skips directly to Stage 2 end state.
+
+### Logo marquee
+
+Below the card, margin top 48px / 64px. An infinite horizontal scroll (`animate-[marquee_30s_linear_infinite]`) of hackathon/community logos (AZCON, Baku Metro, Pasha Holding, GDG, IDDA, Holberton, Xsolla). Grayscale, `opacity: 0.4`, hover reveals colour at `0.7` opacity. Logos tripled for seamless looping.
 
 ---
 
@@ -192,11 +223,10 @@ Below that, margin top 40px: a ghost button `home.pricing.estimatorToggle` with 
 
 Background `--surface`, border `1px solid var(--border)`, radius 12px, padding 24px.
 
-The middle card (Business site) gets `border: 2px solid var(--accent)` and a badge above the name reading the localized "Most popular" string: background `--accent`, white text, 12px weight 500, `padding: 4px 10px`, radius 999px, positioned inline above the name with 12px margin below.
+No "Most popular" badge — dropped per §12 #10 (no data to support). `isPopular` is hardcoded `false`.
 
 Structure:
-1. Optional badge
-2. Service name, h3 scale
+1. Service name, h3 scale
 3. Price row, margin top 12px: `common.from` at 13px `--text-muted`, then the number at 32px weight 600, then `AZN` at 16px weight 500 `--text-muted`
 4. Divider, 1px `--border`, margin 20px vertical
 5. `common.readyIn` label at 13px `--text-muted`, value at 15px weight 500
@@ -208,41 +238,54 @@ Cards in a row must be equal height — use `align-items: stretch` on the grid.
 
 ## PriceEstimator
 
-Collapsed by default. Client component.
+Collapsed by default. Client component. All pricing data derived from `content/offering.ts` — nothing hardcoded.
 
 **Controls, stacked with 24px gaps:**
 
-1. **Type** — a segmented button group, four options, full width, equal flex. Selected: background `--accent`, white text. Unselected: background `--surface`, border `1px solid var(--border)`, text `--text`. Radius 8px on the outer corners only. Stacks to a 2×2 grid on mobile.
+1. **Type** — a segmented button group, four options (one per tier). Selected: background `--accent`, white text. Unselected: background `--surface`, border `1px solid var(--border)`, text `--text`. Radius 8px on outer corners only. Stacks to a 2×2 grid on mobile. Changing type clears features not available for the new tier.
 
-2. **Pages** — a range input, min 1, max 15, step 1, default 5. Label left, current value right in 15px weight 500. Track 4px `--border`, filled portion `--accent`, thumb 18px `--accent`.
+2. **Pages** — a range input, min 1, max 15, step 1, default 5. Label left, current value right in 15px weight 500.
 
-3. **Languages** — a segmented group with three options: 1, 2, 3.
+3. **Languages** — a segmented group with two options: 2, 3. AZ+RU is standard (2 languages free); only the 3rd language (EN) costs extra. Hint text below from `estimator.languages.hint`.
 
-4. **Add-ons** — four checkboxes in a 2×2 grid on desktop, stacked on mobile. Custom checkbox: 18px square, radius 4px, border `1px solid var(--border-strong)`. Checked: background `--accent`, white `Check` icon at 14px.
+4. **Feature add-ons** — checkboxes filtered per tier (from `offering.featureAddons`), 2-column grid desktop, stacked mobile. Custom checkbox: 18px square, radius 4px. Checked: background `--accent`, white `Check` icon at 14px.
 
-**Calculation:**
+5. **One-time add-ons** — checkboxes for translation, copywriting, WhatsApp bot, ad campaign setup (from `offering.oneTimeAddons`). Same layout as features.
+
+6. **On-request services** — checkboxes for photography, branding, advanced WhatsApp bot (from `offering.onRequestServices`). Muted styling, with a tag label from `estimator.onRequest.tag`.
+
+7. **Monthly services** — visually distinct section below a border separator. Background `--surface-alt`, rounded-12px, padding 20px. Each row: checkbox + label on left, price per month on right. Services with `requires` field only appear if the required one-time addon is selected. Deselecting `whatsappBot` also removes `whatsappUpkeep`.
+
+**Calculation (all values from `offering.ts`):**
 
 ```
-base = { landing: 300, business: 600, store: 1000, custom: 1500 }[type]
-includedPages = { landing: 1, business: 6, store: 8, custom: 8 }[type]
-extraPages = max(0, pages - includedPages) * 50
-extraLanguages = (languages - 1) * 150
-addons = booking:200 + payments:300 + blog:150 + admin:400
-total = base + extraPages + extraLanguages + addons
+base = tier.price.amount (null for custom)
+extraPages = max(0, pages - tier.includedPages) * EXTRA_PAGE_PRICE (50)
+extraLanguages = max(0, languages - 2) * EXTRA_LANGUAGE_PRICE (150)
+featureTotal = sum of selected feature addon prices
+oneTimeAddonTotal = sum of flat prices + (perPage prices × pages × extraLanguages for translation, or × pages for others)
+oneTime = base + extraPages + extraLanguages + featureTotal + oneTimeAddonTotal
 
-low  = floor(total / 50) * 50
-high = ceil((total + 150) / 50) * 50
+oneTimeMin = floor(oneTime / 50) * 50
+oneTimeMax = ceil((oneTime × 1.15) / 50) * 50
 
-baseDays = { landing: 4, business: 9, store: 12, custom: 21 }[type]
-days = baseDays + floor(extraPages / 50) + (languages - 1) * 2 + addonCount * 2
+days = tier.estimatorBaseDays + floor(extraPages / 50) + extraLanguages × 2 + featureCount × 2
+
+monthly = sum of selected monthly service prices (excluding those with unmet requires)
 ```
 
-**Output block**, margin top 32px, background `--accent-bg`, border `1px solid var(--accent-border)`, radius 12px, padding 24px:
-- `estimator.result.label` at 13px `--text-muted`
-- `{low}–{high} AZN` at 32px weight 600 `--text`
-- `estimator.result.timeline` and `{days} {estimator.result.days}` at 15px, margin top 8px
-- `estimator.disclaimer` at 13px `--text-muted`, margin top 16px
-- A primary Button `estimator.cta` opening WhatsApp, margin top 20px
+**Output — two boxes side by side** (`grid-cols-2` desktop, stacked mobile), margin top 32px:
+
+1. **One-time box** — background `--accent-bg`, border `--accent-border`, radius 12px, padding 24px:
+   - `estimator.result.oneTime` label at 13px `--text-muted`
+   - `{oneTimeMin}–{oneTimeMax} AZN` at 28px `font-serif font-normal` (or `estimator.result.customPrice` for custom tier)
+   - `estimator.result.timeline` + `{days} {estimator.result.days}` at 14px, margin top 8px
+
+2. **Monthly box** — same styling:
+   - `estimator.result.monthly` label
+   - `{monthly} AZN/ay` at 28px, or `estimator.monthlyServices.none` if nothing selected
+
+Below both boxes: `estimator.disclaimer` at 13px `--text-faint` italic, then a primary Button `estimator.cta` opening WhatsApp with a pre-filled message summarising the estimate.
 
 Values update on every input change with no submit action. Never display a single price. Never gate the result behind an email.
 
@@ -320,19 +363,6 @@ Multiple items may be open at once. No accordion-exclusive behaviour.
 Inline, `padding: 4px 10px`, radius 999px, 12px weight 500, background `--surface-alt`, colour `--text-muted`, border `1px solid var(--border)`.
 
 Accent variant: background `--accent-bg`, colour `--accent`, border `--accent-border`.
-
----
-
-## HackathonCard
-
-Visually distinct from ProjectCard: no image, background `--surface-alt`, border `1px solid var(--border-strong)`, radius 12px, padding 24px.
-
-1. Event name, 13px weight 500 `--accent`
-2. Organizer, 13px `--text-faint`, same row, separated by a `·`
-3. Project name, h3 scale, margin top 10px
-4. Problem, 14px `--text-muted`, margin top 10px
-5. Built, 15px `--text`, margin top 8px
-6. Tags row, margin top 16px, Badges with 6px gaps, wrapping
 
 ---
 
