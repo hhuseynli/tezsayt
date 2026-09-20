@@ -24,18 +24,22 @@ export function middleware(request: NextRequest) {
 
   if (pathnameHasLocale) return NextResponse.next();
 
-  // Only redirect the root path
-  if (pathname === "/") {
-    const localeCookie = request.cookies.get("locale")?.value;
-    const locale =
-      localeCookie && LOCALES.includes(localeCookie as (typeof LOCALES)[number])
-        ? localeCookie
-        : DEFAULT_LOCALE;
+  // Determine preferred locale from cookie or default
+  const localeCookie = request.cookies.get("locale")?.value;
+  const locale =
+    localeCookie && LOCALES.includes(localeCookie as (typeof LOCALES)[number])
+      ? localeCookie
+      : DEFAULT_LOCALE;
 
+  // Root path → redirect to locale homepage
+  if (pathname === "/") {
     return NextResponse.redirect(new URL(`/${locale}`, request.url));
   }
 
-  return NextResponse.next();
+  // Any other path without a locale prefix (e.g. /api, /random) →
+  // redirect to the locale-prefixed version so it hits the locale
+  // not-found page instead of causing a 500
+  return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
 }
 
 export const config = {

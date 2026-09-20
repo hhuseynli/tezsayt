@@ -92,6 +92,7 @@ When a new element or view appears in response to user interaction (e.g. clickin
 
 - Every page exports `metadata` with localized title, description, and `alternates.languages` for all three locales.
 - `app/sitemap.ts` and `app/robots.ts` must exist.
+- **Sitemap `lastModified`:** Static pages use `STATIC_LAST_MODIFIED` in `app/sitemap.ts` (not `new Date()`). Update this date whenever static page content changes.
 - Open Graph image at `/og-image.png` (1200×630) — critical for WhatsApp/Instagram link previews.
 
 ## Performance targets
