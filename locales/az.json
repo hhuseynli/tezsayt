@@ -70,7 +70,8 @@
     },
     "proof": {
       "label": "Hazırladığımız işlər",
-      "moreFromClients": "Müştərilərdən daha çox"
+      "moreFromClients": "Müştərilərdən daha çox",
+      "logosCaption": "Hackathon və icma tədbirlərində hazırladığımız sistemlər"
     },
     "how": {
       "heading": "Heç bir risk yoxdur",
@@ -326,7 +327,7 @@
     "story": {
       "heading": "Necə başladı",
       "body1": "Birlikdə proqram layihələri hazırlayarkən tanış olduq. Real problemlər, sıx müddətlər. Sonra dostlar biznesləri üçün sayt istəməyə başladı və bir şeyi fərq etdik.",
-      "body2": "Danışdığımız hər biznes sahibinin qarşısında eyni 2 seçim var idi: ya agentliyə böyük pul ödəyib şablon üçün aylarla gözləmək, ya da frilanseri tutub bitirməsini ümid etmək. Hər iki halda əvvəlcə ödəniş istənilir, amma hələ heç nə görməmisiniz.",
+      "body2": "Danışdığımız hər biznes sahibinin qarşısında eyni iki seçim var idi: ya agentliyə böyük pul ödəyib şablon üçün aylarla gözləmək, ya da frilanseri tutub bitirməsini ümid etmək. Hər iki halda əvvəlcə ödəniş istənilir, amma hələ heç nə görməmisiniz.",
       "body3": "Biz ardıcıllığı dəyişdik. Əvvəlcə ana səhifənizi hazırlayırıq, siz baxırsınız, sonra qərar verirsiniz. Bunu edə bilirik, çünki kifayət qədər sürətliyik."
     },
     "why": {
@@ -356,14 +357,14 @@
       "traditional": "Ənənəvi agentlik",
       "tezsayt": "Tezsayt ilə",
       "tradTimeline": "6–8 həftə",
-      "ourTimeline": "1 həftə",
-      "tradCost": "2000+ AZN",
-      "ourCost": "500 AZN-dən",
+      "ourTimeline": "3–14 təqvim günü",
       "tradPreview": "Ödədikdən sonra",
-      "ourPreview": "Ödəmədən əvvəl",
+      "ourPreview": "Pulsuz ana səhifə əvvəlcə",
+      "tradOwnership": "Agentliyin serverində",
+      "ourOwnership": "Sizin adınıza, birinci gündən",
       "timeline": "Müddət",
-      "cost": "Qiymət",
-      "preview": "Nümunə"
+      "preview": "Nümunə",
+      "ownership": "Sahiblik"
     }
   },
   "contact": {

@@ -12,7 +12,7 @@ Legend: ✅ RESOLVED | ⚠️ UNRESOLVED | ℹ️ OK
 **Also appears in:** services.meta.desc (all 3 langs), og.desc (all 3 langs), JsonLd.tsx:8 description, home.team.body2 ("1 həftədə" / "за неделю" / "in a week").
 **Count of occurrences:** 18+ across all locales and files.
 
-### C2. ⚠️ "1 həftə" in comparison table — UNRESOLVED
+### C2. ✅ "1 həftə" in comparison table — RESOLVED (changed to "3–14 təqvim günü")
 **Where:** `locales/az.json` about.comparison.ourTimeline = "1 həftə", RU "1 неделя", EN "1 week".
 **Claim:** Our timeline is 1 week (singular, no qualifier).
 **Reality:** Same as C1. Only true for business tier's lower bound.
@@ -22,7 +22,7 @@ Legend: ✅ RESOLVED | ⚠️ UNRESOLVED | ℹ️ OK
 **Claim:** Implies our 5-page site takes far less than 6 weeks.
 **Reality:** A 5-page site falls in the business tier (7–10 days). The claim isn't false — 7–10 days IS much less than 6 weeks — but the phrasing implies speed without naming our actual range. Per §4, every turnaround must be a per-tier range.
 
-### C4. ⚠️ "Ənənəvi agentlik 2000+ AZN" — UNRESOLVED
+### C4. ✅ "Ənənəvi agentlik 2000+ AZN" — RESOLVED (cost row replaced with ownership row)
 **Where:** `locales/az.json` about.comparison.tradCost = "2000+ AZN", RU "2000+ AZN", EN "2000+ AZN".
 **Claim:** Traditional agencies charge 2000+ AZN (framed as the expensive option).
 **Reality:** Our store tier IS 2000 AZN. We occupy the price band we're criticizing.
@@ -79,7 +79,7 @@ Note: These are Lighthouse simulated throttling results. Real-world performance 
 - meridiana.dev → 200
 **Verdict:** OK — all live as of 2026-09-19.
 
-### C12. ⚠️ Logo wall — UNRESOLVED (still no label)
+### C12. ✅ Logo wall — RESOLVED (caption added: "Hackathon və icma tədbirlərindən")
 **Where:** `components/sections/Hero.tsx:708-739` (LogoMarquee component).
 **Logos:** AZCON, Baku Metro, Pasha Holding, GDG, IDDA, Holberton, Xsolla.
 **Label:** None. No heading, no description, no context. Per §7, these are hackathon and community affiliations, not clients, and must carry a quiet, accurate label. Currently reads as a client roster by convention.
@@ -99,7 +99,7 @@ EN equivalents: "within a few hours".
 **Issue per §11:** Two founders with classes. This will break during exam weeks. Either narrow to published hours or remove.
 **Verdict:** UNVERIFIED — no data to confirm or deny, but acknowledged as fragile.
 
-### C16. ⚠️ About page "Why AI" as a headline section — UNRESOLVED
+### C16. ✅ About page "Why AI" as a headline section — RESOLVED (section removed, AI explanation lives in FAQ)
 **Where:** `locales/az.json` about.why.heading = "Niyə AI-dən istifadə edirik". RU: "Почему с ИИ". EN: "Why AI-assisted".
 **Issue per §8:** AI explanation is currently an About-page pillar (its own `<h2>` section). Strategy says move it to the answer to "Bu qədər sürətli necə ola bilərsiniz?" — which already exists in FAQ (faq id="fast").
 
@@ -108,7 +108,7 @@ EN equivalents: "within a few hours".
 **Assessment:** The ownership claim is stated but the exit mechanic (§3: "reset passwords and we're out") is never stated concretely on any published page. FAQ id="own" says it in general terms but doesn't name the specific mechanic. Per §3, the exit mechanic must be stated at least once.
 **Verdict:** INCOMPLETE — claim is made but the supporting mechanic that makes it believable is absent.
 
-### C18. ⚠️ Hardcoded competitor prices in story — UNRESOLVED
+### C18. ✅ Hardcoded competitor prices in story — RESOLVED (rewritten without specific numbers)
 **Where:** about.story.body2 in all 3 locales.
 AZ: "2000 manat" (agency) and "400 manat" (freelancer).
 RU: "две тысячи манат" and "четыреста".
@@ -129,9 +129,9 @@ EN: "two thousand manat" and "four hundred".
 | # | Claim | Status |
 |---|---|---|
 | C1 | "7 days" for full site | ✅ RESOLVED — per-tier ranges in offering.ts |
-| C2 | "1 week" comparison table | ⚠️ UNRESOLVED — locales still show "1 həftə" |
+| C2 | "1 week" comparison table | ✅ RESOLVED — now "3–14 təqvim günü" |
 | C3 | "6 weeks for 5 pages" framing | ✅ RESOLVED — reworded |
-| C4 | "2000+ AZN" as bad price | ⚠️ UNRESOLVED — we charge 2000 AZN store tier |
+| C4 | "2000+ AZN" as bad price | ✅ RESOLVED — cost row replaced with ownership |
 | C5 | Two support structures | ✅ RESOLVED — offering.ts uses à la carte |
 | C6 | "Most popular" badge | ✅ RESOLVED — dropped |
 | C7 | "Under 1 second load" | ✅ RESOLVED — changed to "Sürətli yüklənmə" |
@@ -139,13 +139,13 @@ EN: "two thousand manat" and "four hundred".
 | C9 | "Care Plan — Basic" English | ✅ RESOLVED — "Texniki dəstək planı" |
 | C10 | "tutduğu" calque | ✅ RESOLVED — "əhatə edir" |
 | C11 | Portfolio all live | ℹ️ OK |
-| C12 | Logo wall unlabeled | ⚠️ UNRESOLVED |
+| C12 | Logo wall unlabeled | ✅ RESOLVED — caption added |
 | C13 | "1 week" in team body | ✅ RESOLVED — reworded |
 | C14 | JSON-LD "7 days" | ✅ RESOLVED — updated |
 | C15 | Response time promise | ℹ️ UNVERIFIED (acknowledged as fragile) |
-| C16 | AI as about-page pillar | ⚠️ UNRESOLVED — strategy says move to FAQ |
+| C16 | AI as about-page pillar | ✅ RESOLVED — section removed |
 | C17 | Ownership without exit mechanic | ✅ RESOLVED — exit mechanic in offering.ts + FAQ |
-| C18 | Hardcoded competitor prices | ⚠️ UNRESOLVED — still in about.story |
+| C18 | Hardcoded competitor prices | ✅ RESOLVED — rewritten without numbers |
 | C19 | "Open pricing" | ℹ️ OK |
 | C20 | 50/50 payment | ✅ RESOLVED — §12 #4 decided |
 

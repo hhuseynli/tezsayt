@@ -70,7 +70,8 @@
     },
     "proof": {
       "label": "Work we've shipped",
-      "moreFromClients": "More from clients"
+      "moreFromClients": "More from clients",
+      "logosCaption": "Systems built and shipped at hackathons organized by these institutions"
     },
     "how": {
       "heading": "No risk. Here's how it works.",
@@ -326,7 +327,7 @@
     "story": {
       "heading": "How this started",
       "body1": "We met while building software projects together. Real problems, tight deadlines. Then friends started asking us to build websites for their businesses, and we noticed something.",
-      "body2": "Every business owner we spoke to had the same two options. Pay an agency two thousand manat and wait two months for a template. Or hire a freelancer for four hundred and hope they finish. Neither is good, and both ask you to pay before you've seen anything.",
+      "body2": "Every business owner we spoke to had the same two options. Pay an agency a lot and wait months for a template. Or hire a freelancer for less and hope they finish. Neither is good, and both ask you to pay before you've seen anything.",
       "body3": "So we changed the order. We build your homepage first, you look at it, and then you decide. It only works because we're fast enough to afford it."
     },
     "why": {
@@ -356,14 +357,14 @@
       "traditional": "Traditional agency",
       "tezsayt": "With Tezsayt",
       "tradTimeline": "6–8 weeks",
-      "ourTimeline": "1 week",
-      "tradCost": "2000+ AZN",
-      "ourCost": "from 500 AZN",
+      "ourTimeline": "3–14 calendar days",
       "tradPreview": "After payment",
-      "ourPreview": "Before payment",
+      "ourPreview": "Free homepage first",
+      "tradOwnership": "On the agency's server",
+      "ourOwnership": "In your name, from day one",
       "timeline": "Timeline",
-      "cost": "Price",
-      "preview": "Preview"
+      "preview": "Preview",
+      "ownership": "Ownership"
     }
   },
   "contact": {

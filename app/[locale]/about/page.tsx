@@ -67,61 +67,6 @@ export default async function AboutPage({ params }: Props) {
 
       <section className="bg-surface-alt">
         <div className="max-w-[1120px] mx-auto px-[20px] md:px-[24px] py-[64px] md:py-[96px]">
-          <div className="md:grid md:grid-cols-2 md:gap-[48px] md:items-start">
-            {/* Left: text */}
-            <div>
-              <h2 className="font-serif text-[26px] md:text-[32px] font-normal leading-[1.2] tracking-[-0.02em]">{dict["about.why.heading"]}</h2>
-              <p className="text-[16px] leading-[1.6] text-text-muted mt-[16px]">{dict["about.why.body"]}</p>
-            </div>
-
-            {/* Right: comparison visualization */}
-            <div className="mt-[32px] md:mt-0">
-              <div className="grid grid-cols-[1fr_1fr] gap-0 rounded-[12px] border border-border overflow-hidden">
-                {/* Header row */}
-                <div className="p-[16px] bg-surface-alt border-b border-r border-border text-center">
-                  <p className="text-[13px] text-text-faint">{dict["about.comparison.traditional"]}</p>
-                </div>
-                <div className="p-[16px] bg-accent-bg border-b border-border text-center">
-                  <p className="text-[13px] font-medium text-accent">{dict["about.comparison.tezsayt"]}</p>
-                </div>
-
-                {/* Timeline row */}
-                <div className="p-[16px] border-b border-r border-border bg-surface text-center">
-                  <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.timeline"]}</p>
-                  <p className="text-[16px] mt-[4px]">{dict["about.comparison.tradTimeline"]}</p>
-                </div>
-                <div className="p-[16px] border-b border-border bg-surface text-center">
-                  <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.timeline"]}</p>
-                  <p className="text-[16px] font-medium mt-[4px]">{dict["about.comparison.ourTimeline"]}</p>
-                </div>
-
-                {/* Cost row */}
-                <div className="p-[16px] border-b border-r border-border bg-surface text-center">
-                  <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.cost"]}</p>
-                  <p className="text-[16px] mt-[4px]">{dict["about.comparison.tradCost"]}</p>
-                </div>
-                <div className="p-[16px] border-b border-border bg-surface text-center">
-                  <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.cost"]}</p>
-                  <p className="text-[16px] font-medium mt-[4px]">{dict["about.comparison.ourCost"]}</p>
-                </div>
-
-                {/* Preview row */}
-                <div className="p-[16px] border-r border-border bg-surface text-center">
-                  <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.preview"]}</p>
-                  <p className="text-[16px] mt-[4px]">{dict["about.comparison.tradPreview"]}</p>
-                </div>
-                <div className="p-[16px] bg-surface text-center">
-                  <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.preview"]}</p>
-                  <p className="text-[16px] font-medium text-accent mt-[4px]">{dict["about.comparison.ourPreview"]}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-surface-alt">
-        <div className="max-w-[1120px] mx-auto px-[20px] md:px-[24px] py-[64px] md:py-[96px]">
           <h2 className="font-serif text-[26px] md:text-[32px] font-normal leading-[1.2] tracking-[-0.02em]">{dict["about.values.heading"]}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px] mt-[32px]">
             {values.map((v, i) => {
@@ -135,6 +80,45 @@ export default async function AboutPage({ params }: Props) {
                 </div>
               );
             })}
+          </div>
+
+          {/* Comparison table */}
+          <div className="mt-[48px] max-w-[560px]">
+            <div className="grid grid-cols-[1fr_1fr] gap-0 rounded-[12px] border border-border overflow-hidden">
+              <div className="p-[16px] bg-surface-alt border-b border-r border-border text-center">
+                <p className="text-[13px] text-text-faint">{dict["about.comparison.traditional"]}</p>
+              </div>
+              <div className="p-[16px] bg-accent-bg border-b border-border text-center">
+                <p className="text-[13px] font-medium text-accent">{dict["about.comparison.tezsayt"]}</p>
+              </div>
+
+              <div className="p-[16px] border-b border-r border-border bg-surface text-center">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.timeline"]}</p>
+                <p className="text-[16px] mt-[4px]">{dict["about.comparison.tradTimeline"]}</p>
+              </div>
+              <div className="p-[16px] border-b border-border bg-surface text-center">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.timeline"]}</p>
+                <p className="text-[16px] font-medium mt-[4px]">{dict["about.comparison.ourTimeline"]}</p>
+              </div>
+
+              <div className="p-[16px] border-b border-r border-border bg-surface text-center">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.ownership"]}</p>
+                <p className="text-[16px] mt-[4px]">{dict["about.comparison.tradOwnership"]}</p>
+              </div>
+              <div className="p-[16px] border-b border-border bg-surface text-center">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.ownership"]}</p>
+                <p className="text-[16px] font-medium mt-[4px]">{dict["about.comparison.ourOwnership"]}</p>
+              </div>
+
+              <div className="p-[16px] border-r border-border bg-surface text-center">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.preview"]}</p>
+                <p className="text-[16px] mt-[4px]">{dict["about.comparison.tradPreview"]}</p>
+              </div>
+              <div className="p-[16px] bg-surface text-center">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-text-faint">{dict["about.comparison.preview"]}</p>
+                <p className="text-[16px] font-medium text-accent mt-[4px]">{dict["about.comparison.ourPreview"]}</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -364,7 +364,7 @@ export function Hero({ locale, dict }: HeroProps) {
           </motion.div>
         </div>
 
-        <LogoMarquee />
+        <LogoMarquee caption={dict["home.proof.logosCaption"]} />
       </section>
     </>
   );
@@ -715,7 +715,7 @@ const logos = [
   { src: "/images/logos/xsolla-logo.png", alt: "Xsolla", h: 48, dark: true },
 ];
 
-function LogoMarquee() {
+function LogoMarquee({ caption }: { caption?: string }) {
   return (
     <div className="mt-[48px] md:mt-[64px] overflow-hidden">
       <div className="flex animate-[marquee_30s_linear_infinite] w-max">
@@ -735,6 +735,9 @@ function LogoMarquee() {
           </div>
         ))}
       </div>
+      {caption && (
+        <p className="text-[13px] text-text-faint text-center mt-[16px]">{caption}</p>
+      )}
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { getPublishedPosts } from "@/lib/blog";
 const routes = ["", "/work", "/services", "/about", "/contact", "/blog"];
 
 // Update this date when static page content actually changes
-const STATIC_LAST_MODIFIED = new Date("2026-09-19");
+const STATIC_LAST_MODIFIED = new Date("2026-09-20");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];
