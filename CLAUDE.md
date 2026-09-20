@@ -139,7 +139,10 @@ content/offering.ts
   ├→ components/blog/PriceTag.tsx
   ├→ lib/blog.ts                     (blog metadata referencing prices)
   ├→ app/llms.txt/route.ts           (LLM-facing site description)
-  └→ app/[locale]/services/page.tsx  (metadata, page content)
+  └→ app/[locale]/services/page.tsx  (monthlyServices, perMonthLabel, tiers directly)
+
+content/types.ts                     (Locale, Localized types + tl() helper)
+  └→ virtually every content file and component that reads localized data
 
 lib/constants.ts                     (agency name, socials, Formspree, site URL, locales)
   └→ 36 files — virtually every layout, page, and component
@@ -159,10 +162,27 @@ content/faq.ts
   └→ components/seo/JsonLd.tsx
 
 content/testimonials.ts
-  └→ components/sections/TestimonialStrip.tsx
+  ├→ components/sections/TestimonialStrip.tsx
+  └→ app/[locale]/work/page.tsx
+
+content/blog/*.md                    (markdown blog posts)
+  └→ lib/blog.ts                     (reads and parses posts)
+      ├→ app/[locale]/blog/page.tsx
+      ├→ app/[locale]/blog/[slug]/page.tsx
+      ├→ app/[locale]/blog/feed.xml/route.ts
+      ├→ app/sitemap.ts              (generates blog URLs)
+      ├→ app/llms.txt/route.ts
+      └→ components/seo/JsonLd.tsx
+
+components/seo/JsonLd.tsx            (structured data — reads offering, faq, blog)
+  ├→ app/layout.tsx
+  ├→ app/[locale]/layout.tsx
+  ├→ app/[locale]/services/page.tsx
+  └→ app/[locale]/blog/[slug]/page.tsx
 
 locales/{az,ru,en}.json              (UI strings — headings, labels, CTAs)
-  └→ lib/i18n.ts → all components using useTranslation()
+  └→ lib/i18n.ts → all components via getDictionary()/t()
+      Notably: about page reads comparison.*, story.*, why.* keys
 ```
 
 ### Docs cross-references
@@ -194,7 +214,10 @@ docs/offering-findings.md            (extraction log — input to offering.ts)
 5. **New project or portfolio change** → update `content/projects.ts`, verify Work page and Proof section.
 6. **FAQ change** → update `content/faq.ts`, verify services page and JSON-LD.
 7. **Copy/tone rule change** → update `docs/content-conventions.md`, then propagate to `docs/style-az.md` and review affected locale strings.
-8. **Any static content change** → update `STATIC_LAST_MODIFIED` in `app/sitemap.ts`.
+8. **Blog post add/edit** → add/edit `content/blog/*.md`, verify `lib/blog.ts` frontmatter contract, check sitemap, RSS feed, and JSON-LD. If post references prices, use `<PriceTag>` component (reads from `offering.ts`).
+9. **Locale string change** → update all three `locales/{az,ru,en}.json` files. About page reads `comparison.*`, `story.*`, `why.*` keys directly. Verify affected pages render correctly.
+10. **Localized type change** → update `content/types.ts`. This is imported by virtually every content file and component.
+11. **Any static content change** → update `STATIC_LAST_MODIFIED` in `app/sitemap.ts`.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
